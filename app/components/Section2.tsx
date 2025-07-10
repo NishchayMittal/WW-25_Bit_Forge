@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import './Section2.css';
-import SplitText from './SplitText'; // Your custom animated text component
+import SplitText from './SplitText';
 
 const handleAnimationComplete = () => {
   console.log('✅ All letters have animated!');
@@ -16,17 +16,23 @@ const Section2: React.FC = () => {
   useEffect(() => {
     setMounted(true);
 
-    const handleScroll = () => {
-      if (!sectionRef.current) return;
-      const top = sectionRef.current.getBoundingClientRect().top;
-      if (top < window.innerHeight - 100) {
-        setRevealed(true);
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setRevealed(true);
+          observer.disconnect(); // Only trigger once
+        }
+      },
+      {
+        threshold: 0.2, // Trigger when 20% of the section is visible
       }
-    };
+    );
 
-    handleScroll(); // run immediately
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
   }, []);
 
   return (
@@ -41,16 +47,16 @@ const Section2: React.FC = () => {
           muted
           playsInline
           className="hero-bg"
-          src="/videos/Layer1_alt.mp4"
+          src="/videos/Layer2.mp4"
         />
       ) : (
         <div className="hero-bg placeholder" />
       )}
-      
-      <div className="text">
+
+      <div className="center-text">
         <SplitText
-          text="Layer 1!"
-          className="text-8xl font-bold text-white"
+          text="Layer 2!"
+          className="text-8xl font-bold text-white text-center"
           delay={100}
           duration={0.6}
           ease="power3.out"
@@ -59,7 +65,6 @@ const Section2: React.FC = () => {
           to={{ opacity: 1, y: 0 }}
           threshold={0.1}
           rootMargin="-100px"
-          textAlign="right"
           onLetterAnimationComplete={handleAnimationComplete}
         />
       </div>
