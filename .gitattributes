@@ -2,3 +2,4 @@
 public/videos/Layer1.mp4 filter=lfs diff=lfs merge=lfs -text
 public/videos/Layer1_alt.mp4 filter=lfs diff=lfs merge=lfs -text
 public/videos/Layer2.mp4 filter=lfs diff=lfs merge=lfs -text
+public/videos/hero.mp4 filter=lfs diff=lfs merge=lfs -text
