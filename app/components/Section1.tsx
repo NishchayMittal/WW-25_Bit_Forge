@@ -49,7 +49,7 @@ const Section1: React.FC = () => {
       <Link href="/layers/l1">
         <div className="text">
           <SplitText
-            text="Layer 1!"
+            text="EPIPELAGIC"
             className="text-8xl font-bold text-white text-center"
             delay={100}
             duration={0.6}

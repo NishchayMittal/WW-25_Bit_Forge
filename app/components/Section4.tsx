@@ -54,7 +54,7 @@ const Section4: React.FC = () => {
       <Link href="/layers/l4">
         <div className="center-text">
           <SplitText
-            text="Layer 4!"
+            text="ABYSSOPELAGIC"
             className="text-8xl font-bold text-white text-center"
             delay={100}
             duration={0.6}

@@ -55,7 +55,7 @@ const Section5: React.FC = () => {
         <div className="center-text">
           <div className="text-line">
             <SplitText
-              text="Layer 5!"
+              text="HADOPELAGIC"
               className="text-8xl font-bold text-white"
               delay={100}
               duration={0.6}
