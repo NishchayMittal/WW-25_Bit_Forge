@@ -8,7 +8,13 @@ const layer1 = () => {
   return (
     <div>
       <div className="video-section">
-        <video src="/videos/layer.mp4" loop autoPlay muted></video>
+        <video
+          src="/videos/layer.mp4"
+          loop
+          autoPlay
+          muted
+          id="bg-video"
+        ></video>
         <div className="video-copy">
           <h1 className={bebas.className}>EPIPELAGIC</h1>
         </div>

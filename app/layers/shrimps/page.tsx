@@ -7,7 +7,7 @@ const jellyfishes = () => {
         <video src="/videos/shrimps.mp4" loop autoPlay muted></video>
         <section className="video-copy">
           <header>
-            <h1>JELLY FISHES</h1>
+            <h1>SHRIMPS</h1>
           </header>
           <p>
             Shrimp (or shrimps, though "shrimp" is the more common plural in

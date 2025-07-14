@@ -4,7 +4,13 @@ const hadalsnailfish = () => {
   return (
     <div>
       <div className="video-section">
-        <video src="/videos/hadalsnailfish.mp4" loop autoPlay muted></video>
+        <video
+          src="/videos/hadalsnailfish.mp4"
+          loop
+          autoPlay
+          muted
+          id="bg-video"
+        ></video>
         <section className="video-copy">
           <header>
             <h1>HADAL SNAILFISH</h1>

@@ -4,7 +4,13 @@ const dolphins = () => {
   return (
     <div>
       <div className="video-section">
-        <video src="/videos/dolphins.mp4" loop autoPlay muted></video>
+        <video
+          src="/videos/dolphins.mp4"
+          loop
+          autoPlay
+          muted
+          id="bg-video"
+        ></video>
         <section className="video-copy">
           <header>
             <h1>DOLPHINS</h1>
