@@ -1,3 +1,22 @@
+## 🌊 DeepBlue Discovery
+Explore the Ocean, Layer by Layer
+
+Dive into the mysterious depths of the ocean with our immersive, interactive web experience.
+From the vibrant coral reefs of the Sunlight Zone to the eerie stillness of the Hadal Trenches, our site unveils the secrets of marine biodiversity across every ocean layer.
+
+🌐 Built with modern web technologies and stunning visuals, DeepBlue Discovery is more than just a website — it's an underwater journey that educates, inspires, and amazes.
+
+🐠 Features:
+🎥 Full-screen background videos for each ocean layer
+
+📚 Educational content on marine life and ocean zones
+
+🎮 Mini ocean quiz to test your knowledge
+
+🌍 Real-time marine species data (live APIs)
+
+Created with passion for marine exploration — by a team of 4 aspiring developers 🌟
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
