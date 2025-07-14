@@ -38,7 +38,8 @@ const Section4: React.FC = () => {
   }, []);
 
   return (
-    <div ref={sectionRef} className={`section4 ${revealed ? "revealed" : ""}`}>
+    <div ref={sectionRef}
+      className={`section2 ${revealed ? 'revealed sub-cursor' : ''}`}>
       {mounted ? (
         <video
           autoPlay
@@ -54,7 +55,7 @@ const Section4: React.FC = () => {
       <Link href="/layers/l4">
         <div className="center-text">
           <SplitText
-            text="ABYSSOPELAGIC"
+            text="Abyssal"
             className="text-8xl font-bold text-white text-center"
             delay={100}
             duration={0.6}

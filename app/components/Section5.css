@@ -47,3 +47,7 @@
 .text-line {
   margin-bottom: 1rem;
 }
+
+.sub-cursor {
+  cursor: url("/images/Cursor/submarine_cursor.png"), auto;
+}

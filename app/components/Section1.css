@@ -43,4 +43,8 @@
   z-index: 2;
 }
 
+.scuba-cursor {
+  cursor: url("/images/Cursor/Scuba.png"), auto;
+}
 
+  

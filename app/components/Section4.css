@@ -40,3 +40,7 @@
   align-items: center;
   text-align: center;
 }
+
+.sub-cursor {
+  cursor: url("/images/Cursor/submarine_cursor.png"), auto;
+}

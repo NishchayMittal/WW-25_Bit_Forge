@@ -38,7 +38,8 @@ const Section5: React.FC = () => {
   }, []);
 
   return (
-    <div ref={sectionRef} className={`section5 ${revealed ? "revealed" : ""}`}>
+    <div ref={sectionRef}
+      className={`section2 ${revealed ? 'revealed sub-cursor' : ''}`}>
       {mounted ? (
         <video
           autoPlay
@@ -55,7 +56,7 @@ const Section5: React.FC = () => {
         <div className="center-text">
           <div className="text-line">
             <SplitText
-              text="HADOPELAGIC"
+              text="Hadal"
               className="text-8xl font-bold text-white"
               delay={100}
               duration={0.6}

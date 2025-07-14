@@ -33,7 +33,8 @@ const Section1: React.FC = () => {
   }, []);
 
   return (
-    <div ref={sectionRef} className={`section1 ${revealed ? "revealed" : ""}`}>
+    <div ref={sectionRef}
+      className={`section1 ${revealed ? 'revealed scuba-cursor' : ''}`}>
       {mounted ? (
         <video
           autoPlay
@@ -49,7 +50,7 @@ const Section1: React.FC = () => {
       <Link href="/layers/l1">
         <div className="text">
           <SplitText
-            text="EPIPELAGIC"
+            text="Sunlight"
             className="text-8xl font-bold text-white text-center"
             delay={100}
             duration={0.6}
