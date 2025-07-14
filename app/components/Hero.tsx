@@ -1,10 +1,11 @@
 "use client";
 
-import { useEffect, useState, useRef } from 'react';
-import { motion } from 'framer-motion';
-import './Hero.css';
-import Navbar from './Navbar';
-
+import { useEffect, useState, useRef } from "react";
+import { motion } from "framer-motion";
+import "./Hero.css";
+import Navbar from "./Navbar";
+import Script from "next/script";
+import Bot from "../components/bot";
 const Hero = () => {
   const heroRef = useRef<HTMLDivElement>(null); // ✅ Typed for DOM access
   const [beamStyle, setBeamStyle] = useState({ width: 0, angle: 0 });
@@ -47,7 +48,9 @@ const Hero = () => {
         className="beam"
         style={{
           width: `${beamStyle.width}px`,
-          transform: `translate(${beamOrigin.x}px, ${beamOrigin.y - 20}px) rotate(${beamStyle.angle}deg)`
+          transform: `translate(${beamOrigin.x}px, ${
+            beamOrigin.y - 20
+          }px) rotate(${beamStyle.angle}deg)`,
         }}
       />
 
@@ -58,14 +61,14 @@ const Hero = () => {
         initial="hidden"
         animate="visible"
         variants={{
-          visible: { transition: { staggerChildren: 0.2 } }
+          visible: { transition: { staggerChildren: 0.2 } },
         }}
       >
         <motion.h1
           className="hero-title"
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: 'easeOut' }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
         >
           Ocean and Web exploration project
         </motion.h1>
@@ -74,22 +77,29 @@ const Hero = () => {
           className="hero-subtext"
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: 'easeOut', delay: 0.2 }}
+          transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
         >
           An experience through layers of ocean
         </motion.p>
+        <Script
+          src="https://cdn.botpress.cloud/webchat/v3.1/inject.js"
+          strategy="afterInteractive"
+        />
+        <Script
+          src="https://files.bpcontent.cloud/2025/07/10/16/20250710161048-3WXS4PPU.js"
+          strategy="afterInteractive"
+        />
 
         <motion.button
           className="hero-button"
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: 'easeOut', delay: 0.4 }}
+          transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
         >
           Start Exploring
         </motion.button>
       </motion.div>
-
-      
+      <Bot />
     </div>
   );
 };

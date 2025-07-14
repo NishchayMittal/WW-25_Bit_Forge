@@ -1,11 +1,13 @@
-'use client';
+// LAYER 2
 
-import React, { useEffect, useRef, useState } from 'react';
-import './Section2.css';
-import SplitText from './SplitText';
+"use client";
 
+import React, { useEffect, useRef, useState } from "react";
+import "./Section2.css";
+import SplitText from "./SplitText";
+import Link from "next/link";
 const handleAnimationComplete = () => {
-  console.log('✅ All letters have animated!');
+  console.log("✅ All letters have animated!");
 };
 
 const Section2: React.FC = () => {
@@ -36,10 +38,7 @@ const Section2: React.FC = () => {
   }, []);
 
   return (
-    <div
-      ref={sectionRef}
-      className={`section2 ${revealed ? 'revealed' : ''}`}
-    >
+    <div ref={sectionRef} className={`section2 ${revealed ? "revealed" : ""}`}>
       {mounted ? (
         <video
           autoPlay
@@ -52,22 +51,23 @@ const Section2: React.FC = () => {
       ) : (
         <div className="hero-bg placeholder" />
       )}
-
-      <div className="center-text">
-        <SplitText
-          text="Layer 2!"
-          className="text-8xl font-bold text-white text-center"
-          delay={100}
-          duration={0.6}
-          ease="power3.out"
-          splitType="chars"
-          from={{ opacity: 0, y: 40 }}
-          to={{ opacity: 1, y: 0 }}
-          threshold={0.1}
-          rootMargin="-100px"
-          onLetterAnimationComplete={handleAnimationComplete}
-        />
-      </div>
+      <Link href="/layers/l2">
+        <div className="center-text">
+          <SplitText
+            text="Layer 2!"
+            className="text-8xl font-bold text-white text-center"
+            delay={100}
+            duration={0.6}
+            ease="power3.out"
+            splitType="chars"
+            from={{ opacity: 0, y: 40 }}
+            to={{ opacity: 1, y: 0 }}
+            threshold={0.1}
+            rootMargin="-100px"
+            onLetterAnimationComplete={handleAnimationComplete}
+          />
+        </div>
+      </Link>
     </div>
   );
 };

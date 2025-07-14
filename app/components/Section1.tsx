@@ -1,11 +1,14 @@
-'use client';
+// LAYER 1
 
-import React, { useEffect, useRef, useState } from 'react';
-import './Section1.css';
-import SplitText from './SplitText'; // Your custom animated text component
+"use client";
 
+import React, { useEffect, useRef, useState } from "react";
+import "./Section1.css";
+import SplitText from "./SplitText"; // Your custom animated text component
+import Link from "next/link";
+import Bot from "../components/bot";
 const handleAnimationComplete = () => {
-  console.log('✅ All letters have animated!');
+  console.log("✅ All letters have animated!");
 };
 
 const Section1: React.FC = () => {
@@ -25,15 +28,12 @@ const Section1: React.FC = () => {
     };
 
     handleScroll(); // run immediately
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <div
-      ref={sectionRef}
-      className={`section1 ${revealed ? 'revealed' : ''}`}
-    >
+    <div ref={sectionRef} className={`section1 ${revealed ? "revealed" : ""}`}>
       {mounted ? (
         <video
           autoPlay
@@ -46,23 +46,24 @@ const Section1: React.FC = () => {
       ) : (
         <div className="hero-bg placeholder" />
       )}
-      
-      <div className="text">
-        <SplitText
-          text="Layer 1!"
-          className="text-8xl font-bold text-white text-center"
-          delay={100}
-          duration={0.6}
-          ease="power3.out"
-          splitType="chars"
-          from={{ opacity: 0, y: 40 }}
-          to={{ opacity: 1, y: 0 }}
-          threshold={0.1}
-          rootMargin="-100px"
-          textAlign="right"
-          onLetterAnimationComplete={handleAnimationComplete}
-        />
-      </div>
+      <Link href="/layers/l1">
+        <div className="text">
+          <SplitText
+            text="Layer 1!"
+            className="text-8xl font-bold text-white text-center"
+            delay={100}
+            duration={0.6}
+            ease="power3.out"
+            splitType="chars"
+            from={{ opacity: 0, y: 40 }}
+            to={{ opacity: 1, y: 0 }}
+            threshold={0.1}
+            rootMargin="-100px"
+            textAlign="right"
+            onLetterAnimationComplete={handleAnimationComplete}
+          />
+        </div>
+      </Link>
     </div>
   );
 };
