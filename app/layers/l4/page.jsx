@@ -6,7 +6,7 @@ const layer4 = () => {
   return (
     <div>
       <div className="video-section">
-        <video src="/videos/dolphins.mp4" loop autoPlay muted></video>
+        <video src="/videos/layer.mp4" loop autoPlay muted></video>
         <div className="video-copy">
           <h1 className={bebas.className}>ABYSSOPELAGIC</h1>
         </div>
