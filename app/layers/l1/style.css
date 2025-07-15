@@ -78,15 +78,11 @@ h1{
 
 button{
   background: linear-gradient(to right, rgb(15, 84, 88), rgb(1, 1, 7));
-  font-size: 30px;
+  position: relative;
   color: #fff;
-  border-radius: 10%;
-  margin: 10px;
-  height: 50px;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding: .9rem 2.20rem;
+  border-radius: 3rem;
+  transition: .4s;
+  margin-top: 1rem;
 }
 
-.organisms{
-  display: flex;
-}

@@ -41,9 +41,11 @@ const layer4 = () => {
           <a href="/layers/seacucumbers">
             <button>Sea Cucumbers</button>
           </a>
+          <br />
           <a href="/layers/tapeworms">
             <button>Tapeworms</button>
           </a>
+          <br />
           <a href="/layers/giantsquid">
             <button>Giant Squid</button>
           </a>

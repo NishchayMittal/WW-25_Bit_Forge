@@ -55,9 +55,11 @@ const layer2 = () => {
           <a href="/layers/shrimps">
             <button>Shrimps</button>
           </a>
+          <br />
           <a href="/layers/squids">
             <button>Squids</button>
           </a>
+          <br />
           <a href="/layers/jellyfishes">
             <button>Jellyfishes</button>
           </a>
