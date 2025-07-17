@@ -39,8 +39,21 @@
   justify-content: center;
   align-items: center;
   text-align: center;
+  padding: 1rem;
+}
+
+.center-text .text-8xl {
+  font-size: 4rem;
+  line-height: 1.2;
 }
 
 .scuba-cursor {
   cursor: url("/images/Cursor/Scuba.png"), auto;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .center-text .text-8xl {
+    font-size: 2.5rem;
+  }
 }

@@ -42,10 +42,32 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 1rem;
+  max-width: 90%;
+  word-wrap: break-word;
 }
 
 .text-line {
   margin-bottom: 1rem;
+  width: 100%;
+}
+
+/* Prevent SplitText characters from scattering */
+.text-line span {
+  display: inline-block;
+  white-space: normal !important;
+  word-break: break-word;
+}
+
+/* Responsive text sizes */
+@media (max-width: 768px) {
+  .center-text .text-8xl {
+    font-size: 2.5rem;
+  }
+
+  .center-text .text-4xl {
+    font-size: 1.2rem;
+  }
 }
 
 .sub-cursor {

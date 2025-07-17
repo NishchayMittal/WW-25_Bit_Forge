@@ -1,11 +1,10 @@
-// LAYER 5
-
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
 import "./Section5.css";
 import SplitText from "./SplitText";
 import Link from "next/link";
+
 const handleAnimationComplete = () => {
   console.log("✅ All letters have animated!");
 };
@@ -38,8 +37,10 @@ const Section5: React.FC = () => {
   }, []);
 
   return (
-    <div ref={sectionRef}
-      className={`section2 ${revealed ? 'revealed sub-cursor' : ''}`}>
+    <div
+      ref={sectionRef}
+      className={`section5 ${revealed ? "revealed sub-cursor" : ""}`}
+    >
       {mounted ? (
         <video
           autoPlay

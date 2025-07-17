@@ -1,12 +1,12 @@
-// LAYER 1
-
+// Section1.tsx
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
 import "./Section1.css";
-import SplitText from "./SplitText"; // Your custom animated text component
+import SplitText from "./SplitText";
 import Link from "next/link";
 import Bot from "../components/bot";
+
 const handleAnimationComplete = () => {
   console.log("✅ All letters have animated!");
 };
@@ -27,14 +27,16 @@ const Section1: React.FC = () => {
       }
     };
 
-    handleScroll(); // run immediately
+    handleScroll();
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <div ref={sectionRef}
-      className={`section1 ${revealed ? 'revealed scuba-cursor' : ''}`}>
+    <div
+      ref={sectionRef}
+      className={`section1 ${revealed ? "revealed scuba-cursor" : ""}`}
+    >
       {mounted ? (
         <video
           autoPlay
@@ -51,7 +53,7 @@ const Section1: React.FC = () => {
         <div className="text">
           <SplitText
             text="Sunlight"
-            className="text-8xl font-bold text-white text-center"
+            className="text-title"
             delay={100}
             duration={0.6}
             ease="power3.out"
