@@ -63,43 +63,46 @@ export default function homepage() {
     }
   };
   return (
-    <div className="p-4">
+    <div className="page">
       <h1 className="text-2xl font-bold mb-4">Marine Animal Explorer</h1>
 
-      <input
-        type="text"
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-        placeholder="Search for an animal"
-        className="border p-2 rounded mr-2"
-      />
-      <button
-        onClick={getdata}
-        className="bg-blue-600 text-white px-4 py-2 rounded"
-      >
-        Search
-      </button>
+      <div className="search">
+        <input
+          type="text"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder="Search for an animal"
+          className=""
+        />
+        <button onClick={getdata} className="">
+          Search
+        </button>
+      </div>
 
-      <div className="mt-6 space-y-2">
+      <div className="info">
         <p>
           <strong>Name:</strong> {commonName}
         </p>
+        <br />
         <p>
           <strong>Scientific Name:</strong> {scientificName}
         </p>
+        <br />
         <p>
           <strong>ID:</strong> {id}
         </p>
+        <br />
         <p>
           <strong>Rank:</strong> {rank}
         </p>
+        <br />
         <p>
           <strong>Interesting Fact:</strong> {fact}
         </p>
       </div>
 
       {videoUrl && (
-        <video key={videoUrl} controls className="mt-6 w-full max-w-xl">
+        <video key={videoUrl} controls className="">
           <source src={videoUrl} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
