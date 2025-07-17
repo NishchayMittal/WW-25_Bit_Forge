@@ -60,14 +60,18 @@ const layer1 = () => {
         <br />
         <h3>Organisms Found</h3>
         <p>(select any to read about them)</p>
-        <br />
+
         <div className="organisms">
           <a href="/layers/tuna">
             <button>Tuna</button>
           </a>
+          <br />
+
           <a href="/layers/dolphins">
             <button>Dolphins</button>
           </a>
+          <br />
+
           <a href="/layers/jellyfishes">
             <button>Jellyfishes</button>
           </a>

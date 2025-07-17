@@ -6,7 +6,7 @@ const layer3 = () => {
   return (
     <div>
       <div className="video-section">
-        <video src="/videos/jellyfishes.mp4" loop autoPlay muted></video>
+        <video src="/videos/layer.mp4" loop autoPlay muted></video>
         <div className="video-copy">
           <h1 className={bebas.className}>BATHYPELAGIC</h1>
         </div>
@@ -49,9 +49,11 @@ const layer3 = () => {
           <a href="/layers/seacucumbers">
             <button>Sea Cucumbers</button>
           </a>
+          <br />
           <a href="/layers/anglerfish">
             <button>Anglerfish</button>
           </a>
+          <br />
           <a href="/layers/carnivoroussponges">
             <button>Carnivorous Sponges</button>
           </a>
