@@ -7,6 +7,7 @@ const Navbar = () => {
         <ul className="nav-items">
           <li><a href="#">Home</a></li>
           <li><a href="#">Species</a></li>
+          <li><a href="#">Games</a></li>
           <li><a href="#">Login</a></li>
           <li><a href="#">Contact</a></li>
         </ul>
