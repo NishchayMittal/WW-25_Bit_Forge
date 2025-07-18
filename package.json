@@ -14,7 +14,9 @@
     "next": "15.3.5",
     "next.js": "^1.0.3",
     "nextjs": "^0.0.3",
+    "ogl": "^1.0.11",
     "react": "^19.0.0",
+    "react-bits": "^1.0.5",
     "react-dom": "^19.0.0"
   },
   "devDependencies": {

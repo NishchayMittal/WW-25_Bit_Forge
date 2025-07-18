@@ -1,7 +1,16 @@
 "use client";
 // this line allows next js to use hooks like usestate,useeffect
 import { useState } from "react";
+import SplitText from "./SplitText";
+import ShinyText from "./ShinyText";
+import DarkVeil from "./DarkVeil";
+import BlurText from "./BlurText";
+
 export default function homepage() {
+  const handleAnimationComplete = () => {
+    console.log("All letters have animated!");
+  };
+
   const [query, setQuery] = useState("");
   const [videoUrl, setVideoUrl] = useState("");
   const [commonName, setCommonName] = useState("");
@@ -62,9 +71,43 @@ export default function homepage() {
       return "Error fetching fact.";
     }
   };
+
   return (
     <div className="page">
-      <h1 className="text-2xl font-bold mb-4">Marine Animal Explorer</h1>
+      <h1>
+        {/* <BlurText
+          text="Isn't this so cool?!"
+          delay={150}
+          animateBy="words"
+          direction="top"
+          onAnimationComplete={handleAnimationComplete}
+          className="text-2xl mb-8"
+        /> */}
+
+        <SplitText
+          text="Marine Animal Explorer!"
+          className="text-5xl font-bold text-center"
+          delay={100}
+          duration={0.6}
+          ease="power3.out"
+          splitType="chars"
+          from={{ opacity: 0, y: 40 }}
+          to={{ opacity: 1, y: 0 }}
+          threshold={0.1}
+          rootMargin="-100px"
+          textAlign="center"
+          justify-content="center"
+          onLetterAnimationComplete={handleAnimationComplete}
+        />
+      </h1>
+      <h5>
+        <ShinyText
+          text="A premium site to get all your marine related doubts solved..."
+          disabled={false}
+          speed={3}
+          className="custom-class"
+        />
+      </h5>
 
       <div className="search">
         <input
@@ -75,32 +118,115 @@ export default function homepage() {
           className=""
         />
         <button onClick={getdata} className="">
-          Search
+          <ShinyText
+            text="Search"
+            disabled={false}
+            speed={3}
+            className="custom-class"
+          />
         </button>
       </div>
 
       <div className="info">
         <p>
-          <strong>Name:</strong> {commonName}
+          <strong>Name : </strong>
+          <br />
+          <SplitText
+            text={commonName}
+            className="text-5xl font-bold text-center"
+            delay={100}
+            duration={0.6}
+            ease="power3.out"
+            splitType="chars"
+            from={{ opacity: 0, y: 40 }}
+            to={{ opacity: 1, y: 0 }}
+            threshold={0.1}
+            rootMargin="-100px"
+            textAlign="center"
+            justify-content="center"
+            onLetterAnimationComplete={handleAnimationComplete}
+          />
         </p>
         <br />
         <p>
-          <strong>Scientific Name:</strong> {scientificName}
+          <strong>Scientific Name : </strong>
+          <br />
+          <SplitText
+            text={scientificName}
+            className="text-5xl font-bold text-center"
+            delay={100}
+            duration={0.6}
+            ease="power3.out"
+            splitType="chars"
+            from={{ opacity: 0, y: 40 }}
+            to={{ opacity: 1, y: 0 }}
+            threshold={0.1}
+            rootMargin="-100px"
+            textAlign="center"
+            justify-content="center"
+            onLetterAnimationComplete={handleAnimationComplete}
+          />
         </p>
         <br />
         <p>
-          <strong>ID:</strong> {id}
+          <strong>ID :</strong>
+          <br />
+          <SplitText
+            text={id}
+            className="text-5xl font-bold text-center"
+            delay={100}
+            duration={0.6}
+            ease="power3.out"
+            splitType="chars"
+            from={{ opacity: 0, y: 40 }}
+            to={{ opacity: 1, y: 0 }}
+            threshold={0.1}
+            rootMargin="-100px"
+            textAlign="center"
+            justify-content="center"
+            onLetterAnimationComplete={handleAnimationComplete}
+          />
         </p>
         <br />
         <p>
-          <strong>Rank:</strong> {rank}
+          <strong>Rank :</strong>
+          <br />
+          <SplitText
+            text={rank}
+            className="text-5xl font-bold text-center"
+            delay={100}
+            duration={0.6}
+            ease="power3.out"
+            splitType="chars"
+            from={{ opacity: 0, y: 40 }}
+            to={{ opacity: 1, y: 0 }}
+            threshold={0.1}
+            rootMargin="-100px"
+            textAlign="center"
+            justify-content="center"
+            onLetterAnimationComplete={handleAnimationComplete}
+          />
         </p>
         <br />
         <p>
-          <strong>Interesting Fact:</strong> {fact}
+          <strong>Interesting Fact:</strong>
+          <SplitText
+            text={fact}
+            className="text-5xl font-bold text-center"
+            delay={100}
+            duration={0.01}
+            ease="power3.out"
+            splitType="chars"
+            from={{ opacity: 0, y: 40 }}
+            to={{ opacity: 1, y: 0 }}
+            threshold={0.1}
+            rootMargin="-100px"
+            textAlign="center"
+            justify-content="center"
+            onLetterAnimationComplete={handleAnimationComplete}
+          />
         </p>
       </div>
-
       {videoUrl && (
         <video key={videoUrl} controls className="">
           <source src={videoUrl} type="video/mp4" />
