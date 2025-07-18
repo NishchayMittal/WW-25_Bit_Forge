@@ -74,165 +74,154 @@ export default function homepage() {
 
   return (
     <div className="page">
-      <h1>
-        {/* <BlurText
-          text="Isn't this so cool?!"
-          delay={150}
-          animateBy="words"
-          direction="top"
-          onAnimationComplete={handleAnimationComplete}
-          className="text-2xl mb-8"
-        /> */}
-
-        <SplitText
-          text="Marine Animal Explorer!"
-          className="text-5xl font-bold text-center"
-          delay={100}
-          duration={0.6}
-          ease="power3.out"
-          splitType="chars"
-          from={{ opacity: 0, y: 40 }}
-          to={{ opacity: 1, y: 0 }}
-          threshold={0.1}
-          rootMargin="-100px"
-          textAlign="center"
-          justify-content="center"
-          onLetterAnimationComplete={handleAnimationComplete}
-        />
-      </h1>
-      <h5>
-        <ShinyText
-          text="A premium site to get all your marine related doubts solved..."
-          disabled={false}
-          speed={3}
-          className="custom-class"
-        />
-      </h5>
-
-      <div className="search">
-        <input
-          type="text"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          placeholder="Search for an animal"
-          className=""
-        />
-        <button onClick={getdata} className="">
-          <ShinyText
-            text="Search"
-            disabled={false}
-            speed={3}
-            className="custom-class"
-          />
-        </button>
+      <div style={{ width: "100%", height: "1000px", position: "relative" }}>
+        <div
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            zIndex: -1,
+          }}
+        >
+          <DarkVeil />
+        </div>
+        <div>
+          <h1>Marine Animal Explorer!</h1>
+          <h5>
+            <ShinyText
+              text="A premium site to get all your marine related doubts solved..."
+              disabled={false}
+              speed={3}
+              className="custom-class"
+            />
+          </h5>
+          <div className="search">
+            <input
+              type="text"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder="Search for an animal"
+              className=""
+            />
+            <button onClick={getdata} className="">
+              <ShinyText
+                text="Search"
+                disabled={false}
+                speed={3}
+                className="custom-class"
+              />
+            </button>
+          </div>
+          <div className="info">
+            <p>
+              <strong>Name : </strong>
+              <br />
+              <SplitText
+                text={commonName}
+                className="text-5xl font-bold text-center"
+                delay={100}
+                duration={0.6}
+                ease="power3.out"
+                splitType="chars"
+                from={{ opacity: 0, y: 40 }}
+                to={{ opacity: 1, y: 0 }}
+                threshold={0.1}
+                rootMargin="-100px"
+                textAlign="center"
+                justify-content="center"
+                onLetterAnimationComplete={handleAnimationComplete}
+              />
+            </p>
+            <br />
+            <p>
+              <strong>Scientific Name : </strong>
+              <br />
+              <SplitText
+                text={scientificName}
+                className="text-5xl font-bold text-center"
+                delay={100}
+                duration={0.6}
+                ease="power3.out"
+                splitType="chars"
+                from={{ opacity: 0, y: 40 }}
+                to={{ opacity: 1, y: 0 }}
+                threshold={0.1}
+                rootMargin="-100px"
+                textAlign="center"
+                justify-content="center"
+                onLetterAnimationComplete={handleAnimationComplete}
+              />
+            </p>
+            <br />
+            <p>
+              <strong>ID :</strong>
+              <br />
+              <SplitText
+                text={id}
+                className="text-5xl font-bold text-center"
+                delay={100}
+                duration={0.6}
+                ease="power3.out"
+                splitType="chars"
+                from={{ opacity: 0, y: 40 }}
+                to={{ opacity: 1, y: 0 }}
+                threshold={0.1}
+                rootMargin="-100px"
+                textAlign="center"
+                justify-content="center"
+                onLetterAnimationComplete={handleAnimationComplete}
+              />
+            </p>
+            <br />
+            <p>
+              <strong>Rank :</strong>
+              <br />
+              <SplitText
+                text={rank}
+                className="text-5xl font-bold text-center"
+                delay={100}
+                duration={0.6}
+                ease="power3.out"
+                splitType="chars"
+                from={{ opacity: 0, y: 40 }}
+                to={{ opacity: 1, y: 0 }}
+                threshold={0.1}
+                rootMargin="-100px"
+                textAlign="center"
+                justify-content="center"
+                onLetterAnimationComplete={handleAnimationComplete}
+              />
+            </p>
+            <br />
+            <p>
+              <strong>Interesting Fact:</strong>
+              <SplitText
+                text={fact}
+                className="text-5xl font-bold text-center"
+                delay={100}
+                duration={0.01}
+                ease="power3.out"
+                splitType="chars"
+                from={{ opacity: 0, y: 40 }}
+                to={{ opacity: 1, y: 0 }}
+                threshold={0.1}
+                rootMargin="-100px"
+                textAlign="center"
+                justify-content="center"
+                onLetterAnimationComplete={handleAnimationComplete}
+              />
+            </p>
+          </div>
+          {videoUrl && (
+            <video key={videoUrl} controls className="">
+              <source src={videoUrl} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          )}
+        </div>
       </div>
-
-      <div className="info">
-        <p>
-          <strong>Name : </strong>
-          <br />
-          <SplitText
-            text={commonName}
-            className="text-5xl font-bold text-center"
-            delay={100}
-            duration={0.6}
-            ease="power3.out"
-            splitType="chars"
-            from={{ opacity: 0, y: 40 }}
-            to={{ opacity: 1, y: 0 }}
-            threshold={0.1}
-            rootMargin="-100px"
-            textAlign="center"
-            justify-content="center"
-            onLetterAnimationComplete={handleAnimationComplete}
-          />
-        </p>
-        <br />
-        <p>
-          <strong>Scientific Name : </strong>
-          <br />
-          <SplitText
-            text={scientificName}
-            className="text-5xl font-bold text-center"
-            delay={100}
-            duration={0.6}
-            ease="power3.out"
-            splitType="chars"
-            from={{ opacity: 0, y: 40 }}
-            to={{ opacity: 1, y: 0 }}
-            threshold={0.1}
-            rootMargin="-100px"
-            textAlign="center"
-            justify-content="center"
-            onLetterAnimationComplete={handleAnimationComplete}
-          />
-        </p>
-        <br />
-        <p>
-          <strong>ID :</strong>
-          <br />
-          <SplitText
-            text={id}
-            className="text-5xl font-bold text-center"
-            delay={100}
-            duration={0.6}
-            ease="power3.out"
-            splitType="chars"
-            from={{ opacity: 0, y: 40 }}
-            to={{ opacity: 1, y: 0 }}
-            threshold={0.1}
-            rootMargin="-100px"
-            textAlign="center"
-            justify-content="center"
-            onLetterAnimationComplete={handleAnimationComplete}
-          />
-        </p>
-        <br />
-        <p>
-          <strong>Rank :</strong>
-          <br />
-          <SplitText
-            text={rank}
-            className="text-5xl font-bold text-center"
-            delay={100}
-            duration={0.6}
-            ease="power3.out"
-            splitType="chars"
-            from={{ opacity: 0, y: 40 }}
-            to={{ opacity: 1, y: 0 }}
-            threshold={0.1}
-            rootMargin="-100px"
-            textAlign="center"
-            justify-content="center"
-            onLetterAnimationComplete={handleAnimationComplete}
-          />
-        </p>
-        <br />
-        <p>
-          <strong>Interesting Fact:</strong>
-          <SplitText
-            text={fact}
-            className="text-5xl font-bold text-center"
-            delay={100}
-            duration={0.01}
-            ease="power3.out"
-            splitType="chars"
-            from={{ opacity: 0, y: 40 }}
-            to={{ opacity: 1, y: 0 }}
-            threshold={0.1}
-            rootMargin="-100px"
-            textAlign="center"
-            justify-content="center"
-            onLetterAnimationComplete={handleAnimationComplete}
-          />
-        </p>
-      </div>
-      {videoUrl && (
-        <video key={videoUrl} controls className="">
-          <source src={videoUrl} type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-      )}
     </div>
   );
 }
