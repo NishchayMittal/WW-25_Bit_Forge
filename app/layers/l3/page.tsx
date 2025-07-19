@@ -1,20 +1,41 @@
+// app/layers/layer1.tsx
+'use client';
+import GradientText from "../../components/GradientText";
+
 import React from "react";
 import "./style.css";
 import { Bebas_Neue } from "next/font/google";
+
 const bebas = Bebas_Neue({ subsets: ["latin"], weight: ["400"] });
+
 const layer3 = () => {
   return (
     <div>
+      {/* Background Video Section */}
       <div className="video-section">
-        <video src="/videos/layer.mp4" loop autoPlay muted></video>
+        <video
+          src="/videos/layer.mp4"
+          loop
+          autoPlay
+          muted
+          id="bg-video"
+        ></video>
         <div className="video-copy">
           <h1 className={bebas.className}>BATHYPELAGIC</h1>
         </div>
       </div>
+
+      {/* Main Content Section */}
       <section>
-        <h2>BATHYPELAGIC ZONE</h2>
-        <br />
-        <h3>The Midnight Zone - 1,000 to 4,000 meters</h3>
+        <GradientText
+          colors={["#40ffaa", "#4079ff", "#40ffaa", "#4079ff", "#40ffaa"]}
+          animationSpeed={3}
+          showBorder={false}
+          className="custom-class"
+        >
+          <div className="Head">BATHYPELAGIC ZONE</div>
+        </GradientText>
+       <h3>The Midnight Zone - 1,000 to 4,000 meters</h3>
         <p>
           The bathypelagic zone, also known as the midnight zone, is a
           pitch-black, freezing, and high-pressure part of the ocean. Sunlight

@@ -1,20 +1,41 @@
+// app/layers/layer1.tsx
+'use client';
+import GradientText from "../../components/GradientText";
+
 import React from "react";
 import "./style.css";
 import { Bebas_Neue } from "next/font/google";
+
 const bebas = Bebas_Neue({ subsets: ["latin"], weight: ["400"] });
+
 const layer5 = () => {
   return (
     <div>
+      {/* Background Video Section */}
       <div className="video-section">
-        <video src="/videos/layer.mp4" loop autoPlay muted></video>
+        <video
+          src="/videos/layer.mp4"
+          loop
+          autoPlay
+          muted
+          id="bg-video"
+        ></video>
         <div className="video-copy">
-          <h1 className={ bebas.className }>HADALPELAGIC</h1>
+          <h1 className={bebas.className}>HADALPELAGIC</h1>
         </div>
       </div>
+
+      {/* Main Content Section */}
       <section>
-        <h2>HADALPELAGIC ZONE</h2>
-        <br />
-      <h3>The Trenches - 6,000 to 11,000+ meters</h3>
+        <GradientText
+          colors={["#40ffaa", "#4079ff", "#40ffaa", "#4079ff", "#40ffaa"]}
+          animationSpeed={3}
+          showBorder={false}
+          className="custom-class"
+        >
+          <div className="Head">HADALPELAGIC ZONE</div>
+        </GradientText>
+       <h3>The Trenches - 6,000 to 11,000+ meters</h3>
       <p>The hadalpelagic zone, or hadal zone, is the deepest part of the ocean, found in oceanic trenches and deep sea troughs. Reaching depths over 11,000 meters, this zone is named after Hades, the Greek god of the underworld — a fitting name for such a dark, isolated, and extreme world.Despite the crushing pressure and eternal darkness, life does exist in this alien-like environment.</p>
       <br />
       <h3>Key Features</h3>
@@ -49,9 +70,7 @@ const layer5 = () => {
             <button>Amphipods</button>
           </a>
         </div>
-        
       </section>
-      
     </div>
   );
 };
