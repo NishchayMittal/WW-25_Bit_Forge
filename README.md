@@ -11,9 +11,11 @@ From the vibrant coral reefs of the Sunlight Zone to the eerie stillness of the 
 
 📚 Educational content on marine life and ocean zones
 
-🎮 Mini ocean quiz to test your knowledge
+🤔 Mini ocean quiz to test your knowledge
 
 🌍 Real-time marine species data (live APIs)
+
+🎮 Enjoy the personally developed games
 
 Created with passion for marine exploration — by a team of 4 aspiring developers 🌟
 
