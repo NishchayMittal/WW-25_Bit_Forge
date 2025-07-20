@@ -1,52 +1,38 @@
 import React from "react";
 import "./style.css";
+
+import GradientText from "../../components/GradientText";
+
 const dolphins = () => {
   return (
-    <div>
-      <div className="video-section">
-        <video
-          src="/videos/dolphins.mp4"
-          loop
-          autoPlay
-          muted
-          id="bg-video"
-        ></video>
-        <section className="video-copy">
-          <header>
-            <h1>DOLPHINS</h1>
-          </header>
-          <p>
+    <div className="page-container">
+      <video className="background-video" src="/videos/dolphins.mp4" loop autoPlay muted></video>
+      <div className="overlay" />
+      <section className="glass-panel">
+        <GradientText
+          colors={["#40ffaa", "#4079ff", "#40ffaa", "#4079ff", "#40ffaa"]}
+          animationSpeed={3}
+          showBorder={false}
+          className="custom-class"
+        ><div className="Head">DOLPHINS</div></GradientText>
+        <p className="intro-text">
             Dolphins are highly intelligent, social marine mammals known for
             their playful behavior, complex communication, and streamlined
             bodies. They belong to the order Cetacea, which also includes whales
             and porpoises.
-          </p>
-          <br />
-          <h3>Overview</h3>
-          <table>
-            <tr>
-              <td>Class : Mammalia</td>
-            </tr>
-            <tr>
-              <td>Order : Cetacea</td>
-            </tr>
-            <tr>
-              <td>Family : Delphinidae (oceanic dolphins)</td>
-            </tr>
+        </p>
 
-            <tr>
-              <td>
-                {" "}
-                Habitat : Mostly epipelagic zone (0 - 200 m), coastal and open
-                ocean
-              </td>
-            </tr>
-            <tr>
-              <td>Lifespan : 20 - 60+ years (varies by species)</td>
-            </tr>
-          </table>
-        </section>
-      </div>
+        <h3>Overview</h3>
+        <table className="info-table">
+          <tbody>
+            <tr><td><strong>Lifespan:</strong> 20 - 60+ years (varies by species)</td></tr>
+            <tr><td><strong>Class:</strong> Mammalia</td></tr>
+            <tr><td><strong>Order:</strong> Cetacea</td></tr>
+            <tr><td><strong>Family:</strong> Delphinidae (oceanic dolphins)</td></tr>
+            <tr><td><strong>Habitat:</strong> Mostly epipelagic zone (0 - 200 m), coastal and open ocean</td></tr>
+          </tbody>
+        </table>
+      </section>
     </div>
   );
 };

@@ -1,56 +1,39 @@
 import React from "react";
 import "./style.css";
+
+import GradientText from "../../components/GradientText";
+
 const hadalsnailfish = () => {
   return (
-    <div>
-      <div className="video-section">
-        <video
-          src="/videos/hadalsnailfish.mp4"
-          loop
-          autoPlay
-          muted
-          id="bg-video"
-        ></video>
-        <section className="video-copy">
-          <header>
-            <h1>HADAL SNAILFISH</h1>
-          </header>
-          <p>
+    <div className="page-container">
+      <video className="background-video" src="/videos/hadalsnailfish.mp4" loop autoPlay muted></video>
+      <div className="overlay" />
+      <section className="glass-panel">
+        <GradientText
+          colors={["#40ffaa", "#4079ff", "#40ffaa", "#4079ff", "#40ffaa"]}
+          animationSpeed={3}
+          showBorder={false}
+          className="custom-class"
+        ><div className="Head">HADAL SNAILFISH</div></GradientText>
+        <p className="intro-text">
             The hadal snailfish is a deep-sea fish species adapted to live in
             the extreme pressures of the hadal zone, which is the deepest part
             of the ocean, found in oceanic trenches below 6,000 meters (about
             19,700 feet).
-          </p>
-          <br />
-          <h3>Overview</h3>
-          <table>
-            <tr>
-              <td>Phylum : Chordata</td>
-            </tr>
-            <tr>
-              <td>Order : Scorpaeniformes</td>
-            </tr>
-            <tr>
-              <td>Class : Actinopterygii (ray-finned fishes)</td>
-            </tr>
-            <tr>
-              <td>Family : Liparidae (Snailfishes)</td>
-            </tr>
-            <tr>
-              <td>
-                Scientific Name : Pseudoliparis swirei, Notoliparis
-                kermadecensis, etc.
-              </td>
-            </tr>
-            <tr>
-              <td>
-                Habitat: Hadal trenches, such as the Mariana Trench, Kermadec
-                Trench, and Japan Trench.
-              </td>
-            </tr>
-          </table>
-        </section>
-      </div>
+        </p>
+
+        <h3>Overview</h3>
+        <table className="info-table">
+          <tbody>
+            <tr><td><strong>Class:</strong> Actinopterygii (ray-finned fishes)</td></tr>
+            <tr><td><strong>Phylum:</strong> Chordata</td></tr>
+
+            <tr><td><strong>Order:</strong> Scorpaeniformes</td></tr>
+            <tr><td><strong>Family:</strong> Liparidae (Snailfishes)</td></tr>
+            <tr><td><strong>Habitat:</strong>: Hadal trenches, such as the Mariana Trench, Kermadec Trench, and Japan Trench.</td></tr>
+          </tbody>
+        </table>
+      </section>
     </div>
   );
 };

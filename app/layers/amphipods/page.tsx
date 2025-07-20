@@ -1,43 +1,38 @@
 import React from "react";
 import "./style.css";
+
+import GradientText from "../../components/GradientText";
+
 const amphipods = () => {
   return (
-    <div>
-      <div className="video-section">
-        <video src="/videos/amphipods.mp4" loop autoPlay muted></video>
-        <section className="video-copy">
-          <header>
-            <h1>AMPHIPODS</h1>
-          </header>
-          <p>
+    <div className="page-container">
+      <video className="background-video" src="/videos/amphipods.mp4" loop autoPlay muted></video>
+      <div className="overlay" />
+      <section className="glass-panel">
+        <GradientText
+          colors={["#40ffaa", "#4079ff", "#40ffaa", "#4079ff", "#40ffaa"]}
+          animationSpeed={3}
+          showBorder={false}
+          className="custom-class"
+        ><div className="Head">AMPHIPODS</div></GradientText>
+        <p className="intro-text">
             Amphipods are small, shrimp-like crustaceans found in nearly every
             aquatic environment — from shallow freshwater streams to the deepest
             parts of the ocean.
-          </p>
-          <br />
-          <h3>Overview</h3>
-          <table>
-            <tr>
-              <td>Class : Malacostraca</td>
-            </tr>
-            <tr>
-              <td>Scientific Order : Amphipoda</td>
-            </tr>
-            <tr>
-              <td>Phylum : Arthropoda</td>
-            </tr>
-            <tr>
-              <td>Subphylum: Crustacea</td>
-            </tr>
-            <tr>
-              <td>
-                Body Shape : Laterally compressed (flattened from side to side),
-                unlike shrimp which are dorsoventrally compressed.
-              </td>
-            </tr>
-          </table>
-        </section>
-      </div>
+        </p>
+
+        <h3>Overview</h3>
+        <table className="info-table">
+          <tbody>
+            <tr><td><strong>Class:</strong> Malacostraca</td></tr>
+            <tr><td><strong>Phylum:</strong> Arthropoda</td></tr>
+
+            <tr><td><strong>Order:</strong> Amphipoda</td></tr>
+            <tr><td><strong>Family:</strong> Liparidae (Snailfishes)</td></tr>
+            <tr><td><strong>Body:</strong>: Laterally compressed (flattened from side to side), unlike shrimp which are dorsoventrally compressed.</td></tr>
+          </tbody>
+        </table>
+      </section>
     </div>
   );
 };
