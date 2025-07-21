@@ -32,42 +32,48 @@ body {
 }
 
 body{
-  background: #0c0513;
+  background: rgb(36, 35, 35);
   color: #fff;
 }
 
 h1{
+  /* font-size: xx-large; */
+  font-family: winky-rough;
   text-align: center;
   justify-content: center;
 }
 
 h5{
+  color: rgb(35, 32, 32);
   text-align: center;
   justify-content: center;
   margin-bottom: 30px;
+  margin-top: 30px;
 
 }
 
 input{
   background: none;
-  color: #fff;
+  color: black;
   font-size: 20px;
   text-align: center;
   align-items: center;
   border-radius: 3rem;
+   border-color: none;
   height: 50px;
   width: 400px;
   margin-right: 20px;
-  margin-left: 100px;
+  margin-left: 100px; 
 }
 
 button{
-  background: linear-gradient(to right,rgb(78, 29, 202),rgb(30, 16, 72));
-  color: #fff;
+  background: rgb(156, 25, 10);
+  color: black;
   font-size: 20px;
   height: 45px;
   width: 100px;
   border-radius: 2rem;
+  
 }
 
 .search{
@@ -90,8 +96,18 @@ video {
   margin: 0 auto;         
   margin-bottom: 100px;
   border-radius: 12px;   
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); 
+  /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);  */
   
 }
 
+.map{
+  width: 80%;             
+  max-width: 800px;
+  height: auto;           
+  display: block;        
+  margin: 0 auto;         
+  margin-bottom: 100px;
+  border-radius: 12px;   
 
+  /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);  */
+}

@@ -5,6 +5,9 @@ import SplitText from "./SplitText";
 import ShinyText from "./ShinyText";
 import DarkVeil from "./DarkVeil";
 import BlurText from "./BlurText";
+import Aurora from "./Aurora";
+import TextPressure from "./TextPressure";
+
 const MapComponent = dynamic(() => import("./MapComponent"), { ssr: false });
 
 export default function Homepage() {
@@ -81,71 +84,80 @@ export default function Homepage() {
   return (
     <div className="page">
       <div style={{ width: "100%", height: "1000px", position: "relative" }}>
-        <div
-          style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            zIndex: -1,
-          }}
-        >
-          <DarkVeil />
+        <h1>
+          <div style={{ position: "relative", height: "" }}>
+            <TextPressure
+              text="Marine Animal Explorer!"
+              flex={true}
+              alpha={false}
+              stroke={false}
+              width={true}
+              weight={true}
+              italic={true}
+              textColor="#ffffff"
+              strokeColor="#ff0000"
+              minFontSize={36}
+            />
+          </div>
+        </h1>
+        <h5>
+          {/* A premium site to get all your marine related doubts solved... */}
+          <ShinyText
+            text="A premium site to get all your marine related doubts solved..."
+            disabled={false}
+            speed={3}
+            className="custom-class"
+          />
+        </h5>
+        <div className="search">
+          <input
+            type="text"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Search for an animal"
+          />
+          <button onClick={getdata}>
+            <ShinyText text="Search" disabled={false} speed={3} />
+          </button>
         </div>
-        <div>
-          <h1>Marine Animal Explorer!</h1>
-          <h5>
-            <ShinyText
-              text="A premium site to get all your marine related doubts solved..."
-              disabled={false}
-              speed={3}
-              className="custom-class"
-            />
-          </h5>
-          <div className="search">
-            <input
-              type="text"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              placeholder="Search for an animal"
-            />
-            <button onClick={getdata}>
-              <ShinyText text="Search" disabled={false} speed={3} />
-            </button>
-          </div>
 
-          <div className="info">
-            <p>
-              <strong>Name :</strong>
-              <br />
-              <SplitText text={commonName} {...splitConfig} />
-            </p>
+        <div className="info">
+          <p>
+            {/* <strong>Name :</strong> */}
             <br />
-            <p>
-              <strong>Scientific Name :</strong>
-              <br />
-              <SplitText text={scientificName} {...splitConfig} />
-            </p>
+            {/* {commonName} */}
+            <SplitText text={commonName} {...splitConfig} />
+          </p>
+          <br />
+          <p>
+            <strong>Scientific Name :</strong>
             <br />
-            <p>
-              <strong>ID :</strong>
-              <br />
-              <SplitText text={id} {...splitConfig} />
-            </p>
+            {scientificName}
+            {/* <SplitText text={scientificName} {...splitConfig} /> */}
+          </p>
+          <br />
+          <p>
+            <strong>ID :</strong>
             <br />
-            <p>
-              <strong>Rank :</strong>
-              <br />
-              <SplitText text={rank} {...splitConfig} />
-            </p>
+            {id}
+            {/* <SplitText text={id} {...splitConfig} /> */}
+          </p>
+          <br />
+          <p>
+            <strong>Rank :</strong>
             <br />
-            <p>
-              <strong>Interesting Fact:</strong>
-              <SplitText text={fact} {...splitConfig} duration={0.01} />
-            </p>
-          </div>
-
+            {rank}
+            {/* <SplitText text={rank} {...splitConfig} /> */}
+          </p>
+          <br />
+          <p>
+            <strong>Interesting Fact:</strong>
+            <br />
+            {fact}
+            {/* <SplitText text={fact} {...splitConfig} duration={0.01} /> */}
+          </p>
+        </div>
+        <div className="map">
           {videoUrl && (
             <video key={videoUrl} controls width="640" height="360">
               <source src={videoUrl} type="video/mp4" />
@@ -158,6 +170,7 @@ export default function Homepage() {
         </div>
       </div>
     </div>
+    // </div>
   );
 }
 
