@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import ShortsPlayer from "@/components/MarineShorts";
+import ShortsPlayer from "./MarineShorts";
 
 type Video = {
   id: { videoId: string };

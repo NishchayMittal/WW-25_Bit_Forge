@@ -6,6 +6,7 @@ import "./Hero.css";
 import Navbar from "./Navbar";
 import Script from "next/script";
 import Bot from "../components/bot";
+import Link from "next/link";
 const Hero = () => {
   const heroRef = useRef<HTMLDivElement>(null); // ✅ Typed for DOM access
   const [beamStyle, setBeamStyle] = useState({ width: 0, angle: 0 });
@@ -89,15 +90,16 @@ const Hero = () => {
           src="https://files.bpcontent.cloud/2025/07/10/16/20250710161048-3WXS4PPU.js"
           strategy="afterInteractive"
         />
-
-        <motion.button
-          className="hero-button"
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
-        >
-          Start Exploring
-        </motion.button>
+        <Link href="layers/marine-shorts">
+          <motion.button
+            className="hero-button"
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
+          >
+            Start Exploring
+          </motion.button>
+        </Link>
       </motion.div>
       <Bot />
     </div>
