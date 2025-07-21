@@ -265,4 +265,7 @@ export function game() {
     });
 
     startGame(); // start the game first time
+    // canvas.addEventListener("touchstart", handleStart);
+    // canvas.addEventListener("touchmove", handleMove);
+
 }
