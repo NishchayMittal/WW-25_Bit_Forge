@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Hero.css";
-
+import Link from "next/link";
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -17,9 +17,11 @@ const Navbar = () => {
           <li>
             <a href="#">Home</a>
           </li>
-          <li>
-            <a href="#">Species</a>
-          </li>
+          <Link href="layers/species">
+            <li>
+              <a>Species</a>
+            </li>
+          </Link>
           <li>
             <a href="/game">Games</a>
           </li>
