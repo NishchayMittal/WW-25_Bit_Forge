@@ -1,3 +1,16 @@
+/* ----------- Winky Rough Font Import ----------- */
+@font-face {
+  font-family: "WinkyRough";
+  src: url("/fonts/WinkyRough.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Optional: Apply it globally */
+* {
+  font-family: "WinkyRough", serif !important;
+}
+
 /* ----------- Reset ----------- */
 html, body {
   margin: 0;
@@ -65,7 +78,6 @@ html, body {
   font-weight: 700;
   line-height: 1.2;
   margin: 0;
-  font-family: 'Cinzel', serif;
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
@@ -74,7 +86,6 @@ html, body {
   font-size: 1.4rem;
   color: rgba(255, 255, 255, 0.8);
   text-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
-  font-family: 'Josefin Sans', sans-serif;
 }
 
 .hero-button {
@@ -87,7 +98,6 @@ html, body {
   cursor: pointer;
   transition: all 0.3s ease;
   border-radius: 6px;
-  font-family: 'Josefin Sans', sans-serif;
 }
 
 .hero-button:hover {
@@ -121,7 +131,6 @@ html, body {
 }
 
 .logo {
-  font-family: 'Cinzel', serif;
   font-size: 24px;
   font-weight: bold;
   color: white;
@@ -139,7 +148,6 @@ html, body {
   list-style: none;
   display: flex;
   gap: 30px;
-  font-family: 'Josefin Sans', sans-serif;
 }
 
 .nav-items li a {
@@ -168,12 +176,11 @@ html, body {
     flex-direction: row;
     align-items: center;
     padding: 16px 20px;
-    
   }
 
-  .beam{
-      display: none;
-    }
+  .beam {
+    display: none;
+  }
 
   .nav-items {
     flex-direction: column;

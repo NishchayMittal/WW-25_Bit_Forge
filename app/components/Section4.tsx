@@ -6,9 +6,14 @@ import React, { useEffect, useRef, useState } from "react";
 import "./Section4.css";
 import SplitText from "./SplitText";
 import Link from "next/link";
+import { Black_Ops_One } from "next/font/google";
 const handleAnimationComplete = () => {
   console.log("✅ All letters have animated!");
 };
+const blackOpsOne = Black_Ops_One({
+  subsets: ["latin"],
+  weight: "400",
+});
 
 const Section4: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -38,8 +43,10 @@ const Section4: React.FC = () => {
   }, []);
 
   return (
-    <div ref={sectionRef}
-      className={`section2 ${revealed ? 'revealed sub-cursor' : ''}`}>
+    <div
+      ref={sectionRef}
+      className={`section2 ${revealed ? "revealed sub-cursor" : ""}`}
+    >
       {mounted ? (
         <video
           autoPlay
@@ -56,7 +63,7 @@ const Section4: React.FC = () => {
         <div className="center-text">
           <SplitText
             text="Abyssal"
-            className="text-8xl font-bold text-white text-center"
+            className="text-title winky-font"
             delay={100}
             duration={0.6}
             ease="power3.out"

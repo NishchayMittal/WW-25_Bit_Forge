@@ -11,7 +11,15 @@
   transform: translateY(50px);
   transition: opacity 1s ease-out, transform 1s ease-out;
 }
-
+@font-face {
+  font-family: "WinkyRough";
+  src: url("/fonts/WinkyRough.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+.winky-font {
+  font-family: "WinkyRough", serif;
+}
 .section1.revealed {
   opacity: 1;
   transform: translateY(0);

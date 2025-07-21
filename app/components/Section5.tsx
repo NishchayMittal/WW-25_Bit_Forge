@@ -4,10 +4,14 @@ import React, { useEffect, useRef, useState } from "react";
 import "./Section5.css";
 import SplitText from "./SplitText";
 import Link from "next/link";
-
+import { Black_Ops_One } from "next/font/google";
 const handleAnimationComplete = () => {
   console.log("✅ All letters have animated!");
 };
+const blackOpsOne = Black_Ops_One({
+  subsets: ["latin"],
+  weight: "400",
+});
 
 const Section5: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -58,7 +62,7 @@ const Section5: React.FC = () => {
           <div className="text-line">
             <SplitText
               text="Hadal"
-              className="text-8xl font-bold text-white"
+              className="text-title winky-font"
               delay={100}
               duration={0.6}
               ease="power3.out"
@@ -71,7 +75,7 @@ const Section5: React.FC = () => {
           <div className="text-line">
             <SplitText
               text="A mystery waiting to be unraveled"
-              className="text-4xl font-semibold text-white"
+              className="text-title winky-font"
               delay={100}
               duration={0.6}
               ease="power3.out"

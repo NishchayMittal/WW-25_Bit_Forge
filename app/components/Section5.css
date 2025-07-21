@@ -16,7 +16,15 @@
   opacity: 1;
   transform: translateY(0);
 }
-
+@font-face {
+  font-family: "WinkyRough";
+  src: url("/fonts/WinkyRough.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+.winky-font {
+  font-family: "WinkyRough", serif;
+}
 .hero-bg {
   position: absolute;
   top: 0;

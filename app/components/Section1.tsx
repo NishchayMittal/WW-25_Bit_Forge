@@ -6,6 +6,12 @@ import "./Section1.css";
 import SplitText from "./SplitText";
 import Link from "next/link";
 import Bot from "../components/bot";
+import { Black_Ops_One } from "next/font/google";
+
+const blackOpsOne = Black_Ops_One({
+  subsets: ["latin"],
+  weight: "400",
+});
 
 const handleAnimationComplete = () => {
   console.log("✅ All letters have animated!");
@@ -53,7 +59,7 @@ const Section1: React.FC = () => {
         <div className="text">
           <SplitText
             text="Sunlight"
-            className="text-title"
+            className="text-title winky-font"
             delay={100}
             duration={0.6}
             ease="power3.out"
