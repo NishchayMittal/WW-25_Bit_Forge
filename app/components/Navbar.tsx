@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import {
   UserButton,
@@ -17,7 +18,16 @@ const Navbar = () => {
 
   return (
     <nav className="hero-navbar">
-      <div className="logo">Oceanic</div>
+      <div className="flex items-center space-x-2">
+        <Image
+          src="/boat.png" // or your image path
+          alt="Boat Logo"
+          width={100}
+          height={100}
+          className="object-contain"
+        />
+        <span className="text-white text-2xl font-bold">Oceanic</span>
+      </div>
 
       <div className="right-menu">
         <div className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>
@@ -37,9 +47,6 @@ const Navbar = () => {
           <li>
             <Link href="/aboutus">AboutUs</Link>
           </li>
-          <li>
-            <Link href="#">Contact</Link>
-          </li>
 
           <SignedOut>
             <li>
@@ -52,7 +59,7 @@ const Navbar = () => {
           <SignedIn>
             <li>
               <button className="user-button">
-                👋 {user?.firstName || "User"}
+                {user?.firstName || "User"}
               </button>
             </li>
             <li>

@@ -218,44 +218,54 @@ export function game() {
         if (!gameOver) requestAnimationFrame(animate);
     }
 
-    function startGame() {
-        canvas = document.getElementById('canvas1');
-        ctx = canvas.getContext('2d');
-        canvas.width = 800;
-        canvas.height = 500;
+  function startGame() {
+    canvas = document.getElementById('canvas1');
+    ctx = canvas.getContext('2d');
 
-        score = 0;
-        gameFrame = 0;
-        gameOver = false;
-        bubblesArray.length = 0;
 
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    score = 0;
+    gameFrame = 0;
+    gameOver = false;
+    bubblesArray.length = 0;
+
+    canvasPosition = canvas.getBoundingClientRect();
+    mouse.x = canvas.width / 2;
+    mouse.y = canvas.height / 2;
+
+    canvas.addEventListener('mousedown', function (event) {
+        mouse.click = true;
+        mouse.x = event.x - canvasPosition.left;
+        mouse.y = event.y - canvasPosition.top;
+    });
+    canvas.addEventListener('mouseup', function () {
+        mouse.click = false;
+    });
+
+    window.addEventListener('resize', function () {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
         canvasPosition = canvas.getBoundingClientRect();
-        mouse.x = canvas.width / 2;
-        mouse.y = canvas.height / 2;
 
-        canvas.addEventListener('mousedown', function (event) {
-            mouse.click = true;
-            mouse.x = event.x - canvasPosition.left;
-            mouse.y = event.y - canvasPosition.top;
-        });
-        canvas.addEventListener('mouseup', function () {
-            mouse.click = false;
-        });
-
-        window.addEventListener('resize', function () {
-            canvasPosition = canvas.getBoundingClientRect();
-        });
-
-        BG.x1 = 0;
-        BG.x2 = canvas.width;
+        // Recalculate background and other resizable elements
         BG.width = canvas.width;
         BG.height = canvas.height;
+        BG.x1 = 0;
+        BG.x2 = canvas.width;
+    });
 
-        player = new Player();
-        enemy1 = new Enemy();
+    BG.x1 = 0;
+    BG.x2 = canvas.width;
+    BG.width = canvas.width;
+    BG.height = canvas.height;
 
-        animate();
-    }
+    player = new Player();
+    enemy1 = new Enemy();
+
+    animate();
+}
 
     // Press ENTER to restart
     window.addEventListener('keydown', function (e) {
