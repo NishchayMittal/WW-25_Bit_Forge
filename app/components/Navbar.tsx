@@ -1,8 +1,19 @@
-import React, { useState } from "react";
-import "./Hero.css";
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
+import {
+  UserButton,
+  useUser,
+  SignedIn,
+  SignedOut,
+  SignInButton,
+} from "@clerk/nextjs";
+import "./Hero.css";
+
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { user } = useUser();
 
   return (
     <nav className="hero-navbar">
@@ -15,22 +26,37 @@ const Navbar = () => {
 
         <ul className={`nav-items ${menuOpen ? "open" : ""}`}>
           <li>
-            <a href="#">Home</a>
+            <Link href="#">Home</Link>
           </li>
-          <Link href="layers/species">
+          <li>
+            <Link href="/layers/species">Species</Link>
+          </li>
+          <li>
+            <Link href="/game">Games</Link>
+          </li>
+          <li>
+            <Link href="#">Contact</Link>
+          </li>
+
+          <SignedOut>
             <li>
-              <a>Species</a>
+              <SignInButton mode="modal">
+                <button>Login</button>
+              </SignInButton>
             </li>
-          </Link>
-          <li>
-            <a href="/game">Games</a>
-          </li>
-          <li>
-            <a href="#">Login</a>
-          </li>
-          <li>
-            <a href="#">Contact</a>
-          </li>
+          </SignedOut>
+
+          <SignedIn>
+            <li>
+              <button className="user-button">
+                👋 {user?.firstName || "User"}
+              </button>
+            </li>
+            <li>
+              {/* Optionally show Clerk's default user button with dropdown */}
+              <UserButton afterSignOutUrl="/" />
+            </li>
+          </SignedIn>
         </ul>
       </div>
     </nav>

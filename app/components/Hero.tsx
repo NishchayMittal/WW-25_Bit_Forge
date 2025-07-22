@@ -2,15 +2,23 @@
 
 import { useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
+import {
+  SignedIn,
+  SignedOut,
+  SignInButton,
+  useUser,
+  ClerkProvider,
+} from "@clerk/nextjs";
 import "./Hero.css";
 import Navbar from "./Navbar";
 import Script from "next/script";
 import Bot from "../components/bot";
 import Link from "next/link";
+
 const Hero = () => {
-  const heroRef = useRef<HTMLDivElement>(null); // ✅ Typed for DOM access
+  const heroRef = useRef<HTMLDivElement>(null);
   const [beamStyle, setBeamStyle] = useState({ width: 0, angle: 0 });
-  const [mounted, setMounted] = useState(false); // ✅ Avoid hydration mismatch
+  const [mounted, setMounted] = useState(false);
   const beamOrigin = { x: 390, y: 10 };
 
   useEffect(() => {
@@ -32,7 +40,7 @@ const Hero = () => {
     setBeamStyle({ width: distance, angle });
   };
 
-  if (!mounted) return null; // ✅ Prevent SSR/Client mismatch
+  if (!mounted) return null;
 
   return (
     <div className="hero" onMouseMove={handleMouseMove} ref={heroRef}>
@@ -61,9 +69,7 @@ const Hero = () => {
         className="hero-content"
         initial="hidden"
         animate="visible"
-        variants={{
-          visible: { transition: { staggerChildren: 0.2 } },
-        }}
+        variants={{ visible: { transition: { staggerChildren: 0.2 } } }}
       >
         <motion.h1
           className="hero-title"
@@ -82,6 +88,8 @@ const Hero = () => {
         >
           An experience through layers of ocean
         </motion.p>
+
+        {/* Scripts for Botpress */}
         <Script
           src="https://cdn.botpress.cloud/webchat/v3.1/inject.js"
           strategy="afterInteractive"
@@ -90,17 +98,35 @@ const Hero = () => {
           src="https://files.bpcontent.cloud/2025/07/10/16/20250710161048-3WXS4PPU.js"
           strategy="afterInteractive"
         />
-        <Link href="layers/marine-shorts">
-          <motion.button
-            className="hero-button"
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
-          >
-            Start Exploring
-          </motion.button>
-        </Link>
+        <ClerkProvider>
+          {/* Auth-based buttons */}
+          <SignedIn>
+            <Link href="/layers/marine-shorts">
+              <motion.button
+                className="hero-button"
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
+              >
+                Start Exploring
+              </motion.button>
+            </Link>
+          </SignedIn>
+
+          <SignedOut>
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
+            >
+              <SignInButton mode="modal">
+                <button className="hero-button">Sign In to Explore</button>
+              </SignInButton>
+            </motion.div>
+          </SignedOut>
+        </ClerkProvider>
       </motion.div>
+
       <Bot />
     </div>
   );

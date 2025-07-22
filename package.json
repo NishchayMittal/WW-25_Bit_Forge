@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@clerk/nextjs": "^6.25.4",
     "framer-motion": "^12.23.6",
     "gsap": "^3.13.0",
     "leaflet": "^1.9.4",
