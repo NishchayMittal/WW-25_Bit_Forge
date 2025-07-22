@@ -35,6 +35,9 @@ const Navbar = () => {
             <Link href="/game">Games</Link>
           </li>
           <li>
+            <Link href="/aboutus">AboutUs</Link>
+          </li>
+          <li>
             <Link href="#">Contact</Link>
           </li>
 
