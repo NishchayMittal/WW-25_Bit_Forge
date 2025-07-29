@@ -6,10 +6,7 @@
   font-style: normal;
 }
 
-/* Optional: Apply it globally */
-* {
-  font-family: "WinkyRough", serif !important;
-}
+
 
 /* ----------- Reset ----------- */
 html, body {
@@ -243,3 +240,4 @@ html, body {
   z-index: 1;
   pointer-events: none;
 }
+

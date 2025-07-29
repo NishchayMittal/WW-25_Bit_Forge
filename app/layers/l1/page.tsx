@@ -1,18 +1,18 @@
 // app/layers/layer1.tsx
-'use client';
+"use client";
 import GradientText from "../../components/GradientText";
 
 import React from "react";
 import "./style.css";
 import { Bebas_Neue } from "next/font/google";
-
+import Navbar from "@/app/components/Navbar";
 const bebas = Bebas_Neue({ subsets: ["latin"], weight: ["400"] });
 
 const Layer1 = () => {
   return (
     <div>
-      {/* Background Video Section */}
       <div className="video-section">
+        <Navbar />
         <video
           src="/videos/layer.mp4"
           loop
