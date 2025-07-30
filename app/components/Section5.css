@@ -1,5 +1,7 @@
 .section5 {
-  position: relative;
+  position: sticky;
+  top: 0;
+  z-index: 5;
   background: #000;
   min-height: 100vh;
   padding: 0;

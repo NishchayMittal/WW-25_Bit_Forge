@@ -60,21 +60,21 @@ const Section4: React.FC = () => {
         <div className="hero-bg placeholder" />
       )}
       <Link href="/layers/l4">
-        <div className="center-text">
-          <SplitText
-            text="Abyssal"
-            className="text-title winky-font"
-            delay={100}
-            duration={0.6}
-            ease="power3.out"
-            splitType="chars"
-            from={{ opacity: 0, y: 40 }}
-            to={{ opacity: 1, y: 0 }}
-            threshold={0.1}
-            rootMargin="-100px"
-            onLetterAnimationComplete={handleAnimationComplete}
-          />
-        </div>
+<div className="center-text">
+  <SplitText
+    text="Abyssal"
+    className="text-title winky-font"
+    delay={100}
+    duration={0.6}
+    ease="power3.out"
+    splitType="chars"
+    from={{ opacity: 0, y: 40 }}
+    to={{ opacity: 1, y: 0 }}
+    threshold={0.1}
+    rootMargin="-100px"
+    onLetterAnimationComplete={handleAnimationComplete}
+  />
+</div>
       </Link>
     </div>
   );

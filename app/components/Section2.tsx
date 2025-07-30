@@ -43,40 +43,43 @@ const Section2: React.FC = () => {
   }, []);
 
   return (
-    <div
-      ref={sectionRef}
-      className={`section2 ${revealed ? "revealed scuba-cursor" : ""}`}
-    >
-      {mounted ? (
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="hero-bg"
-          src="/videos/Layer2.mp4"
-        />
-      ) : (
-        <div className="hero-bg placeholder" />
-      )}
-      <Link href="/layers/l2">
-        <div className="center-text">
-          <SplitText
-            text="Twilight"
-            className="text-title winky-font"
-            delay={100}
-            duration={0.6}
-            ease="power3.out"
-            splitType="chars"
-            from={{ opacity: 0, y: 40 }}
-            to={{ opacity: 1, y: 0 }}
-            threshold={0.1}
-            rootMargin="-100px"
-            onLetterAnimationComplete={handleAnimationComplete}
+    <>
+      <div className="parallax"></div>
+      <div
+        ref={sectionRef}
+        className={`section2 ${revealed ? "revealed scuba-cursor" : ""}`}
+      >
+        {mounted ? (
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="hero-bg"
+            src="/videos/Layer2.mp4"
           />
-        </div>
-      </Link>
-    </div>
+        ) : (
+          <div className="hero-bg placeholder" />
+        )}
+        <Link href="/layers/l2">
+<div className="center-text">
+  <SplitText
+    text="Twilight"
+    className="text-title winky-font"
+    delay={100}
+    duration={0.6}
+    ease="power3.out"
+    splitType="chars"
+    from={{ opacity: 0, y: 40 }}
+    to={{ opacity: 1, y: 0 }}
+    threshold={0.1}
+    rootMargin="-100px"
+    onLetterAnimationComplete={handleAnimationComplete}
+  />
+</div>
+        </Link>
+      </div>
+    </>
   );
 };
 

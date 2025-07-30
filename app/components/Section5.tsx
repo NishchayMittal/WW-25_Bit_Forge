@@ -58,34 +58,34 @@ const Section5: React.FC = () => {
         <div className="hero-bg placeholder" />
       )}
       <Link href="/layers/l5">
-        <div className="center-text">
-          <div className="text-line">
-            <SplitText
-              text="Hadal"
-              className="text-title winky-font"
-              delay={100}
-              duration={0.6}
-              ease="power3.out"
-              splitType="chars"
-              from={{ opacity: 0, y: 40 }}
-              to={{ opacity: 1, y: 0 }}
-              onLetterAnimationComplete={handleAnimationComplete}
-            />
-          </div>
-          <div className="text-line">
-            <SplitText
-              text="A mystery waiting to be unraveled"
-              className="text-title winky-font"
-              delay={100}
-              duration={0.6}
-              ease="power3.out"
-              splitType="chars"
-              from={{ opacity: 0, y: 40 }}
-              to={{ opacity: 1, y: 0 }}
-              onLetterAnimationComplete={handleAnimationComplete}
-            />
-          </div>
-        </div>
+<div className="center-text">
+  <div className="text-line">
+    <SplitText
+      text="Hadal"
+      className="text-title winky-font"
+      delay={100}
+      duration={0.6}
+      ease="power3.out"
+      splitType="chars"
+      from={{ opacity: 0, y: 40 }}
+      to={{ opacity: 1, y: 0 }}
+      onLetterAnimationComplete={handleAnimationComplete}
+    />
+  </div>
+  <div className="text-line">
+    <SplitText
+      text="A mystery waiting to be unraveled"
+      className="text-title winky-font"
+      delay={100}
+      duration={0.6}
+      ease="power3.out"
+      splitType="chars"
+      from={{ opacity: 0, y: 40 }}
+      to={{ opacity: 1, y: 0 }}
+      onLetterAnimationComplete={handleAnimationComplete}
+    />
+  </div>
+</div>
       </Link>
     </div>
   );
