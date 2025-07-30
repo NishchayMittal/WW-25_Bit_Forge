@@ -69,6 +69,12 @@ const Navbar = () => {
               About Us
             </Link>
           </li>
+          <li>
+            <Link href="/timeline">
+              <GiAnchor />
+              Timeline
+            </Link>
+          </li>
 
           <li>
             <Link href="/forms">Forms</Link>
