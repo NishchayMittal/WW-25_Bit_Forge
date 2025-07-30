@@ -1,5 +1,4 @@
 "use client";
-import { Caveat } from "next/font/google";
 import { Cinzel } from "next/font/google";
 import { useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
@@ -7,17 +6,14 @@ import {
   SignedIn,
   SignedOut,
   SignInButton,
-  useUser,
   ClerkProvider,
 } from "@clerk/nextjs";
-import { Quicksand } from "next/font/google";
 import "./Hero.css";
 import Navbar from "./Navbar";
 import Script from "next/script";
 import Bot from "../components/bot";
 import Link from "next/link";
 const caveat1 = Cinzel({ subsets: ["latin"], weight: ["400"] });
-const Quicksand1 = Quicksand({ subsets: ["latin"], weight: ["400"] });
 const Hero = () => {
   const heroRef = useRef<HTMLDivElement>(null);
   const [beamStyle, setBeamStyle] = useState({ width: 0, angle: 0 });
@@ -84,7 +80,7 @@ const Hero = () => {
         </motion.h1>
 
         <motion.p
-          className=" ${Quicksand1.className} hero-subtext"
+          className="hero-subtext"
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}

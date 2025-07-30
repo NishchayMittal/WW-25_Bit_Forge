@@ -1,0 +1,37 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Container for layering */
+#container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Background video */
+#bg-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1;
+}
+
+/* Canvas should fully cover screen */
+#canvas1 {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: block;
+  z-index: 1;
+  background: transparent;
+  background: linear-gradient(to bottom,lightblue,darkblue,black);
+}
