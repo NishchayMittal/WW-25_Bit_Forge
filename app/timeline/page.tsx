@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import "./style.css";
 
 // Define the type for a timeline event for better type safety
 interface TimelineEvent {
