@@ -10,7 +10,15 @@ import {
   SignedOut,
   SignInButton,
 } from "@clerk/nextjs";
-import "./Hero.css";
+import {
+  GiDolphin,
+  GiSeaTurtle,
+  GiTreasureMap,
+  GiAnchor,
+  GiPirateHat,
+} from "react-icons/gi";
+
+import "./Navbar.css";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -18,17 +26,19 @@ const Navbar = () => {
 
   return (
     <nav className="hero-navbar">
+      {/* Logo Section */}
       <div className="flex items-center space-x-2">
         <Image
-          src="/boat.png" // or your image path
+          src="/logo.png"
           alt="Boat Logo"
-          width={100}
-          height={100}
+          width={50}
+          height={50}
           className="object-contain"
         />
         <span className="text-white text-2xl font-bold">Oceanic</span>
       </div>
 
+      {/* Menu Section */}
       <div className="right-menu">
         <div className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>
           ☰
@@ -36,22 +46,37 @@ const Navbar = () => {
 
         <ul className={`nav-items ${menuOpen ? "open" : ""}`}>
           <li>
-            <Link href="#">Home</Link>
+            <Link href="#">
+              <GiAnchor />
+              Home
+            </Link>
           </li>
           <li>
-            <Link href="/layers/species">Species</Link>
+            <Link href="/layers/species">
+              <GiSeaTurtle />
+              Species
+            </Link>
           </li>
           <li>
-            <Link href="/game">Games</Link>
+            <Link href="/game">
+              <GiTreasureMap />
+              Games
+            </Link>
           </li>
           <li>
-            <Link href="/aboutus">AboutUs</Link>
+            <Link href="/aboutus">
+              <GiDolphin />
+              About Us
+            </Link>
           </li>
 
           <SignedOut>
             <li>
               <SignInButton mode="modal">
-                <button>Login</button>
+                <button>
+                  <GiPirateHat />
+                  Login
+                </button>
               </SignInButton>
             </li>
           </SignedOut>
@@ -59,11 +84,11 @@ const Navbar = () => {
           <SignedIn>
             <li>
               <button className="user-button">
+                <GiPirateHat />
                 {user?.firstName || "User"}
               </button>
             </li>
             <li>
-              {/* Optionally show Clerk's default user button with dropdown */}
               <UserButton afterSignOutUrl="/" />
             </li>
           </SignedIn>
