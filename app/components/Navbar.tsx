@@ -70,6 +70,10 @@ const Navbar = () => {
             </Link>
           </li>
 
+          <li>
+            <Link href="/forms">Forms</Link>
+          </li>
+
           <SignedOut>
             <li>
               <SignInButton mode="modal">

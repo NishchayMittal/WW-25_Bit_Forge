@@ -12,11 +12,12 @@
     "build-optimized": "npm run build"
   },
   "dependencies": {
-    "@clerk/nextjs": "^6.25.4",
+    "@clerk/nextjs": "^6.27.1",
     "clerk": "^0.8.3",
     "framer-motion": "^12.23.6",
     "gsap": "^3.13.0",
     "leaflet": "^1.9.4",
+    "mongoose": "^8.16.5",
     "next": "15.3.5",
     "next.js": "^1.0.3",
     "nextjs": "^0.0.3",
