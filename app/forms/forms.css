@@ -1,13 +1,14 @@
 /* Page background */
 body {
   font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(135deg, #00bcd4, #3f51b5);
+    background-image: url('public/ocean.jpg'); /* Update path if necessary */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
   margin: 0;
   padding: 40px 20px;
   min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    padding-top: 80px;
 }
 
 /* Container */
@@ -18,6 +19,7 @@ body {
   max-width: 600px;
   width: 100%;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  padding-top: 70px; /* just more than Navbar height */
 }
 
 /* Heading */
@@ -119,4 +121,10 @@ button {
 
 button:hover {
   background: linear-gradient(135deg, #3f51b5, #00bcd4);
+}
+.form-center-wrapper {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

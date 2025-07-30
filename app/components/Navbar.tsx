@@ -24,6 +24,18 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const { user } = useUser();
 
+  const navButtonStyle: React.CSSProperties = {
+    background: "none",
+    border: "none",
+    color: "inherit",
+    cursor: "pointer",
+    display: "flex",
+    alignItems: "center",
+    gap: "0.5em",
+    font: "inherit",
+    padding: 0,
+  };
+
   return (
     <nav className="hero-navbar">
       {/* Logo Section */}
@@ -46,28 +58,40 @@ const Navbar = () => {
 
         <ul className={`nav-items ${menuOpen ? "open" : ""}`}>
           <li>
-            <Link href="#">
+            <button
+              onClick={() => (window.location.href = "/")}
+              style={navButtonStyle}
+            >
               <GiAnchor />
               Home
-            </Link>
+            </button>
           </li>
           <li>
-            <Link href="/layers/species">
+            <button
+              onClick={() => (window.location.href = "/layers/species")}
+              style={navButtonStyle}
+            >
               <GiSeaTurtle />
               Species
-            </Link>
+            </button>
           </li>
           <li>
-            <Link href="/game">
+            <button
+              onClick={() => (window.location.href = "/game")}
+              style={navButtonStyle}
+            >
               <GiTreasureMap />
               Games
-            </Link>
+            </button>
           </li>
           <li>
-            <Link href="/aboutus">
+            <button
+              onClick={() => (window.location.href = "/aboutus")}
+              style={navButtonStyle}
+            >
               <GiDolphin />
               About Us
-            </Link>
+            </button>
           </li>
           <li>
             <Link href="/timeline">
@@ -83,13 +107,18 @@ const Navbar = () => {
           </li>
 
           <li>
-            <Link href="/forms">Forms</Link>
+            <button
+              onClick={() => (window.location.href = "/forms")}
+              style={navButtonStyle}
+            >
+              Forms
+            </button>
           </li>
 
           <SignedOut>
             <li>
               <SignInButton mode="modal">
-                <button>
+                <button style={navButtonStyle}>
                   <GiPirateHat />
                   Login
                 </button>
@@ -99,7 +128,7 @@ const Navbar = () => {
 
           <SignedIn>
             <li>
-              <button className="user-button">
+              <button className="user-button" style={navButtonStyle}>
                 <GiPirateHat />
                 {user?.firstName || "User"}
               </button>

@@ -12,9 +12,12 @@ export default function Home() {
   }, []);
 
   return (
-    <div>
-      {/* Canvas for the game */}
-      <canvas id="canvas1"></canvas>
-    </div>
+    <>
+      <Navbar />
+      <div>
+        {/* Canvas for the game */}
+        <canvas id="canvas1"></canvas>
+      </div>
+    </>
   );
 }
