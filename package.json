@@ -17,6 +17,7 @@
     "framer-motion": "^12.23.6",
     "gsap": "^3.13.0",
     "leaflet": "^1.9.4",
+    "lucide-react": "^0.535.0",
     "mongoose": "^8.16.5",
     "next": "15.3.5",
     "next.js": "^1.0.3",
