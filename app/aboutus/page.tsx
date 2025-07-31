@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import "./style.css";
-import Navbar from "../components/Navbar";
+import Navbar from "@/app/components/Navbar";
 
 // Define the type for a team member
 interface TeamMember {

@@ -3,8 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { ChevronUp, ChevronDown, X, Waves } from "lucide-react";
 import "./style.css";
-
-
+import Navbar from "@/app/components/Navbar";
 
 // Define the type for a timeline event for better type safety
 interface TimelineEvent {
@@ -504,134 +503,140 @@ export default function HomePage() {
   const totalYears = timelineData[timelineData.length - 1]?.year || "";
 
   return (
-    <div className="ocean-container">
-      {/* Animated background elements */}
-      <div className="ocean-background">
-        <div className="wave-animation"></div>
-        <div className="bubble-field">
-          {[...Array(20)].map((_, i) => (
-            <div key={i} className={`bubble bubble-${i + 1}`}></div>
-          ))}
+    <>
+      <Navbar />
+      <div className="ocean-container">
+        {/* Animated background elements */}
+        <div className="ocean-background">
+          <div className="wave-animation"></div>
+          <div className="bubble-field">
+            {[...Array(20)].map((_, i) => (
+              <div key={i} className={`bubble bubble-${i + 1}`}></div>
+            ))}
+          </div>
+          <div className="bioluminescent-particles">
+            {[...Array(30)].map((_, i) => (
+              <div key={i} className={`particle particle-${i + 1}`}></div>
+            ))}
+          </div>
+          <div className="current-flow"></div>
         </div>
-        <div className="bioluminescent-particles">
-          {[...Array(30)].map((_, i) => (
-            <div key={i} className={`particle particle-${i + 1}`}></div>
-          ))}
-        </div>
-        <div className="current-flow"></div>
-      </div>
 
-      <div className="timeline-app" ref={timelineAppRef}>
-        <div className="timeline-line">
-          <div className="line-glow"></div>
-        </div>
-        
-        {timelineData.map((event, index) => (
-          <div
-            key={event.year}
-            ref={(el) => {
-              if (el) eventRefs.current[index] = el;
-            }}
-            className={`timeline-event-wrapper ${
-              index === currentEventIndex ? "active" : ""
-            }`}
-            onClick={() => openModal(event)}
-          >
-            <div className="timeline-content-area">
-              <div className="year-marker-container">
-                <div className="year-marker">
-                  <div className="marker-core"></div>
-                  <div className="marker-ring"></div>
-                  <div className="marker-pulse"></div>
+        <div className="timeline-app" ref={timelineAppRef}>
+          <div className="timeline-line">
+            <div className="line-glow"></div>
+          </div>
+
+          {timelineData.map((event, index) => (
+            <div
+              key={event.year}
+              ref={(el) => {
+                if (el) eventRefs.current[index] = el;
+              }}
+              className={`timeline-event-wrapper ${
+                index === currentEventIndex ? "active" : ""
+              }`}
+              onClick={() => openModal(event)}
+            >
+              <div className="timeline-content-area">
+                <div className="year-marker-container">
+                  <div className="year-marker">
+                    <div className="marker-core"></div>
+                    <div className="marker-ring"></div>
+                    <div className="marker-pulse"></div>
+                  </div>
                 </div>
-              </div>
-              <div className="event-details" data-event-id={event.year}>
-                <div className="card-glow"></div>
-                <div className="year-text">{event.year}</div>
-                <h3>{event.title}</h3>
-                <p>{event.description}</p>
-                <div className="read-more-indicator">
-                  <span>Dive Deeper</span>
-                  <Waves className="waves-icon" size={16} />
+                <div className="event-details" data-event-id={event.year}>
+                  <div className="card-glow"></div>
+                  <div className="year-text">{event.year}</div>
+                  <h3>{event.title}</h3>
+                  <p>{event.description}</p>
+                  <div className="read-more-indicator">
+                    <span>Dive Deeper</span>
+                    <Waves className="waves-icon" size={16} />
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
 
-      <button
-        className={`scroll-arrow up ${
-          currentEventIndex === 0 ? "disabled" : ""
-        }`}
-        onClick={() => displayEvent(currentEventIndex - 1)}
-        disabled={currentEventIndex === 0}
-      >
-        <ChevronUp size={24} />
-      </button>
-      
-      <button
-        className={`scroll-arrow down ${
-          currentEventIndex === timelineData.length - 1 ? "disabled" : ""
-        }`}
-        onClick={() => displayEvent(currentEventIndex + 1)}
-        disabled={currentEventIndex === timelineData.length - 1}
-      >
-        <ChevronDown size={24} />
-      </button>
-
-      <div className="year-indicator">
-        <span className="current-year">{currentYear}</span>
-        <span className="separator">/</span>
-        <span className="total-year">{totalYears}</span>
-      </div>
-
-      <div className="year-select-container">
-        <select
-          className="year-select"
-          onChange={handleYearChange}
-          value={currentYear}
-          ref={yearSelectRef}
-          disabled={isAnimating}
+        <button
+          className={`scroll-arrow up ${
+            currentEventIndex === 0 ? "disabled" : ""
+          }`}
+          onClick={() => displayEvent(currentEventIndex - 1)}
+          disabled={currentEventIndex === 0}
         >
-          {timelineData.map((event) => (
-            <option key={event.year} value={event.year}>
-              {event.year}
-            </option>
-          ))}
-        </select>
-      </div>
+          <ChevronUp size={24} />
+        </button>
 
-      {/* Enhanced Modal */}
-      {isModalOpen && modalEvent && (
-        <div className="modal open" onClick={(e) => {
-          if (e.target === e.currentTarget) closeModal();
-        }}>
-          <div className="modal-backdrop"></div>
-          <div className="modal-content">
-            <button className="modal-close-btn" onClick={closeModal}>
-              <X size={24} />
-            </button>
-            <div className="modal-event-details">
-              <div className="modal-year">{modalEvent.year}</div>
-              <h3>{modalEvent.title}</h3>
-              <div className="modal-description">
-                <p>{modalEvent.fullDescription || modalEvent.description}</p>
-              </div>
-              {modalEvent.details && modalEvent.details.length > 0 && (
-                <div className="modal-details">
-                  <h4>Key Details</h4>
-                  <ul>
-                    {modalEvent.details.map((detail, idx) => (
-                      <li key={idx}>{detail}</li>
-                    ))}
-                  </ul>
+        <button
+          className={`scroll-arrow down ${
+            currentEventIndex === timelineData.length - 1 ? "disabled" : ""
+          }`}
+          onClick={() => displayEvent(currentEventIndex + 1)}
+          disabled={currentEventIndex === timelineData.length - 1}
+        >
+          <ChevronDown size={24} />
+        </button>
+
+        <div className="year-indicator">
+          <span className="current-year">{currentYear}</span>
+          <span className="separator">/</span>
+          <span className="total-year">{totalYears}</span>
+        </div>
+
+        <div className="year-select-container">
+          <select
+            className="year-select"
+            onChange={handleYearChange}
+            value={currentYear}
+            ref={yearSelectRef}
+            disabled={isAnimating}
+          >
+            {timelineData.map((event) => (
+              <option key={event.year} value={event.year}>
+                {event.year}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        {/* Enhanced Modal */}
+        {isModalOpen && modalEvent && (
+          <div
+            className="modal open"
+            onClick={(e) => {
+              if (e.target === e.currentTarget) closeModal();
+            }}
+          >
+            <div className="modal-backdrop"></div>
+            <div className="modal-content">
+              <button className="modal-close-btn" onClick={closeModal}>
+                <X size={24} />
+              </button>
+              <div className="modal-event-details">
+                <div className="modal-year">{modalEvent.year}</div>
+                <h3>{modalEvent.title}</h3>
+                <div className="modal-description">
+                  <p>{modalEvent.fullDescription || modalEvent.description}</p>
                 </div>
-              )}
+                {modalEvent.details && modalEvent.details.length > 0 && (
+                  <div className="modal-details">
+                    <h4>Key Details</h4>
+                    <ul>
+                      {modalEvent.details.map((detail, idx) => (
+                        <li key={idx}>{detail}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
-        </div>
-      )}
-    </div>
+        )}
+      </div>
+    </>
   );
 }

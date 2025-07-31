@@ -4,7 +4,7 @@ import React, { useEffect } from "react";
 import "./style.css";
 
 import { game } from "./script";
-import Navbar from "../components/Navbar";
+import Navbar from "@/app/components/Navbar";
 
 export default function Home() {
   useEffect(() => {
