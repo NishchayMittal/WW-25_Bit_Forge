@@ -102,15 +102,6 @@ const Navbar = () => {
               Timeline
             </button>
           </li>
-          <li>
-            <button
-              onClick={() => (window.location.href = "/track")}
-              style={navButtonStyle}
-            >
-              <GiAnchor />
-              Track
-            </button>
-          </li>
 
           <li>
             <button

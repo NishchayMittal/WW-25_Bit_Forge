@@ -141,3 +141,17 @@
     display: block;
   }
 }
+.nav-items li a,
+.nav-items li button {
+  color: white;
+  text-decoration: none;
+  font-size: 1.1rem; /* Unified size */
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding-bottom: 4px;
+  transition: color 0.3s ease;
+  display: flex;
+  align-items: center;
+  font-family: 'Segoe UI', sans-serif; /* Ensure consistent font */
+}

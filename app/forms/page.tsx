@@ -1,5 +1,5 @@
 "use client";
-import Navbar from "../components/Navbar";
+import Navbar from "@/app/components/Navbar";
 import "./forms.css";
 
 export default function Form() {
@@ -7,22 +7,22 @@ export default function Form() {
     <>
       <Navbar />
       <div className="wave-divider">
-  <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
-    <path
-      d="M0,32L48,53.3C96,75,192,117,288,117.3C384,117,480,75,576,80C672,85,768,139,864,160C960,181,1056,171,1152,144C1248,117,1344,75,1392,53.3L1440,32V100H0Z"
-      fill="#00bcd4"
-      opacity="0.7"
-    />
-  </svg>
-</div>
+        <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+          <path
+            d="M0,32L48,53.3C96,75,192,117,288,117.3C384,117,480,75,576,80C672,85,768,139,864,160C960,181,1056,171,1152,144C1248,117,1344,75,1392,53.3L1440,32V100H0Z"
+            fill="#00bcd4"
+            opacity="0.7"
+          />
+        </svg>
+      </div>
 
       <div className="form-center-wrapper">
         <div className="container">
           <h1>Oceanic Feedback & Conservation Pledge</h1>
           <p className="form-intro">
-            Help us make our ocean exploration website better and share your voice
-            for ocean conservation. Whether you have feedback, creative ideas,
-            or a personal pledge — we’d love to hear from you!
+            Help us make our ocean exploration website better and share your
+            voice for ocean conservation. Whether you have feedback, creative
+            ideas, or a personal pledge — we’d love to hear from you!
           </p>
 
           <form
@@ -93,7 +93,7 @@ export default function Form() {
             <input
               type="hidden"
               name="_next"
-              value="https://localhost:3000/forms/thankyou"
+              value="http://localhost:3000/forms/thankyou"
             />
 
             {/* Submit */}
