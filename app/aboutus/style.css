@@ -1,78 +1,184 @@
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+:root {
+            --color-background-dark: #0A192F;
+            --color-background-medium: #112240;
+            --color-highlight-blue: #64FFDA;
+            --color-text-primary: #CCD6F6;
+            --color-text-secondary: #8892B0;
+            --font-main: 'Inter', sans-serif;
+        }
 
-#about{
-  height: auto;
-  width: 100vw;
-}
+        /* --- Base & Typography --- */
+        html {
+            box-sizing: border-box;
+            font-size: 16px;
+        }
 
-#wave{
-  height: auto;
-  width: 100vw;
-  margin-top: -50vh;
-}
+        *, *:before, *:after {
+            box-sizing: inherit;
+        }
 
+        body {
+            font-family: var(--font-main);
+            margin: 0;
+            padding: 0;
+            background-color: var(--color-background-dark);
+            color: var(--color-text-secondary);
+            line-height: 1.6;
+        }
 
+        h1, h2, h3 {
+            font-weight: 600;
+            margin-top: 0;
+            color: var(--color-text-primary);
+        }
 
-.middle{
-  position: relative;
-   background: rgb(157, 213, 238);
-  margin-top: -51vh;
-  
-}
+        h1 { font-size: clamp(2.5rem, 5vw, 4rem); }
+        h2 { font-size: clamp(2rem, 4vw, 3rem); }
+        h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
 
-.info{
-  margin-top: 50vh;
-  margin-left: 10vh;
-  margin-right: 10vh;
-  color: rgb(26, 41, 70);
-}
+        p {
+            font-size: 1rem;
+            max-width: 800px;
+            margin: 1rem auto;
+        }
 
-header{
-  text-align: center;
-  justify-content: center;
-  margin-left: 40vw;
-  font-size: 5rem;
-  position: absolute;
-  margin-top: -250vh;
-  color: rgb(26, 41, 70);
-  /* text-transform: bold; */
-}
+        a {
+            color: var(--color-highlight-blue);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        a:hover {
+            color: var(--color-text-primary);
+        }
 
-h1{
-  font-size: 5rem;
-}
-h2{
-  font-size: 3rem;
-}
-h5{
-  font-size: 2rem;
-}
+        /* --- Utility Classes & Layout --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
 
-#bottom{
-  height: auto;
-  width: 100vw;
-}
+        /* --- Header Section with Hero Image --- */
+        .header-image {
+            width: 100%;
+            height: 20vh; /* 1/5th of the viewport height */
+            background-image: url('https://images.pexels.com/photos/1802268/pexels-photo-1802268.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            filter: brightness(80%);
+            border-bottom: 3px solid var(--color-highlight-blue);
+        }
 
-h6{
-  position: absolute;
-  font-size: 2rem;
-  justify-content: center;
-  align-items: center;
-  margin-top: 5vh;
-  margin-left: 10vh;
-  margin-right: 10vh;
-  color: #fff;
-}
+        /* --- Introduction Section --- */
+        .about-us-intro {
+            text-align: center;
+            margin-bottom: 5rem;
+            padding: 3rem 0;
+        }
 
-p{
-  font-size: 25px;
-  font-family: 'Times New Roman', Times, serif;
-  line-height: normal;
-  font-weight: normal;
-  font-style: normal;
-}
+        .about-us-intro h1 {
+            color: var(--color-highlight-blue);
+            margin-bottom: 1rem;
+        }
 
+        .about-us-intro ul {
+            text-align: left;
+            display: inline-block;
+            list-style-type: none;
+            padding-left: 0;
+            margin-top: 2rem;
+            font-size: 1.1rem;
+        }
+        
+        .about-us-intro ul li {
+            position: relative;
+            margin-bottom: 1rem;
+            padding-left: 25px;
+        }
+        
+        .about-us-intro ul li::before {
+            content: '›';
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--color-highlight-blue);
+            font-size: 1.5rem;
+            line-height: 1;
+            font-weight: bold;
+        }
+        
+        .about-us-intro ul li strong {
+            color: var(--color-text-primary);
+        }
+
+        /* --- Team Section --- */
+        .team-section {
+            text-align: center;
+            padding-bottom: 5rem;
+        }
+
+        /* Flexbox for single line of cards */
+        .team-container {
+            display: flex;
+            flex-wrap: nowrap; /* Ensures cards stay on a single line */
+            justify-content: center;
+            gap: 2rem;
+            overflow-x: auto; /* Adds horizontal scrolling on smaller screens */
+            padding-bottom: 1rem; /* Space for the scrollbar */
+        }
+
+        .member-card {
+            background-color: var(--color-background-medium);
+            border-radius: 10px;
+            box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.5);
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1), box-shadow 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+            border: 1px solid transparent;
+            min-width: 280px; /* Ensures card width is maintained */
+        }
+
+        .member-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7);
+        }
+
+        .member-card img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1.5rem;
+            border: 3px solid var(--color-background-dark);
+            box-shadow: 0 0 0 3px var(--color-highlight-blue);
+            transition: box-shadow 0.3s ease;
+        }
+        
+        .member-card:hover img {
+            box-shadow: 0 0 0 3px var(--color-text-primary);
+        }
+
+        .member-card h3 {
+            color: var(--color-text-primary);
+            margin: 0;
+            font-size: 1.6rem;
+        }
+
+        .member-card p {
+            color: var(--color-text-secondary);
+            margin-top: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--color-background-medium);
+            color: var(--color-text-secondary);
+            border-top: 3px solid var(--color-highlight-blue);
+            margin-top: 5rem;
+            font-size: 0.9rem;
+        }
