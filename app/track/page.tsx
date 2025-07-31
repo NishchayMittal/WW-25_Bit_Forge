@@ -222,26 +222,6 @@ export default function Home() {
     <>
       {" "}
       {/* Use a React Fragment or a single div as the root element */}
-      <header className="main-header">
-        <div className="container">
-          <h1>
-            Oceanic <span>Guardians</span>
-          </h1>
-          <nav>
-            <ul>
-              <li>
-                <a href="#species-list">Species</a>
-              </li>
-              <li>
-                <a href="#about">About</a>
-              </li>
-              <li>
-                <a href="#contact">Contact</a>
-              </li>
-            </ul>
-          </nav>
-        </div>
-      </header>
       <main>
         <section id="hero" className="hero-section">
           <div className="hero-content">
