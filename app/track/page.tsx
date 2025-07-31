@@ -345,21 +345,9 @@ export default function Home() {
               Support marine conservation. Reduce your footprint, advocate for
               sustainable practices, and connect with us.
             </p>
-            <p>
-              Contact us at{" "}
-              <a href="mailto:info@oceanicguardians.org">
-                info@oceanicguardians.org
-              </a>
-              .
-            </p>
           </div>
         </section>
       </main>
-      <footer className="main-footer">
-        <div className="container">
-          <p>&copy; 2025 Oceanic Guardians. All rights reserved.</p>
-        </div>
-      </footer>
     </>
   );
 }
