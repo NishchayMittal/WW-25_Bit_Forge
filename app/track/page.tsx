@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import "./style.css";
+import Navbar from "../components/Navbar";
 
 // Define the type for a single species
 interface Species {
@@ -220,7 +221,7 @@ export default function Home() {
 
   return (
     <>
-      {" "}
+      <Navbar />{" "}
       {/* Use a React Fragment or a single div as the root element */}
       <main>
         <section id="hero" className="hero-section">

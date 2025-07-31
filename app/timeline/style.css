@@ -180,6 +180,7 @@
             padding-top: 15px; /* Offset from top of card */
             pointer-events: none; /* Marker is not clickable directly */
             z-index: var(--z-index-active-card) + 1; /* Always above the active card content */
+            
         }
 
         .year-marker {

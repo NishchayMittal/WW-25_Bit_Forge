@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import "./style.css";
+import Navbar from "../components/Navbar";
 
 // Define the type for a timeline event for better type safety
 interface TimelineEvent {
@@ -510,105 +511,108 @@ export default function HomePage() {
   const totalYears = timelineData[timelineData.length - 1]?.year || "";
 
   return (
-    <body>
-      <div className="timeline-app" ref={timelineAppRef}>
-        <div className="timeline-line"></div>
-        {timelineData.map((event, index) => (
-          <div
-            key={event.year} // Use year as key, assuming unique years
-            ref={(el) => {
-              if (el) eventRefs.current[index] = el;
-            }}
-            className={`timeline-event-wrapper ${
-              index === currentEventIndex ? "active" : ""
-            }`}
-            onClick={() => openModal(event)} // Open modal on clicking the wrapper/card
-          >
-            <div className="timeline-content-area">
-              <div className="year-marker-container">
-                <div className="year-marker"></div>
-              </div>
-              <div className="event-details" data-event-id={event.year}>
-                <div className="year-text">{event.year}</div>
-                <h3>{event.title}</h3>
-                <p>{event.description}</p>
-                <div className="read-more-indicator">
-                  Read More <i className="fas fa-chevron-right"></i>
+    <>
+      <Navbar />
+      <body>
+        <div className="timeline-app" ref={timelineAppRef}>
+          <div className="timeline-line"></div>
+          {timelineData.map((event, index) => (
+            <div
+              key={event.year} // Use year as key, assuming unique years
+              ref={(el) => {
+                if (el) eventRefs.current[index] = el;
+              }}
+              className={`timeline-event-wrapper ${
+                index === currentEventIndex ? "active" : ""
+              }`}
+              onClick={() => openModal(event)} // Open modal on clicking the wrapper/card
+            >
+              <div className="timeline-content-area">
+                <div className="year-marker-container">
+                  <div className="year-marker"></div>
+                </div>
+                <div className="event-details" data-event-id={event.year}>
+                  <div className="year-text">{event.year}</div>
+                  <h3>{event.title}</h3>
+                  <p>{event.description}</p>
+                  <div className="read-more-indicator">
+                    Read More <i className="fas fa-chevron-right"></i>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        ))}
-      </div>
-
-      <div
-        className={`scroll-arrow up ${
-          currentEventIndex === 0 ? "disabled" : ""
-        }`}
-        id="scrollUpBtn"
-        onClick={() => displayEvent(currentEventIndex - 1)}
-      >
-        <i className="fas fa-chevron-up"></i>
-      </div>
-      <div
-        className={`scroll-arrow down ${
-          currentEventIndex === timelineData.length - 1 ? "disabled" : ""
-        }`}
-        id="scrollDownBtn"
-        onClick={() => displayEvent(currentEventIndex + 1)}
-      >
-        <i className="fas fa-chevron-down"></i>
-      </div>
-
-      <div className="year-indicator" id="yearIndicator">
-        {currentYear} / {totalYears}
-      </div>
-
-      <div className="year-select-container">
-        <select
-          className="year-select"
-          id="yearSelect"
-          onChange={handleYearChange}
-          value={currentYear}
-          ref={yearSelectRef}
-          disabled={isAnimating}
-        >
-          {timelineData.map((event) => (
-            <option key={event.year} value={event.year}>
-              {event.year}
-            </option>
           ))}
-        </select>
-      </div>
+        </div>
 
-      {/* Modal */}
-      {isModalOpen && modalEvent && (
         <div
-          className="modal open"
-          id="timelineModal"
-          onClick={(e) => {
-            if (e.target === e.currentTarget) closeModal();
-          }}
+          className={`scroll-arrow up ${
+            currentEventIndex === 0 ? "disabled" : ""
+          }`}
+          id="scrollUpBtn"
+          onClick={() => displayEvent(currentEventIndex - 1)}
         >
-          <div className="modal-content">
-            <button className="modal-close-btn" onClick={closeModal}>
-              <i className="fas fa-times"></i>
-            </button>
-            <div id="modalEventDetails">
-              <div className="year-text">{modalEvent.year}</div>
-              <h3>{modalEvent.title}</h3>
-              <p>{modalEvent.fullDescription || modalEvent.description}</p>
-              {modalEvent.details && modalEvent.details.length > 0 && (
-                <ul>
-                  {modalEvent.details.map((detail, idx) => (
-                    <li key={idx}>{detail}</li>
-                  ))}
-                </ul>
-              )}
+          <i className="fas fa-chevron-up"></i>
+        </div>
+        <div
+          className={`scroll-arrow down ${
+            currentEventIndex === timelineData.length - 1 ? "disabled" : ""
+          }`}
+          id="scrollDownBtn"
+          onClick={() => displayEvent(currentEventIndex + 1)}
+        >
+          <i className="fas fa-chevron-down"></i>
+        </div>
+
+        <div className="year-indicator" id="yearIndicator">
+          {currentYear} / {totalYears}
+        </div>
+
+        <div className="year-select-container">
+          <select
+            className="year-select"
+            id="yearSelect"
+            onChange={handleYearChange}
+            value={currentYear}
+            ref={yearSelectRef}
+            disabled={isAnimating}
+          >
+            {timelineData.map((event) => (
+              <option key={event.year} value={event.year}>
+                {event.year}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        {/* Modal */}
+        {isModalOpen && modalEvent && (
+          <div
+            className="modal open"
+            id="timelineModal"
+            onClick={(e) => {
+              if (e.target === e.currentTarget) closeModal();
+            }}
+          >
+            <div className="modal-content">
+              <button className="modal-close-btn" onClick={closeModal}>
+                <i className="fas fa-times"></i>
+              </button>
+              <div id="modalEventDetails">
+                <div className="year-text">{modalEvent.year}</div>
+                <h3>{modalEvent.title}</h3>
+                <p>{modalEvent.fullDescription || modalEvent.description}</p>
+                {modalEvent.details && modalEvent.details.length > 0 && (
+                  <ul>
+                    {modalEvent.details.map((detail, idx) => (
+                      <li key={idx}>{detail}</li>
+                    ))}
+                  </ul>
+                )}
+              </div>
             </div>
           </div>
-        </div>
-      )}
-    </body>
+        )}
+      </body>
+    </>
   );
 }
