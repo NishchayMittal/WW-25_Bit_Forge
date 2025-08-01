@@ -1,8 +1,35 @@
 @import "tailwindcss";
 
+/* Mobile-first responsive design variables */
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  
+  /* Responsive spacing scale */
+  --space-xs: 0.25rem;  /* 4px */
+  --space-sm: 0.5rem;   /* 8px */
+  --space-md: 1rem;     /* 16px */
+  --space-lg: 1.5rem;   /* 24px */
+  --space-xl: 2rem;     /* 32px */
+  --space-xxl: 3rem;    /* 48px */
+  
+  /* Responsive font sizes */
+  --text-xs: 0.75rem;   /* 12px */
+  --text-sm: 0.875rem;  /* 14px */
+  --text-base: 1rem;    /* 16px */
+  --text-lg: 1.125rem;  /* 18px */
+  --text-xl: 1.25rem;   /* 20px */
+  --text-2xl: 1.5rem;   /* 24px */
+  --text-3xl: 1.875rem; /* 30px */
+  --text-4xl: 2.25rem;  /* 36px */
+  
+  /* Mobile breakpoints */
+  --mobile-sm: 320px;
+  --mobile-md: 375px;
+  --mobile-lg: 425px;
+  --tablet: 768px;
+  --desktop: 1024px;
+  --desktop-lg: 1440px;
 }
 
 @theme inline {
@@ -19,8 +46,160 @@
   }
 }
 
+/* Base styles with mobile-first approach */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  scroll-behavior: smooth;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+/* Mobile-friendly touch targets */
+a, button, [role="button"] {
+  min-height: 44px;
+  min-width: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  touch-action: manipulation;
+}
+
+/* Responsive images */
+img, video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Mobile utility classes */
+.mobile-only {
+  display: block;
+}
+
+.desktop-only {
+  display: none;
+}
+
+.container-responsive {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+}
+
+/* Responsive text utilities */
+.text-responsive-sm {
+  font-size: var(--text-sm);
+}
+
+.text-responsive-base {
+  font-size: var(--text-base);
+}
+
+.text-responsive-lg {
+  font-size: var(--text-lg);
+}
+
+.text-responsive-xl {
+  font-size: var(--text-xl);
+}
+
+.text-responsive-2xl {
+  font-size: var(--text-2xl);
+}
+
+.text-responsive-3xl {
+  font-size: var(--text-3xl);
+}
+
+.text-responsive-4xl {
+  font-size: var(--text-4xl);
+}
+
+/* Mobile breakpoint styles */
+@media screen and (min-width: 375px) {
+  .container-responsive {
+    padding: 0 var(--space-lg);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .mobile-only {
+    display: none;
+  }
+  
+  .desktop-only {
+    display: block;
+  }
+  
+  .text-responsive-sm {
+    font-size: var(--text-base);
+  }
+  
+  .text-responsive-base {
+    font-size: var(--text-lg);
+  }
+  
+  .text-responsive-lg {
+    font-size: var(--text-xl);
+  }
+  
+  .text-responsive-xl {
+    font-size: var(--text-2xl);
+  }
+  
+  .text-responsive-2xl {
+    font-size: var(--text-3xl);
+  }
+  
+  .text-responsive-3xl {
+    font-size: var(--text-4xl);
+  }
+  
+  .text-responsive-4xl {
+    font-size: 3rem;
+  }
+  
+  .container-responsive {
+    padding: 0 var(--space-xl);
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .container-responsive {
+    padding: 0 var(--space-xxl);
+  }
+  
+  .text-responsive-4xl {
+    font-size: 4rem;
+  }
+}
+
+/* Prevent zoom on input focus (iOS Safari) */
+@media screen and (max-width: 767px) {
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="number"],
+  input[type="password"],
+  textarea,
+  select {
+    font-size: 16px !important;
+  }
 }

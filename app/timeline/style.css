@@ -815,52 +815,111 @@ body {
   }
 }
 
+/* Enhanced Mobile Responsiveness */
 @media (max-width: 768px) {
+  body {
+    padding-top: 60px; /* Account for fixed navbar */
+  }
+  
+  .ocean-container {
+    padding-top: 60px;
+  }
+  
   .timeline-line {
-    left: 5%;
+    left: 3%;
+    width: 3px;
   }
   
   .timeline-content-area {
     flex-direction: column;
-    gap: var(--spacing-md);
+    gap: var(--spacing-sm);
+    width: 100%;
+    padding: 0 var(--spacing-md);
   }
   
   .year-marker-container {
     width: 100%;
     left: 0;
     justify-content: flex-start;
-    padding-left: 5%;
+    padding-left: 3%;
+  }
+  
+  .year-marker {
+    width: 40px;
+    height: 40px;
+    font-size: 0.8rem;
+    font-weight: 600;
   }
   
   .event-details {
-    padding: var(--spacing-lg);
-    min-height: 300px;
+    padding: var(--spacing-md);
+    min-height: 250px;
+    margin-left: 0;
+    width: 100%;
+    font-size: 0.9rem;
   }
   
   .event-details h3 {
-    font-size: 1.8rem;
+    font-size: clamp(1.4rem, 5vw, 1.8rem);
+    line-height: 1.2;
+    margin-bottom: var(--spacing-md);
+  }
+  
+  .event-details p {
+    font-size: 1rem;
+    line-height: 1.6;
   }
   
   .modal-content {
-    padding: var(--spacing-lg);
-    margin: var(--spacing-md);
+    padding: var(--spacing-md);
+    margin: var(--spacing-sm);
+    max-width: 95vw;
+    max-height: 85vh;
   }
   
   .modal-content h3 {
-    font-size: 2.2rem;
+    font-size: clamp(1.8rem, 6vw, 2.2rem);
+    line-height: 1.1;
+  }
+  
+  .modal-description p {
+    font-size: 1rem;
+    line-height: 1.6;
+    text-align: left;
+  }
+  
+  .modal-details h4 {
+    font-size: 1.2rem;
+  }
+  
+  .modal-details li {
+    font-size: 1rem;
+    padding-left: var(--spacing-lg);
   }
   
   .year-select-container {
-    top: var(--spacing-md);
+    top: 70px;
     right: var(--spacing-md);
+    z-index: var(--z-navigation);
+  }
+  
+  .scroll-arrow {
+    width: 50px;
+    height: 50px;
   }
   
   .scroll-arrow.up {
-    top: var(--spacing-md);
+    top: 80px;
   }
   
   .scroll-arrow.down {
-    bottom: var(--spacing-md);
+    bottom: var(--spacing-lg);
+  }
+  
+  .year-indicator {
+    bottom: 80px;
+    font-size: 1rem;
+    padding: var(--spacing-xs) var(--spacing-sm);
   }
 }
 
