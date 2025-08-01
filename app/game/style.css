@@ -4,6 +4,13 @@ html, body {
   height: 100%;
   width: 100%;
   overflow: hidden;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  touch-action: none;
 }
 
 /* Container for layering */
@@ -12,6 +19,9 @@ html, body {
   width: 100vw;
   height: 100vh;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Background video */
@@ -19,8 +29,8 @@ html, body {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   z-index: -1;
 }
@@ -34,4 +44,78 @@ html, body {
   z-index: 1;
   background: transparent;
   background: linear-gradient(to bottom,lightblue,darkblue,black);
+  cursor: crosshair;
+}
+
+/* Mobile-specific optimizations */
+@media (max-width: 768px) {
+  html, body {
+    height: 100vh;
+    height: -webkit-fill-available;
+  }
+  
+  #container {
+    height: 100vh;
+    height: -webkit-fill-available;
+  }
+  
+  #canvas1 {
+    width: 100vw;
+    height: 100vh;
+    height: -webkit-fill-available;
+    touch-action: none;
+  }
+  
+  #bg-video {
+    width: 100%;
+    height: 100vh;
+    height: -webkit-fill-available;
+  }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+  #canvas1 {
+    image-rendering: optimizeSpeed;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: -o-crisp-edges;
+    image-rendering: pixelated;
+  }
+}
+
+/* Landscape mobile orientation */
+@media (max-height: 500px) and (orientation: landscape) {
+  html, body, #container, #canvas1, #bg-video {
+    height: 100vh;
+    width: 100vw;
+  }
+  
+  /* Ensure fullscreen on landscape mobile */
+  #container {
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  #canvas1 {
+    image-rendering: -webkit-optimize-contrast;
+  }
+}
+
+/* Disable pull-to-refresh and other mobile gestures */
+body {
+  overscroll-behavior: none;
+}
+
+/* Prevent zoom on double tap */
+* {
+  touch-action: manipulation;
+}
+
+#canvas1 {
+  touch-action: none;
 }

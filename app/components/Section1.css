@@ -55,21 +55,75 @@
 }
 
 .text-title {
-  font-size: 4rem;
+  font-size: clamp(2rem, 8vw, 4rem);
   font-weight: bold;
   color: white;
   text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  margin: 0;
+  padding: 0 1rem;
+  word-wrap: break-word;
+  hyphens: auto;
 }
 
-@media (max-width: 768px) {
+/* Enhanced mobile responsiveness */
+@media (max-width: 480px) {
+  .section1 {
+    padding: 1rem;
+  }
+  
+  .text {
+    padding: 0 0.75rem;
+    width: calc(100% - 1.5rem);
+  }
+  
   .text-title {
-    font-size: 2.5rem;
+    font-size: clamp(1.5rem, 6vw, 2rem);
+    line-height: 1.2;
+    letter-spacing: -0.5px;
   }
 }
 
-@media (max-width: 480px) {
+@media (min-width: 481px) and (max-width: 768px) {
+  .section1 {
+    padding: 1.5rem;
+  }
+  
+  .text {
+    padding: 0 1rem;
+    width: calc(100% - 2rem);
+  }
+  
   .text-title {
-    font-size: 2rem;
+    font-size: clamp(2rem, 7vw, 3rem);
+    line-height: 1.15;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .text-title {
+    font-size: clamp(2.5rem, 6vw, 3.5rem);
+  }
+}
+
+/* Landscape orientation adjustments */
+@media (max-height: 500px) and (orientation: landscape) {
+  .section1 {
+    min-height: 100vh;
+    padding: 0.5rem;
+  }
+  
+  .text-title {
+    font-size: clamp(1.25rem, 4vw, 2rem);
+    line-height: 1.1;
+  }
+}
+
+/* High DPI display support */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .text-title {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }
 

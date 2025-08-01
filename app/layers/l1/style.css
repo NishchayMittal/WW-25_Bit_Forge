@@ -133,36 +133,197 @@ section li {
   }
 }
 
-/* Responsive Typography */
-@media (max-width: 768px) {
+/* Enhanced Mobile Responsiveness */
+@media (max-width: 480px) {
+  body {
+    padding-top: 60px; /* Account for fixed navbar */
+  }
+  
+  .Head {
+    font-size: clamp(28px, 8vw, 40px);
+    line-height: 1.2;
+    padding: 0 1rem;
+    margin-top: 60px;
+  }
+  
+  .video-section {
+    height: 50vh; /* Reduce height on small screens */
+    margin-top: 60px;
+  }
+  
   .video-copy h1 {
-    font-size: 16vw;
+    font-size: clamp(12vw, 15vw, 18vw);
+    letter-spacing: -2px;
+    padding: 0 3%;
+    line-height: 0.9;
   }
-
+  
   section {
-    padding: 40px 5%;
+    padding: 30px 4%;
   }
-
+  
   section h2 {
-    font-size: 2rem;
+    font-size: clamp(1.5rem, 6vw, 2rem);
+    margin-bottom: 15px;
   }
-
+  
   section h3 {
-    font-size: 1.3rem;
+    font-size: clamp(1.2rem, 4vw, 1.3rem);
+    margin-top: 25px;
   }
+  
+  section p,
+  section li {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin: 8px 0;
+  }
+  
+  .organisms {
+    gap: 8px;
+    margin-top: 1.5rem;
+  }
+  
+  .organisms button {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 0.9rem;
+    border-radius: 25px;
+    min-height: 44px;
+  }
+}
 
+@media (min-width: 481px) and (max-width: 768px) {
+  body {
+    padding-top: 60px;
+  }
+  
+  .Head {
+    font-size: clamp(36px, 7vw, 50px);
+    margin-top: 60px;
+  }
+  
+  .video-section {
+    height: 60vh;
+    margin-top: 60px;
+  }
+  
+  .video-copy h1 {
+    font-size: clamp(14vw, 16vw, 18vw);
+    letter-spacing: -1px;
+    padding: 0 4%;
+  }
+  
+  section {
+    padding: 35px 5%;
+  }
+  
+  section h2 {
+    font-size: clamp(1.8rem, 5vw, 2.2rem);
+  }
+  
+  section h3 {
+    font-size: clamp(1.3rem, 4vw, 1.5rem);
+  }
+  
   section p,
   section li {
     font-size: 1rem;
+    line-height: 1.6;
   }
-
+  
   .organisms {
-    gap: 10px;
+    gap: 12px;
   }
-
+  
   .organisms button {
-    width: 100%;
-    padding: 10px;
+    flex: 1 1 calc(50% - 6px);
+    padding: 12px 20px;
+    font-size: 0.95rem;
+    min-height: 44px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  body {
+    padding-top: 70px;
+  }
+  
+  .Head {
+    margin-top: 70px;
+  }
+  
+  .video-section {
+    margin-top: 70px;
+  }
+  
+  .organisms button {
+    flex: 1 1 calc(33.333% - 8px);
+    max-width: calc(33.333% - 8px);
+  }
+}
+
+/* Landscape mobile orientation */
+@media (max-height: 500px) and (orientation: landscape) {
+  .video-section {
+    height: 80vh;
+  }
+  
+  .video-copy h1 {
+    font-size: clamp(8vw, 12vw, 15vw);
+    line-height: 0.8;
+  }
+  
+  section {
+    padding: 25px 5%;
+  }
+  
+  section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  section h3 {
+    font-size: 1.2rem;
+    margin-top: 20px;
+  }
+  
+  section p,
+  section li {
+    font-size: 0.9rem;
+    margin: 6px 0;
+  }
+  
+  .organisms {
+    gap: 6px;
+  }
+  
+  .organisms button {
+    padding: 8px 16px;
+    font-size: 0.85rem;
+    min-height: 40px;
+  }
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .video-copy h1,
+  section h2,
+  section h3 {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .organisms button:hover {
+    background: linear-gradient(135deg, #339CFF, #6ACBFF); /* Remove hover effect */
+  }
+  
+  .organisms button:active {
+    background: linear-gradient(135deg, #2080d9, #4ec0f9);
+    transform: scale(0.98);
   }
 }
 

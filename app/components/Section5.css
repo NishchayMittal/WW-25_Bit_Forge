@@ -69,14 +69,104 @@
   word-break: break-word;
 }
 
-/* Responsive text sizes */
-@media (max-width: 768px) {
-  .center-text .text-8xl {
-    font-size: 2.5rem;
+/* Enhanced mobile responsiveness */
+@media (max-width: 480px) {
+  .section5 {
+    padding: 1rem;
   }
-
+  
+  .center-text {
+    padding: 0.75rem;
+    max-width: 95%;
+  }
+  
+  .center-text .text-8xl {
+    font-size: clamp(1.5rem, 6vw, 2rem);
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+  }
+  
   .center-text .text-4xl {
-    font-size: 1.2rem;
+    font-size: clamp(0.9rem, 4vw, 1.2rem);
+    line-height: 1.3;
+  }
+  
+  .text-line {
+    margin-bottom: 0.75rem;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .section5 {
+    padding: 1.5rem;
+  }
+  
+  .center-text {
+    padding: 1rem;
+    max-width: 85%;
+  }
+  
+  .center-text .text-8xl {
+    font-size: clamp(2rem, 7vw, 3rem);
+    line-height: 1.15;
+  }
+  
+  .center-text .text-4xl {
+    font-size: clamp(1rem, 4vw, 1.5rem);
+    line-height: 1.4;
+  }
+  
+  .text-line {
+    margin-bottom: 1rem;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .center-text {
+    max-width: 80%;
+  }
+  
+  .center-text .text-8xl {
+    font-size: clamp(2.5rem, 6vw, 3.5rem);
+  }
+  
+  .center-text .text-4xl {
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+  }
+}
+
+/* Landscape orientation adjustments */
+@media (max-height: 500px) and (orientation: landscape) {
+  .section5 {
+    min-height: 100vh;
+    padding: 0.5rem;
+  }
+  
+  .center-text {
+    max-width: 70%;
+    padding: 0.5rem;
+  }
+  
+  .center-text .text-8xl {
+    font-size: clamp(1.25rem, 4vw, 2rem);
+    line-height: 1.1;
+  }
+  
+  .center-text .text-4xl {
+    font-size: clamp(0.8rem, 3vw, 1.2rem);
+  }
+  
+  .text-line {
+    margin-bottom: 0.5rem;
+  }
+}
+
+/* High DPI display support */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .center-text .text-8xl,
+  .center-text .text-4xl {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }
 

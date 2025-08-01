@@ -146,10 +146,15 @@ a:hover {
   border-radius: 12px;
   padding: 1.5rem;
   width: 100%;
-  max-width: 270px; /* reduced from larger size */
+  max-width: 270px;
   text-align: center;
-  flex: 1 1 calc(25% - 2rem); /* ensures 4 cards fit in one row */
+  flex: 1 1 calc(25% - 2rem);
   transition: transform 0.3s ease;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .member-card:hover {
@@ -225,4 +230,243 @@ footer {
 .social-links a:hover {
   transform: scale(1.3);
   color: #ffffff;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 480px) {
+  body {
+    padding-top: 60px; /* Account for fixed navbar */
+  }
+  
+  .container {
+    padding: 1rem;
+  }
+  
+  .header-image {
+    height: 15vh;
+    margin-top: 60px; /* Account for fixed navbar */
+  }
+  
+  .about-us-intro {
+    padding: 2rem 0;
+    margin-bottom: 3rem;
+  }
+  
+  .about-us-intro h1 {
+    font-size: clamp(1.75rem, 8vw, 2.5rem);
+    margin-bottom: 1rem;
+  }
+  
+  .about-us-intro p {
+    font-size: 0.9rem;
+    margin: 0.75rem auto;
+    max-width: 100%;
+  }
+  
+  .about-us-intro ul {
+    font-size: 1rem;
+    margin-top: 1.5rem;
+  }
+  
+  .about-us-intro ul li {
+    margin-bottom: 0.75rem;
+    padding-left: 20px;
+  }
+  
+  .team-section {
+    padding-bottom: 3rem;
+  }
+  
+  .team-section h2 {
+    font-size: clamp(1.5rem, 6vw, 2rem);
+  }
+  
+  .team-container {
+    gap: 1rem;
+    padding: 1rem 0.5rem;
+  }
+  
+  .member-card {
+    flex: 1 1 100%; /* Full width on mobile */
+    max-width: 100%;
+    padding: 1.25rem;
+    min-height: 280px;
+  }
+  
+  .member-card img,
+  .member-image-placeholder {
+    width: 140px;
+    height: 140px;
+    margin-bottom: 1rem;
+  }
+  
+  .member-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .member-card p {
+    font-size: 0.9rem;
+    margin: 0.25rem auto;
+  }
+  
+  .social-links a {
+    font-size: 1.1rem;
+  }
+  
+  footer {
+    padding: 1.5rem;
+    margin-top: 3rem;
+    font-size: 0.85rem;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  body {
+    padding-top: 60px;
+  }
+  
+  .container {
+    padding: 1.5rem;
+  }
+  
+  .header-image {
+    height: 18vh;
+    margin-top: 60px;
+  }
+  
+  .about-us-intro {
+    padding: 2.5rem 0;
+    margin-bottom: 4rem;
+  }
+  
+  .about-us-intro h1 {
+    font-size: clamp(2rem, 6vw, 3rem);
+  }
+  
+  .about-us-intro p {
+    font-size: 1rem;
+    max-width: 90%;
+  }
+  
+  .team-container {
+    gap: 1.25rem;
+    padding: 1.5rem 1rem;
+  }
+  
+  .member-card {
+    flex: 1 1 calc(50% - 1rem); /* Two cards per row on tablet */
+    max-width: calc(50% - 1rem);
+    padding: 1.5rem;
+  }
+  
+  .member-card img,
+  .member-image-placeholder {
+    width: 160px;
+    height: 160px;
+  }
+  
+  .member-card h3 {
+    font-size: 1.4rem;
+  }
+  
+  .member-card p {
+    font-size: 0.9rem;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  body {
+    padding-top: 70px;
+  }
+  
+  .header-image {
+    margin-top: 70px;
+  }
+  
+  .team-container {
+    gap: 1.25rem;
+    padding: 2rem 1rem;
+  }
+  
+  .member-card {
+    flex: 1 1 calc(33.333% - 1rem); /* Three cards per row on large tablet */
+    max-width: calc(33.333% - 1rem);
+  }
+}
+
+/* Landscape mobile orientation */
+@media (max-height: 500px) and (orientation: landscape) {
+  .header-image {
+    height: 25vh;
+  }
+  
+  .about-us-intro {
+    padding: 1.5rem 0;
+    margin-bottom: 2rem;
+  }
+  
+  .about-us-intro h1 {
+    font-size: clamp(1.5rem, 5vw, 2rem);
+  }
+  
+  .team-section {
+    padding-bottom: 2rem;
+  }
+  
+  .team-container {
+    padding: 1rem 0.5rem;
+  }
+  
+  .member-card {
+    min-height: 200px;
+    padding: 1rem;
+  }
+  
+  .member-card img,
+  .member-image-placeholder {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 0.75rem;
+  }
+  
+  .member-card h3 {
+    font-size: 1.1rem;
+  }
+  
+  .member-card p {
+    font-size: 0.8rem;
+  }
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  h1, h2, h3 {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  .member-card img {
+    image-rendering: -webkit-optimize-contrast;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .member-card:hover {
+    transform: none; /* Remove hover effects on touch devices */
+  }
+  
+  .social-links a:hover {
+    transform: scale(1.1); /* Reduce scale on touch devices */
+  }
+  
+  /* Add touch feedback */
+  .member-card:active {
+    transform: scale(0.98);
+  }
+  
+  .social-links a:active {
+    transform: scale(1.2);
+  }
 }
