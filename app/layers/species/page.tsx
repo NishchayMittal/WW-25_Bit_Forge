@@ -1,52 +1,74 @@
 "use client";
 import dynamic from "next/dynamic";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import SplitText from "./SplitText";
 import ShinyText from "./ShinyText";
-import DarkVeil from "./DarkVeil";
-import BlurText from "./BlurText";
-import Aurora from "./Aurora";
 import TextPressure from "./TextPressure";
-
+import "./style.css";
 const MapComponent = dynamic(() => import("./MapComponent"), { ssr: false });
-
+import Navbar from "@/app/components/Navbar";
 export default function Homepage() {
-  const handleAnimationComplete = () => {
-    console.log("All letters have animated!");
-  };
-
   const [query, setQuery] = useState("");
-  const [videoUrl, setVideoUrl] = useState("");
+  const [debouncedQuery, setDebouncedQuery] = useState(query);
   const [commonName, setCommonName] = useState("");
   const [scientificName, setScientificName] = useState("");
   const [id, setId] = useState("");
   const [rank, setRank] = useState("");
   const [fact, setFact] = useState("");
+  const [videoUrl, setVideoUrl] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
-  const getdata = async () => {
+  // Debounce user input
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setDebouncedQuery(query.trim());
+    }, 800);
+    return () => clearTimeout(timer);
+  }, [query]);
+
+  useEffect(() => {
+    if (debouncedQuery) getData(debouncedQuery);
+  }, [debouncedQuery]);
+
+  const getData = async (q: string) => {
+    setLoading(true);
+    setError("");
+    setCommonName("");
+    setScientificName("");
+    setId("");
+    setRank("");
+    setFact("");
+    setVideoUrl("");
+
     try {
       const res = await fetch(
-        `https://api.inaturalist.org/v1/search?q=${query}&sources=taxa`
+        `https://api.inaturalist.org/v1/search?q=${q}&sources=taxa`
       );
-      if (!res.ok) throw new Error("Error fetching data");
+      if (!res.ok) throw new Error("Error fetching search data");
 
       const data = await res.json();
-      const result = data.results[0]?.record;
+      const result = data.results?.[0]?.record;
       if (!result) throw new Error("No result found");
 
+      const name = result.name;
+
       setCommonName(result.preferred_common_name || "N/A");
-      setScientificName(result.name || "N/A");
+      setScientificName(name || "N/A");
       setId(result.id || "N/A");
       setRank(result.rank || "N/A");
 
-      const video = await getVideo(result.name);
+      const [video, wiki] = await Promise.all([
+        getVideo(name),
+        getWikipediaFact(name),
+      ]);
       setVideoUrl(video);
-
-      const wikiFact = await getWikipediaFact(result.name);
-      setFact(wikiFact);
-    } catch (err) {
-      console.error("Fetch error:", err);
-      setFact("Error fetching data.");
+      setFact(wiki);
+    } catch (err: any) {
+      console.error(err);
+      setError(err.message || "Search failed.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -56,7 +78,7 @@ export default function Homepage() {
       {
         headers: {
           Authorization:
-            "fED3W6AyiIHZViPUGaG9RMe3Q965siRa0Iqy2OoNqCA12Zh38QfjyejZ", // your API key
+            "fED3W6AyiIHZViPUGaG9RMe3Q965siRa0Iqy2OoNqCA12Zh38QfjyejZ",
         },
       }
     );
@@ -68,11 +90,12 @@ export default function Homepage() {
   };
 
   const getWikipediaFact = async (title: string): Promise<string> => {
-    const url = `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(
-      title
-    )}`;
     try {
-      const res = await fetch(url);
+      const res = await fetch(
+        `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(
+          title
+        )}`
+      );
       if (!res.ok) return "No fact available.";
       const data = await res.json();
       return data.extract || "No interesting fact found.";
@@ -82,95 +105,76 @@ export default function Homepage() {
   };
 
   return (
-    <div className="page">
-      <div style={{ width: "100%", height: "1000px", position: "relative" }}>
-        <h1>
-          <div style={{ position: "relative", height: "" }}>
-            <TextPressure
-              text="Marine Animal Explorer!"
-              flex={true}
-              alpha={false}
-              stroke={false}
-              width={true}
-              weight={true}
-              italic={true}
-              textColor="#ffffff"
-              strokeColor="#ff0000"
-              minFontSize={36}
+    <>
+      <Navbar />
+      <div className="page">
+        <div className="w-full h-[1000px] relative px-4">
+          <h5></h5>
+
+          <div className="search flex gap-4 items-center mt-4 ">
+            <input
+              type="text"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder="Search for an animal"
+              className="p-2 rounded border w-full max-w-md"
             />
+            {loading ? (
+              <span className="text-blue-600">Loading...</span>
+            ) : (
+              <button
+                onClick={() => getData(query)}
+                className="px-4 py-2 bg-blue-600 text-white rounded"
+              >
+                <ShinyText text="Search" disabled={false} speed={3} />
+              </button>
+            )}
           </div>
-        </h1>
-        <h5>
-          {/* A premium site to get all your marine related doubts solved... */}
-          <ShinyText
-            text="A premium site to get all your marine related doubts solved..."
-            disabled={false}
-            speed={3}
-            className="custom-class"
-          />
-        </h5>
-        <div className="search">
-          <input
-            type="text"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search for an animal"
-          />
-          <button onClick={getdata}>
-            <ShinyText text="Search" disabled={false} speed={3} />
-          </button>
-        </div>
 
-        <div className="info">
-          <p>
-            {/* <strong>Name :</strong> */}
-            <br />
-            {/* {commonName} */}
-            <SplitText text={commonName} {...splitConfig} />
-          </p>
-          <br />
-          <p>
-            <strong>Scientific Name :</strong>
-            <br />
-            {scientificName}
-            {/* <SplitText text={scientificName} {...splitConfig} /> */}
-          </p>
-          <br />
-          <p>
-            <strong>ID :</strong>
-            <br />
-            {id}
-            {/* <SplitText text={id} {...splitConfig} /> */}
-          </p>
-          <br />
-          <p>
-            <strong>Rank :</strong>
-            <br />
-            {rank}
-            {/* <SplitText text={rank} {...splitConfig} /> */}
-          </p>
-          <br />
-          <p>
-            <strong>Interesting Fact:</strong>
-            <br />
-            {fact}
-            {/* <SplitText text={fact} {...splitConfig} duration={0.01} /> */}
-          </p>
-        </div>
-        <div className="map">
-          {videoUrl && (
-            <video key={videoUrl} controls width="640" height="360">
-              <source src={videoUrl} type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-          )}
+          {error && <p className="text-red-500 mt-2">{error}</p>}
 
-          {/* ✅ Query passed to map */}
-          <MapComponent searchTerm={query} />
+          <div className="info mt-6">
+            {commonName && (
+              <p>
+                <SplitText text={commonName} {...splitConfig} />
+              </p>
+            )}
+            {scientificName && (
+              <p>
+                <strong>Scientific Name:</strong>
+                <br />
+                {scientificName}
+              </p>
+            )}
+            {id && (
+              <p>
+                <strong>ID:</strong>
+                <br />
+                {id}
+              </p>
+            )}
+            {rank && (
+              <p>
+                <strong>Rank:</strong>
+                <br />
+                {rank}
+              </p>
+            )}
+            {fact && (
+              <p>
+                <strong>Interesting Fact:</strong>
+                <br />
+                {fact}
+              </p>
+            )}
+          </div>
+
+          <div className="map mt-8">
+            <MapComponent searchTerm={debouncedQuery} />
+          </div>
         </div>
       </div>
-    </div>
-    // </div>
+    </>
   );
 }
 
