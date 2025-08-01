@@ -76,3 +76,16 @@
 .scuba-cursor {
   cursor: url("/images/Cursor/Scuba.png"), auto;
 }
+@font-face {
+  font-family: 'Frunchy Sage';
+  src: url('/fonts/FrunchySage.ttf') format('truetype');
+}
+
+.my-text {
+  font-family: 'Frunchy Sage', serif;
+      font-size: 6rem;
+  font-weight: 900;     
+  opacity: 0.8;
+  letter-spacing: 1px;  
+  line-height: 1.1;
+}

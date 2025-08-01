@@ -17,6 +17,7 @@ import {
   GiAnchor,
   GiPirateHat,
 } from "react-icons/gi";
+import { FaWpforms } from "react-icons/fa";
 
 import "./Navbar.css";
 
@@ -108,6 +109,7 @@ const Navbar = () => {
               onClick={() => (window.location.href = "/forms")}
               style={navButtonStyle}
             >
+              <FaWpforms />
               Forms
             </button>
           </li>
@@ -125,10 +127,10 @@ const Navbar = () => {
 
           <SignedIn>
             <li>
-              <button className="user-button" style={navButtonStyle}>
+              <p className="user-button" style={navButtonStyle}>
                 <GiPirateHat />
                 {user?.firstName || "User"}
-              </button>
+              </p>
             </li>
             <li>
               <UserButton afterSignOutUrl="/" />

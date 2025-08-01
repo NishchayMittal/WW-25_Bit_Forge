@@ -71,7 +71,7 @@ const Hero = () => {
         variants={{ visible: { transition: { staggerChildren: 0.2 } } }}
       >
         <motion.h1
-          className={`${caveat1.className} hero-title`}
+          className={"my-text text-4xl"}
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}

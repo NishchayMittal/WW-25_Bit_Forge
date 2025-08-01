@@ -22,7 +22,7 @@ const Section1: React.FC = () => {
   const [revealed, setRevealed] = useState(false);
   const [mounted, setMounted] = useState(false);
 
-useEffect(() => {
+  useEffect(() => {
     setMounted(true);
 
     const handleScroll = () => {
@@ -56,22 +56,22 @@ useEffect(() => {
         <div className="hero-bg placeholder" />
       )}
       <Link href="/layers/l1">
-<div className="text">
-  <SplitText
-    text="Sunlight"
-    className="text-title winky-font"
-    delay={100}
-    duration={0.6}
-    ease="power3.out"
-    splitType="chars"
-    from={{ opacity: 0, y: 40 }}
-    to={{ opacity: 1, y: 0 }}
-    threshold={0.1}
-    rootMargin="-100px"
-    textAlign="right"
-    onLetterAnimationComplete={handleAnimationComplete}
-  />
-</div>
+        <div className="text">
+          <SplitText
+            text="Sunlight"
+            className="my-text text-4xl"
+            delay={100}
+            duration={0.6}
+            ease="power3.out"
+            splitType="chars"
+            from={{ opacity: 0, y: 40 }}
+            to={{ opacity: 1, y: 0 }}
+            threshold={0.1}
+            rootMargin="-100px"
+            textAlign="right"
+            onLetterAnimationComplete={handleAnimationComplete}
+          />
+        </div>
       </Link>
     </div>
   );
