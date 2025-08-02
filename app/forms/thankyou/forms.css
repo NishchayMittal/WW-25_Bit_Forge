@@ -120,3 +120,28 @@ button {
 button:hover {
   background: linear-gradient(135deg, #3f51b5, #00bcd4);
 }
+@font-face {
+  font-family: 'Frunchy Sage';
+  src: url('/fonts/FrunchySage.ttf') format('truetype');
+}
+
+.my-text {
+  font-family: 'Frunchy Sage';
+      font-size: 2rem !important;
+  font-weight: 900;     
+  opacity: 0.8;
+  letter-spacing: 1px;  
+  line-height: 1.1;       
+}
+.barlow-text {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 400;
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: cadetblue; /* soft white */
+  max-width: 800px;
+  margin: 2rem auto;
+  text-align: justify;
+  padding: 0 1rem;
+  letter-spacing: 0.2px;
+}

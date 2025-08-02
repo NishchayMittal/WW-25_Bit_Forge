@@ -1,6 +1,6 @@
-'use client';
-import { useState, useRef, useEffect } from 'react';
-import Image from 'next/image';
+"use client";
+import { useState, useRef, useEffect } from "react";
+import Image from "next/image";
 
 // Quick drop-in replacement for your existing video tags
 interface LazyVideoProps {
@@ -13,7 +13,13 @@ interface LazyVideoProps {
   controls?: boolean;
 }
 
-export const LazyVideo = ({ src, className = "", poster, ...props }: LazyVideoProps) => {
+export const LazyVideo = ({
+  src,
+  className = "",
+  poster,
+  ...props
+}: LazyVideoProps) => {
+  const divRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isVisible, setIsVisible] = useState(false);
   const [hasLoaded, setHasLoaded] = useState(false);
@@ -30,17 +36,18 @@ export const LazyVideo = ({ src, className = "", poster, ...props }: LazyVideoPr
       { threshold: 0.1 }
     );
 
-    if (videoRef.current) {
-      observer.observe(videoRef.current);
+    if (divRef.current) {
+      observer.observe(divRef.current);
     }
 
     return () => observer.disconnect();
   }, [hasLoaded]);
 
   return (
-    <div ref={videoRef} className={`relative ${className}`}>
+    <div ref={divRef} className={`relative ${className}`}>
       {isVisible ? (
         <video
+          ref={videoRef}
           {...props}
           className="w-full h-full object-cover"
           preload="metadata"
@@ -52,7 +59,12 @@ export const LazyVideo = ({ src, className = "", poster, ...props }: LazyVideoPr
       ) : (
         <div className="w-full h-full bg-gray-200 flex items-center justify-center">
           {poster ? (
-            <Image src={poster} alt="Video thumbnail" fill className="object-cover" />
+            <Image
+              src={poster}
+              alt="Video thumbnail"
+              fill
+              className="object-cover"
+            />
           ) : (
             <div className="text-gray-500">Loading video...</div>
           )}
@@ -73,7 +85,12 @@ interface LazyImageProps {
   priority?: boolean;
 }
 
-export const LazyImage = ({ src, alt, className = "", ...props }: LazyImageProps) => {
+export const LazyImage = ({
+  src,
+  alt,
+  className = "",
+  ...props
+}: LazyImageProps) => {
   return (
     <Image
       src={src}

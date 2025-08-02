@@ -62,21 +62,7 @@ const Section2: React.FC = () => {
           <div className="hero-bg placeholder" />
         )}
         <Link href="/layers/l2">
-          <div className="center-text">
-            <SplitText
-              text="Twilight"
-              className="my-text text-4xl"
-              delay={100}
-              duration={0.6}
-              ease="power3.out"
-              splitType="chars"
-              from={{ opacity: 0, y: 40 }}
-              to={{ opacity: 1, y: 0 }}
-              threshold={0.1}
-              rootMargin="-100px"
-              onLetterAnimationComplete={handleAnimationComplete}
-            />
-          </div>
+          <div className="my-text">Twilight</div>
         </Link>
       </div>
     </>

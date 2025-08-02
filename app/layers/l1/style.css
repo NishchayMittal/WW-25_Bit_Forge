@@ -332,3 +332,16 @@ section li {
   line-height: 1.8;
   transition: font-variation-settings 0.2s ease;
 }
+@font-face {
+  font-family: 'Frunchy Sage';
+  src: url('/fonts/FrunchySage.ttf') format('truetype');
+}
+
+.my-text {
+  font-family: 'Frunchy Sage';
+      font-size: 2rem !important;
+  font-weight: 900;     
+  opacity: 0.8;
+  letter-spacing: 1px;  
+  line-height: 1.1;       
+}

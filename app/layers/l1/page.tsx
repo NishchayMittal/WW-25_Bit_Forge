@@ -7,7 +7,8 @@ import "./style.css";
 import { Bebas_Neue } from "next/font/google";
 import Navbar from "@/app/components/Navbar";
 const bebas = Bebas_Neue({ subsets: ["latin"], weight: ["400"] });
-
+import { Barlow } from "next/font/google";
+const barlow = Barlow({ subsets: ["latin"], weight: ["400"] });
 const Layer1 = () => {
   return (
     <>
@@ -35,36 +36,46 @@ const Layer1 = () => {
             showBorder={false}
             className="custom-class"
           >
-            <div className="Head">EPIPELAGIC ZONE</div>
+            <div className="my-text">EPIPELAGIC ZONE</div>
           </GradientText>
-          <h3>The Sunlight Zone - 0 to 200 meters</h3>
-          <p>
+          <h3 className="my-text">The Sunlight Zone - 0 to 200 meters</h3>
+          <p className={barlow.className}>
             The epipelagic zone, also known as the sunlight zone, is the
             uppermost layer of the ocean. Extending from the surface to a depth
             of around 200 meters, this zone receives ample sunlight, making it
             the most biologically active layer in the ocean.
           </p>
 
-          <h3>Key Features</h3>
+          <h3 className="my-text">Key Features</h3>
           <ul>
-            <li>Depth: 0 - 200 meters</li>
-            <li>Light: Abundant sunlight</li>
-            <li>Temperature: Warmest among ocean layers</li>
-            <li>Pressure: Relatively low compared to deeper zones</li>
-            <li>Oxygen: High — supports rich marine life</li>
+            <li className={barlow.className}>Depth: 0 - 200 meters</li>
+            <li className={barlow.className}>Light: Abundant sunlight</li>
+            <li className={barlow.className}>
+              Temperature: Warmest among ocean layers
+            </li>
+            <li className={barlow.className}>
+              Pressure: Relatively low compared to deeper zones
+            </li>
+            <li className={barlow.className}>
+              Oxygen: High — supports rich marine life
+            </li>
           </ul>
 
-          <h3>Why It Matters</h3>
+          <h3 className="my-text">Why It Matters</h3>
           <ul>
-            <li>
+            <li className={barlow.className}>
               Photosynthesis occurs here due to sunlight, producing over 50% of
               Earth's oxygen.
             </li>
-            <li>It's the starting point of the marine food chain.</li>
-            <li>It supports fisheries and coastal ecosystems.</li>
+            <li className={barlow.className}>
+              It's the starting point of the marine food chain.
+            </li>
+            <li className={barlow.className}>
+              It supports fisheries and coastal ecosystems.
+            </li>
           </ul>
 
-          <h3>Organisms Found</h3>
+          <h3 className="my-text">Organisms Found</h3>
           <p>(Select any to read more)</p>
           <div className="organisms">
             <a href="/layers/tuna">

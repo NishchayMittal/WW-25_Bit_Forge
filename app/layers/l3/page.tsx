@@ -1,12 +1,13 @@
 // app/layers/layer1.tsx
 "use client";
 import GradientText from "../../components/GradientText";
-
+import { Barlow } from "next/font/google";
 import React from "react";
 import "./style.css";
 import { Bebas_Neue } from "next/font/google";
 import Navbar from "@/app/components/Navbar";
 const bebas = Bebas_Neue({ subsets: ["latin"], weight: ["400"] });
+const barlow = Barlow({ subsets: ["latin"], weight: ["400"] });
 
 const layer3 = () => {
   return (
@@ -35,10 +36,10 @@ const layer3 = () => {
             showBorder={false}
             className="custom-class"
           >
-            <div className="Head">BATHYPELAGIC ZONE</div>
+            <div className="my-text">BATHYPELAGIC ZONE</div>
           </GradientText>
-          <h3>The Midnight Zone - 1,000 to 4,000 meters</h3>
-          <p>
+          <h3 className="my-text">The Midnight Zone - 1,000 to 4,000 meters</h3>
+          <p className={barlow.className}>
             The bathypelagic zone, also known as the midnight zone, is a
             pitch-black, freezing, and high-pressure part of the ocean. Sunlight
             does not reach this depth, making it one of the most mysterious and
@@ -47,27 +48,37 @@ const layer3 = () => {
             crushing pressure.
           </p>
           <br />
-          <h3>Key Features</h3>
+          <h3 className="my-text">Key Features</h3>
           <ul>
-            <li>Depth: 1,000 - 4,000 meters</li>
-            <li>Light: Completely dark (no sunlight)</li>
-            <li>Temperature: Near freezing (~4°C or 39°F)</li>
-            <li>
+            <li className={barlow.className}>Depth: 1,000 - 4,000 meters</li>
+            <li className={barlow.className}>
+              Light: Completely dark (no sunlight)
+            </li>
+            <li className={barlow.className}>
+              Temperature: Near freezing (~4°C or 39°F)
+            </li>
+            <li className={barlow.className}>
               Pressure: Extremely high — hundreds of times surface pressure
             </li>
-            <li>Oxygen: Limited but enough to support life</li>
+            <li className={barlow.className}>
+              Oxygen: Limited but enough to support life
+            </li>
           </ul>
           <br />
-          <h3>Why It Matters</h3>
+          <h3 className="my-text">Why It Matters</h3>
           <ul>
-            <li>Part of Earth's largest ecosystem</li>
-            <li>
+            <li className={barlow.className}>
+              Part of Earth's largest ecosystem
+            </li>
+            <li className={barlow.className}>
               Plays a role in nutrient recycling and deep ocean carbon storage
             </li>
-            <li>A frontier for scientific exploration and discovery</li>
+            <li className={barlow.className}>
+              A frontier for scientific exploration and discovery
+            </li>
           </ul>
           <br />
-          <h3>Organisms Found</h3>
+          <h3 className="my-text">Organisms Found</h3>
           <p>(select any to read about them)</p>
           <br />
           <div className="organisms">

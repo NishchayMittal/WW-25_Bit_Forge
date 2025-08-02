@@ -18,8 +18,8 @@ export default function Form() {
 
       <div className="form-center-wrapper">
         <div className="container">
-          <h1>Oceanic Feedback & Conservation Pledge</h1>
-          <p className="form-intro">
+          <h1 className="my-text">Oceanic Feedback & Conservation Pledge</h1>
+          <p className="form-intro barlow-text">
             Help us make our ocean exploration website better and share your
             voice for ocean conservation. Whether you have feedback, creative
             ideas, or a personal pledge — we’d love to hear from you!
@@ -31,7 +31,7 @@ export default function Form() {
           >
             {/* User Info */}
             <div className="form-group">
-              <label>Your Contact Info</label>
+              <label className="barlow-text ">Your Contact Info</label>
               <div className="form-row">
                 <div className="col">
                   <input
@@ -58,7 +58,9 @@ export default function Form() {
 
             {/* Website Experience */}
             <div className="form-group">
-              <label>🌐 How was your experience using our website?</label>
+              <label className="barlow-text">
+                🌐 How was your experience using our website?
+              </label>
               <textarea
                 placeholder="Share what you liked, what could be improved, or any issues you faced."
                 className="form-control"
@@ -69,7 +71,9 @@ export default function Form() {
 
             {/* Creative Ideas */}
             <div className="form-group">
-              <label>💡 Do you have any ideas or suggestions?</label>
+              <label className="barlow-text">
+                💡 Do you have any ideas or suggestions?
+              </label>
               <textarea
                 placeholder="Suggest features, content, or actions we can take to support marine life."
                 className="form-control"
@@ -79,7 +83,9 @@ export default function Form() {
 
             {/* Conservation Pledge */}
             <div className="form-group">
-              <label>📝 Make a Personal Ocean Pledge</label>
+              <label className="barlow-text">
+                📝 Make a Personal Ocean Pledge
+              </label>
               <textarea
                 placeholder="Example: I pledge to reduce single-use plastic, or organize a beach cleanup."
                 className="form-control"

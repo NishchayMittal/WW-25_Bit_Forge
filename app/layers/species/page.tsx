@@ -1,9 +1,7 @@
 "use client";
 import dynamic from "next/dynamic";
 import { useState, useEffect } from "react";
-import SplitText from "./SplitText";
-import ShinyText from "./ShinyText";
-import TextPressure from "./TextPressure";
+
 import "./style.css";
 const MapComponent = dynamic(() => import("./MapComponent"), { ssr: false });
 import Navbar from "@/app/components/Navbar";
@@ -19,6 +17,7 @@ export default function Homepage() {
   const [videoUrl, setVideoUrl] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [observationType, setObservationType] = useState("");
 
   // Debounce user input
   useEffect(() => {
@@ -112,7 +111,7 @@ export default function Homepage() {
         <div className="w-full h-[1000px] relative px-4">
           <h5></h5>
 
-                    <div className="search flex gap-4 items-center mt-4">
+          <div className="search flex gap-4 items-center mt-4">
             <input
               type="text"
               value={query}
@@ -128,7 +127,7 @@ export default function Homepage() {
                 className="search-button-ocean"
                 disabled={!query.trim()}
               >
-                <ShinyText text="Search" disabled={false} speed={3} />
+                Search
                 <div className="ocean-waves"></div>
               </button>
             )}
@@ -137,35 +136,31 @@ export default function Homepage() {
           {error && <p className="text-red-500 mt-2">{error}</p>}
 
           <div className="info mt-6">
-            {commonName && (
-              <p>
-                <SplitText text={commonName} {...splitConfig} />
-              </p>
-            )}
+            {commonName && <p></p>}
             {scientificName && (
               <p>
-                <strong>Scientific Name:</strong>
+                <strong className="my-text">Scientific Name:</strong>
                 <br />
                 {scientificName}
               </p>
             )}
             {id && (
               <p>
-                <strong>ID:</strong>
+                <strong className="my-text">ID:</strong>
                 <br />
                 {id}
               </p>
             )}
             {rank && (
               <p>
-                <strong>Rank:</strong>
+                <strong className="my-text">Rank:</strong>
                 <br />
                 {rank}
               </p>
             )}
             {fact && (
               <p>
-                <strong>Interesting Fact:</strong>
+                <strong className="my-text">Interesting Fact:</strong>
                 <br />
                 {fact}
               </p>
@@ -173,18 +168,10 @@ export default function Homepage() {
           </div>
 
           <div className="map mt-8">
-            <div className="map-controls">
-              <select className="map-dropdown">
-                <option value="">Select observation type</option>
-                <option value="mammals">Mammals</option>
-                <option value="birds">Birds</option>
-                <option value="reptiles">Reptiles</option>
-                <option value="fish">Fish</option>
-                <option value="invertebrates">Invertebrates</option>
-                <option value="plants">Plants</option>
-              </select>
-            </div>
-            <MapComponent searchTerm={debouncedQuery} />
+            <MapComponent
+              searchTerm={debouncedQuery}
+              observationType={observationType}
+            />
           </div>
         </div>
       </div>

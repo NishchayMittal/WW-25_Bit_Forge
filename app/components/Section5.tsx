@@ -5,6 +5,8 @@ import "./Section5.css";
 import SplitText from "./SplitText";
 import Link from "next/link";
 import { Black_Ops_One } from "next/font/google";
+import { Barlow } from "next/font/google";
+const barlow = Barlow({ subsets: ["latin"], weight: ["400", "700"] });
 const handleAnimationComplete = () => {
   console.log("✅ All letters have animated!");
 };
@@ -59,32 +61,8 @@ const Section5: React.FC = () => {
       )}
       <Link href="/layers/l5">
         <div className="center-text">
-          <div className="text-line">
-            <SplitText
-              text="Hadal"
-              className="my-text text-4xl"
-              delay={100}
-              duration={0.6}
-              ease="power3.out"
-              splitType="chars"
-              from={{ opacity: 0, y: 40 }}
-              to={{ opacity: 1, y: 0 }}
-              onLetterAnimationComplete={handleAnimationComplete}
-            />
-          </div>
-          <div className="text-line">
-            <SplitText
-              text="A mystery waiting to be unraveled"
-              className="text-2xl"
-              delay={100}
-              duration={0.6}
-              ease="power3.out"
-              splitType="chars"
-              from={{ opacity: 0, y: 40 }}
-              to={{ opacity: 1, y: 0 }}
-              onLetterAnimationComplete={handleAnimationComplete}
-            />
-          </div>
+          <div className="my-text">Hadal</div>
+          <div className="barlow-text">A mystery waiting to be unraveled</div>
         </div>
       </Link>
     </div>

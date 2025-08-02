@@ -1,30 +1,35 @@
-/* Reset default styles */
+/* GENERAL RESET */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* NAVBAR BASE */
 .hero-navbar {
-  position: fixed; /* changed from sticky */
+  position: fixed;
   top: 0;
   left: 0;
-  width: 100%; /* ensure full-width */
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   background: rgba(0, 48, 73, 0.65);
   backdrop-filter: blur(10px);
   color: white;
-  padding: 0.75rem 1rem;
-  z-index: 999; /* bring above everything else */
+  padding: 0.75rem 2rem;
+  z-index: 999;
   font-family: 'Segoe UI', sans-serif;
   min-height: 60px;
   transition: all 0.3s ease;
 }
 
-
-/* Bubbles animation background */
+/* NAVBAR BUBBLES */
 .hero-navbar::before {
   content: "";
   position: absolute;
@@ -52,40 +57,39 @@
 }
 
 .hero-navbar > * {
-  z-index: 2; /* above the bubbles */
+  z-index: 2;
 }
 
-.right-menu {
-  display: flex;
-  align-items: center;
-}
-
-/* Navigation items */
+/* NAV ITEMS: DESKTOP */
 .nav-items {
   display: flex;
   list-style: none;
   gap: 2rem;
+  align-items: center;
 }
 
 .nav-items li {
+  display: flex;
+  align-items: center;
   position: relative;
 }
 
 .nav-items li a,
 .nav-items li button {
   color: white;
-  text-decoration: none;
-  font-size: 1rem;
+  font-size: 1.1rem;
+  font-family: 'Segoe UI', sans-serif;
   background: none;
   border: none;
-  cursor: pointer;
-  padding-bottom: 4px;
+  padding: 0.5rem 0;
   transition: color 0.3s ease;
+  cursor: pointer;
   display: flex;
   align-items: center;
+  position: relative;
 }
 
-/* Ocean wave underline */
+/* Hover underline */
 .nav-items li a::after,
 .nav-items li button::after {
   content: "";
@@ -105,56 +109,17 @@
   transform: scaleX(1);
 }
 
-/* Optional: If using icons with react-icons */
-.nav-items li a svg,
-.nav-items li button svg {
-  margin-right: 6px;
-  vertical-align: middle;
-  font-size: 1.1rem;
-}
-
-/* Hamburger menu - hidden on desktop */
+/* HAMBURGER FOR MOBILE */
 .hamburger {
   display: none;
   font-size: 1.8rem;
   cursor: pointer;
   margin-left: 1rem;
+  z-index: 3;
 }
 
-/* Responsive styles */
-/* Small mobile devices */
-@media (max-width: 480px) {
-  .hero-navbar {
-    padding: 0.5rem;
-    min-height: 56px;
-  }
-  
-  .hero-navbar .flex.items-center span {
-    font-size: 1.25rem;
-  }
-  
-  .hero-navbar .flex.items-center img {
-    width: 35px;
-    height: 35px;
-  }
-  
-  .hamburger {
-    font-size: 1.5rem;
-    padding: 0.5rem;
-    min-height: 44px;
-    min-width: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-}
-
-/* Mobile and tablet */
+/* RESPONSIVE - MOBILE & TABLET */
 @media (max-width: 768px) {
-  .hero-navbar {
-    padding: 0.75rem 1rem;
-  }
-  
   .nav-items {
     position: absolute;
     top: 100%;
@@ -163,52 +128,43 @@
     background-color: rgba(0, 48, 73, 0.98);
     backdrop-filter: blur(15px);
     flex-direction: column;
+    align-items: center;
     gap: 0;
     padding: 1rem 0;
     width: 100%;
     display: none;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     border-top: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
   }
-  
+
   .nav-items li {
     width: 100%;
     text-align: center;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
-  
+
   .nav-items li:last-child {
     border-bottom: none;
   }
-  
+
   .nav-items li a,
   .nav-items li button {
     width: 100%;
+    justify-content: center;
     padding: 1rem;
     font-size: 1.1rem;
-    justify-content: center;
-    min-height: 48px;
-    border-radius: 0;
-    transition: all 0.3s ease;
   }
-  
-  .nav-items li a:hover,
-  .nav-items li button:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-    color: #4facfe;
-  }
-  
-  /* Remove wave underline on mobile */
+
   .nav-items li a::after,
   .nav-items li button::after {
     display: none;
   }
-  
+
   .nav-items.open {
     display: flex;
     animation: slideDown 0.3s ease-out;
   }
-  
+
   .hamburger {
     display: flex;
     align-items: center;
@@ -219,40 +175,13 @@
     border-radius: 4px;
     transition: all 0.3s ease;
   }
-  
+
   .hamburger:hover {
     background-color: rgba(255, 255, 255, 0.1);
   }
 }
 
-/* Tablet landscape */
-@media (min-width: 769px) and (max-width: 1024px) {
-  .hero-navbar {
-    padding: 1rem 1.5rem;
-  }
-  
-  .nav-items {
-    gap: 1.5rem;
-  }
-  
-  .nav-items li a,
-  .nav-items li button {
-    font-size: 1rem;
-  }
-}
-
-/* Large desktop */
-@media (min-width: 1025px) {
-  .hero-navbar {
-    padding: 1rem 2rem;
-  }
-  
-  .nav-items {
-    gap: 2rem;
-  }
-}
-
-/* Slide down animation for mobile menu */
+/* SLIDE ANIMATION */
 @keyframes slideDown {
   from {
     opacity: 0;
@@ -262,18 +191,4 @@
     opacity: 1;
     transform: translateY(0);
   }
-}
-.nav-items li a,
-.nav-items li button {
-  color: white;
-  text-decoration: none;
-  font-size: 1.1rem; /* Unified size */
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding-bottom: 4px;
-  transition: color 0.3s ease;
-  display: flex;
-  align-items: center;
-  font-family: 'Segoe UI', sans-serif; /* Ensure consistent font */
 }

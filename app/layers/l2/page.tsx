@@ -6,7 +6,9 @@ import React from "react";
 import "./style.css";
 import { Bebas_Neue } from "next/font/google";
 import Navbar from "@/app/components/Navbar";
+import { Barlow } from "next/font/google";
 const bebas = Bebas_Neue({ subsets: ["latin"], weight: ["400"] });
+const barlow = Barlow({ subsets: ["latin"], weight: ["400"] });
 
 const layer2 = () => {
   return (
@@ -35,10 +37,10 @@ const layer2 = () => {
             showBorder={false}
             className="custom-class"
           >
-            <div className="Head">MESOPELAGIC ZONE</div>
+            <div className="my-text">MESOPELAGIC ZONE</div>
           </GradientText>
-          <h3>The Twilight Zone - 200 to 1,000 meters</h3>
-          <p>
+          <h3 className="my-text">The Twilight Zone - 200 to 1,000 meters</h3>
+          <p className={barlow.className}>
             The mesopelagic zone, also called the twilight zone, lies just below
             the epipelagic zone. Sunlight barely reaches this layer, making it a
             dim and mysterious world. Though it lacks enough light for
@@ -46,29 +48,37 @@ const layer2 = () => {
             organisms.
           </p>
 
-          <h3>Key Features</h3>
+          <h3 className="my-text">Key Features</h3>
           <ul>
-            <li>Depth: 200 - 1,000 meters</li>
-            <li>Light: Very limited (no photosynthesis)</li>
-            <li>Temperature: Cooler, drops rapidly with depth</li>
-            <li>Pressure: Increases significantly compared to surface</li>
-            <li>Oxygen: Begins to decline</li>
+            <li className={barlow.className}>Depth: 200 - 1,000 meters</li>
+            <li className={barlow.className}>
+              Light: Very limited (no photosynthesis)
+            </li>
+            <li className={barlow.className}>
+              Temperature: Cooler, drops rapidly with depth
+            </li>
+            <li className={barlow.className}>
+              Pressure: Increases significantly compared to surface
+            </li>
+            <li className={barlow.className}>Oxygen: Begins to decline</li>
           </ul>
 
-          <h3>Why It Matters</h3>
+          <h3 className="my-text">Why It Matters</h3>
           <ul>
-            <li>
+            <li className={barlow.className}>
               Transfers energy between surface and deep ocean through vertical
               migration
             </li>
-            <li>
+            <li className={barlow.className}>
               Helps in the global carbon cycle by moving carbon from surface to
               deep waters
             </li>
-            <li>Bioluminescence for communication, camouflage, and hunting</li>
+            <li className={barlow.className}>
+              Bioluminescence for communication, camouflage, and hunting
+            </li>
           </ul>
 
-          <h3>Organisms Found</h3>
+          <h3 className="my-text">Organisms Found</h3>
           <p>(Select any to read more)</p>
           <div className="organisms">
             <a href="/layers/shrimps">

@@ -2,6 +2,8 @@
 import { Cinzel } from "next/font/google";
 import { useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
+import { Barlow } from "next/font/google";
+const barlow = Barlow({ subsets: ["latin"], weight: ["400", "700"] });
 import {
   SignedIn,
   SignedOut,
@@ -80,7 +82,7 @@ const Hero = () => {
         </motion.h1>
 
         <motion.p
-          className="hero-subtext"
+          className="barlow-text"
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}

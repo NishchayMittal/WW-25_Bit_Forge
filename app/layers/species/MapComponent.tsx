@@ -3,7 +3,7 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 
-// Define custom icon
+// Custom icon generator
 const createCustomIcon = (type: string) => {
   const iconColors: Record<string, string> = {
     mammal: "#00a8e8",
@@ -65,6 +65,7 @@ type Species = {
 
 type MapComponentProps = {
   searchTerm: string;
+  observationType?: string;
 };
 
 function isValidCoordinate(lat: number, lng: number): boolean {
@@ -91,15 +92,18 @@ function getRegion(lat: number, lng: number): string {
 
 function getSpeciesType(taxon: any): string {
   const ancestry = taxon?.ancestry?.split("/") || [];
-  if (ancestry.includes(40151)) return "mammal"; // Mammalia
-  if (ancestry.includes(47178)) return "fish"; // Actinopterygii
-  if (ancestry.includes(47115)) return "reptile"; // Reptilia
-  if (ancestry.includes(1)) return "invertebrate"; // Animalia
-  if (ancestry.includes(3)) return "bird"; // Aves
+  if (ancestry.includes("40151")) return "mammal"; // Mammalia
+  if (ancestry.includes("47178")) return "fish"; // Actinopterygii
+  if (ancestry.includes("47115")) return "reptile"; // Reptilia
+  if (ancestry.includes("3")) return "bird"; // Aves
+  if (ancestry.includes("1")) return "invertebrate"; // Animalia
   return "unknown";
 }
 
-const MapComponent: React.FC<MapComponentProps> = ({ searchTerm }) => {
+const MapComponent: React.FC<MapComponentProps> = ({
+  searchTerm,
+  observationType,
+}) => {
   const [speciesData, setSpeciesData] = useState<Species[]>([]);
   const [selectedRegion, setSelectedRegion] = useState<string>("All");
   const [loading, setLoading] = useState<boolean>(false);
@@ -156,7 +160,9 @@ const MapComponent: React.FC<MapComponentProps> = ({ searchTerm }) => {
   }, [searchTerm]);
 
   const filteredSpecies = speciesData.filter(
-    (sp) => selectedRegion === "All" || sp.region === selectedRegion
+    (sp) =>
+      (selectedRegion === "All" || sp.region === selectedRegion) &&
+      (!observationType || sp.type === observationType.toLowerCase())
   );
 
   const center: [number, number] =
@@ -173,24 +179,40 @@ const MapComponent: React.FC<MapComponentProps> = ({ searchTerm }) => {
     <div className="map-container">
       <div className="map-legend">
         <div className="legend-item">
-          <div className="legend-color color-mammal"></div>
+          <div className="legend-color" style={{ backgroundColor: "#00a8e8" }}>
+            🐬
+          </div>
           <span>Marine Mammals</span>
         </div>
         <div className="legend-item">
-          <div className="legend-color color-fish"></div>
+          <div className="legend-color" style={{ backgroundColor: "#ff7f50" }}>
+            🐠
+          </div>
           <span>Fish</span>
         </div>
         <div className="legend-item">
-          <div className="legend-color color-invertebrate"></div>
-          <span>Invertebrates</span>
-        </div>
-        <div className="legend-item">
-          <div className="legend-color color-reptile"></div>
+          <div className="legend-color" style={{ backgroundColor: "#4dbd74" }}>
+            🐢
+          </div>
           <span>Reptiles</span>
         </div>
         <div className="legend-item">
-          <div className="legend-color color-bird"></div>
+          <div className="legend-color" style={{ backgroundColor: "#ffd700" }}>
+            🦅
+          </div>
           <span>Birds</span>
+        </div>
+        <div className="legend-item">
+          <div className="legend-color" style={{ backgroundColor: "#9370db" }}>
+            🦑
+          </div>
+          <span>Invertebrates</span>
+        </div>
+        <div className="legend-item">
+          <div className="legend-color" style={{ backgroundColor: "#003366" }}>
+            🌊
+          </div>
+          <span>Other</span>
         </div>
       </div>
 

@@ -346,9 +346,15 @@ html, body {
 
 .my-text {
   font-family: 'Frunchy Sage';
-      font-size: 6rem;
+      font-size: 4rem !important;
   font-weight: 900;     
   opacity: 0.8;
   letter-spacing: 1px;  
   line-height: 1.1;       
+}
+.barlow-text {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 400;
+  font-size: 2rem;
+  color: white;
 }
