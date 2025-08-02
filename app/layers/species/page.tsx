@@ -7,6 +7,7 @@ import TextPressure from "./TextPressure";
 import "./style.css";
 const MapComponent = dynamic(() => import("./MapComponent"), { ssr: false });
 import Navbar from "@/app/components/Navbar";
+
 export default function Homepage() {
   const [query, setQuery] = useState("");
   const [debouncedQuery, setDebouncedQuery] = useState(query);
@@ -111,7 +112,7 @@ export default function Homepage() {
         <div className="w-full h-[1000px] relative px-4">
           <h5></h5>
 
-          <div className="search flex gap-4 items-center mt-4 ">
+                    <div className="search flex gap-4 items-center mt-4">
             <input
               type="text"
               value={query}
@@ -124,9 +125,11 @@ export default function Homepage() {
             ) : (
               <button
                 onClick={() => getData(query)}
-                className="px-4 py-2 bg-blue-600 text-white rounded"
+                className="search-button-ocean"
+                disabled={!query.trim()}
               >
                 <ShinyText text="Search" disabled={false} speed={3} />
+                <div className="ocean-waves"></div>
               </button>
             )}
           </div>
@@ -170,6 +173,17 @@ export default function Homepage() {
           </div>
 
           <div className="map mt-8">
+            <div className="map-controls">
+              <select className="map-dropdown">
+                <option value="">Select observation type</option>
+                <option value="mammals">Mammals</option>
+                <option value="birds">Birds</option>
+                <option value="reptiles">Reptiles</option>
+                <option value="fish">Fish</option>
+                <option value="invertebrates">Invertebrates</option>
+                <option value="plants">Plants</option>
+              </select>
+            </div>
             <MapComponent searchTerm={debouncedQuery} />
           </div>
         </div>

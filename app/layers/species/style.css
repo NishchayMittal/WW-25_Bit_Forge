@@ -16,12 +16,14 @@
   background-color: var(--dark-abyss);
   color: var(--light-foam);
   min-height: 100vh;
-  padding: 2rem;
+  padding: 2rem 1rem; /* Reduce horizontal padding */
+  padding-top: 120px; /* Add space for navbar */
   background-image: 
     radial-gradient(circle at 10% 20%, rgba(0, 168, 232, 0.15) 0%, transparent 20%),
     radial-gradient(circle at 90% 80%, rgba(255, 127, 80, 0.1) 0%, transparent 20%);
   position: relative;
   overflow-x: hidden;
+  box-sizing: border-box;
 }
 
 .page::before {
@@ -70,25 +72,31 @@ h5 {
 
 /* Search Section */
 .search {
-  max-width: 800px;
-  margin: 4rem auto 3rem;
+  max-width: 600px;
+  width: 100%;
+  margin: 2rem auto 3rem;
   display: flex;
   gap: 1rem;
   align-items: center;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .search input {
   flex: 1;
-  padding: 1rem 1.8rem;
+  width: 100%;
+  min-width: 0; /* Allow shrinking */
+  padding: 1rem 1.5rem;
   border-radius: 50px;
   border: 2px solid rgba(0, 168, 232, 0.3);
   background: rgba(10, 26, 42, 0.8);
   backdrop-filter: blur(8px);
   color: white;
-  font-size: 1.1rem;
+  font-size: 1rem;
   outline: none;
   transition: all 0.3s ease;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
 }
 
 .search input:focus {
@@ -96,24 +104,183 @@ h5 {
   box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
 }
 
-.search button {
+/* Improved Ocean-themed Search Button */
+.search-button-ocean {
+  position: relative;
   padding: 1rem 2.5rem;
   border-radius: 50px;
   border: none;
-  background: linear-gradient(135deg, var(--vibrant-blue), var(--sunrise-orange));
+  background: linear-gradient(135deg, var(--deep-blue), var(--ocean-teal), var(--vibrant-blue));
+  background-size: 200% 200%;
   color: white;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(0, 168, 232, 0.4);
+  transition: all 0.4s ease;
+  box-shadow: 
+    0 4px 15px rgba(0, 168, 232, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
   text-transform: uppercase;
   letter-spacing: 1px;
+  overflow: hidden;
+  animation: ocean-gradient 3s ease infinite;
 }
 
-.search button:hover {
+.search-button-ocean:hover {
   transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(255, 127, 80, 0.6);
-  background: linear-gradient(135deg, var(--sunrise-orange), var(--vibrant-blue));
+  box-shadow: 
+    0 8px 25px rgba(0, 168, 232, 0.6),
+    0 4px 15px rgba(255, 215, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  background-position: 100% 0;
+}
+
+.search-button-ocean:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.ocean-waves {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(255, 255, 255, 0.2), 
+    transparent);
+  transition: left 0.5s ease;
+}
+
+.search-button-ocean:hover .ocean-waves {
+  left: 100%;
+}
+
+@keyframes ocean-gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Map Controls and Filter Dropdown Styling */
+.map-controls {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+  padding: 0 1rem;
+}
+
+.map-dropdown {
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  border: 2px solid rgba(0, 168, 232, 0.4);
+  background: rgba(10, 26, 42, 0.9);
+  backdrop-filter: blur(12px);
+  color: var(--light-foam);
+  font-size: 1.1rem;
+  font-weight: 500;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 
+    0 4px 15px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  min-width: 250px;
+}
+
+.map-dropdown:hover {
+  border-color: var(--golden-yellow);
+  box-shadow: 
+    0 6px 20px rgba(0, 0, 0, 0.4),
+    0 0 15px rgba(255, 215, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.map-dropdown:focus {
+  border-color: var(--vibrant-blue);
+  box-shadow: 
+    0 0 20px rgba(0, 168, 232, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.map-dropdown option {
+  background: var(--dark-abyss);
+  color: var(--light-foam);
+  padding: 0.5rem;
+  border: none;
+}
+
+.map-dropdown option:hover {
+  background: rgba(0, 168, 232, 0.2);
+}
+
+/* Styling for existing Filter by Region dropdown in map */
+.leaflet-control-container select,
+.map-wrapper select,
+select[class*="filter"],
+select[class*="region"] {
+  padding: 0.8rem 1.5rem !important;
+  border-radius: 25px !important;
+  border: 2px solid rgba(0, 168, 232, 0.6) !important;
+  background: rgba(10, 26, 42, 0.95) !important;
+  backdrop-filter: blur(10px) !important;
+  color: var(--light-foam) !important;
+  font-size: 1rem !important;
+  font-weight: 500 !important;
+  outline: none !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
+  min-width: 200px !important;
+}
+
+.leaflet-control-container select:hover,
+.map-wrapper select:hover,
+select[class*="filter"]:hover,
+select[class*="region"]:hover {
+  border-color: var(--golden-yellow) !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5), 0 0 15px rgba(255, 215, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.25) !important;
+  transform: translateY(-1px) !important;
+}
+
+.leaflet-control-container select:focus,
+.map-wrapper select:focus,
+select[class*="filter"]:focus,
+select[class*="region"]:focus {
+  border-color: var(--vibrant-blue) !important;
+  box-shadow: 0 0 20px rgba(0, 168, 232, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+}
+
+.leaflet-control-container option,
+.map-wrapper option,
+select[class*="filter"] option,
+select[class*="region"] option {
+  background: var(--dark-abyss) !important;
+  color: var(--light-foam) !important;
+  padding: 0.5rem !important;
+  border: none !important;
+}
+
+/* Style the dropdown container if it exists */
+.leaflet-control,
+.leaflet-control-container > div {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Make sure text is visible in dropdown */
+.leaflet-control-container,
+.leaflet-control-container * {
+  color: var(--light-foam) !important;
 }
 
 /* Info Card */
@@ -277,6 +444,11 @@ video {
 
 /* Responsive styles */
 @media (max-width: 768px) {
+  .page {
+    padding: 0.5rem;
+    padding-top: 100px; /* Adjust for mobile navbar height */
+  }
+
   h1 {
     font-size: 2.5rem;
   }
@@ -287,24 +459,249 @@ video {
   
   h5 {
     font-size: 1.1rem;
+    margin-bottom: 1.5rem;
   }
   
+  /* Mobile Search Section */
   .search {
     flex-direction: column;
     gap: 1rem;
+    margin: 1rem auto 2rem;
+    padding: 0;
+    max-width: 100%;
   }
   
-  .search button {
+  .search input {
+    padding: 0.8rem 1.2rem;
+    font-size: 0.9rem;
+    border-radius: 25px;
     width: 100%;
   }
   
+  .search-button-ocean {
+    width: 100%;
+    padding: 0.8rem 2rem;
+    font-size: 0.9rem;
+    border-radius: 25px;
+  }
+  
+  /* Mobile Map Controls */
+  .map-controls {
+    margin-bottom: 1rem;
+    padding: 0 0.5rem;
+  }
+  
+  .map-dropdown {
+    width: 100%;
+    min-width: unset;
+    padding: 0.8rem 1.2rem;
+    font-size: 0.9rem;
+    border-radius: 25px;
+  }
+  
+  /* Mobile Filter Dropdown Styling */
+  .leaflet-control-container select,
+  .map-wrapper select,
+  select[class*="filter"],
+  select[class*="region"] {
+    padding: 0.6rem 1rem !important;
+    font-size: 0.85rem !important;
+    border-radius: 20px !important;
+    min-width: 150px !important;
+    max-width: 200px !important;
+  }
+  
+  /* Mobile Info Section */
+  .info {
+    margin: 1.5rem auto;
+    padding: 1.5rem;
+    border-radius: 15px;
+  }
+  
+  .info p {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  /* Mobile Map */
   .map-wrapper {
-    height: 400px;
+    height: 350px;
+    border-radius: 15px;
+    margin-top: 1rem;
   }
   
   .map-legend {
     flex-direction: column;
     align-items: flex-start;
     gap: 1rem;
+    padding: 1rem;
+    border-radius: 10px;
+  }
+  
+  .legend-item {
+    width: 100%;
+    justify-content: flex-start;
+    padding: 0.5rem 0.8rem;
+    border-radius: 20px;
+  }
+  
+  /* Mobile Custom Map Icons */
+  .custom-icon {
+    width: 35px;
+    height: 35px;
+    font-size: 18px;
+  }
+  
+  /* Mobile Video Container */
+  .video-container {
+    margin: 2rem auto;
+    border-radius: 15px;
+  }
+  
+  /* Mobile Animations - Reduce for performance */
+  .search-button-ocean {
+    animation: none;
+  }
+  
+  .search-button-ocean:hover .ocean-waves {
+    left: 50%;
+    transition: left 0.3s ease;
+  }
+}
+
+@media (max-width: 480px) {
+  .page {
+    padding: 0.25rem;
+    padding-top: 90px; /* Adjust for smaller mobile navbar */
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+  }
+  
+  h5 {
+    font-size: 1rem;
+  }
+  
+  /* Extra small mobile adjustments */
+  .search {
+    margin: 1rem auto 1.5rem;
+    padding: 0;
+    max-width: 100%;
+  }
+  
+  .search input {
+    padding: 0.7rem 1rem;
+    font-size: 0.85rem;
+    width: 100%;
+  }
+  
+  .search-button-ocean {
+    padding: 0.7rem 1.5rem;
+    font-size: 0.85rem;
+  }
+  
+  .map-dropdown {
+    padding: 0.7rem 1rem;
+    font-size: 0.85rem;
+  }
+  
+  .leaflet-control-container select,
+  .map-wrapper select,
+  select[class*="filter"],
+  select[class*="region"] {
+    padding: 0.5rem 0.8rem !important;
+    font-size: 0.8rem !important;
+    min-width: 130px !important;
+    max-width: 180px !important;
+  }
+  
+  .info {
+    padding: 1rem;
+    margin: 1rem auto;
+  }
+  
+  .info p {
+    font-size: 0.9rem;
+  }
+  
+  .map-wrapper {
+    height: 300px;
+  }
+  
+  .legend-item {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.9rem;
+  }
+  
+  .legend-color {
+    width: 18px;
+    height: 18px;
+  }
+  
+  .custom-icon {
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 320px) {
+  /* Ultra small screens */
+  .page {
+    padding: 0.1rem;
+    padding-top: 85px;
+  }
+  
+  h1 {
+    font-size: 1.8rem;
+  }
+  
+  .search {
+    padding: 0;
+    margin: 0.5rem auto 1rem;
+    max-width: 100%;
+  }
+  
+  .search input {
+    padding: 0.6rem 0.8rem;
+    font-size: 0.8rem;
+    width: 100%;
+  }
+  
+  .search-button-ocean {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.8rem;
+  }
+  
+  .map-dropdown {
+    padding: 0.6rem 0.8rem;
+    font-size: 0.8rem;
+  }
+  
+  .leaflet-control-container select,
+  .map-wrapper select,
+  select[class*="filter"],
+  select[class*="region"] {
+    padding: 0.4rem 0.6rem !important;
+    font-size: 0.75rem !important;
+    min-width: 120px !important;
+    max-width: 160px !important;
+  }
+  
+  .map-wrapper {
+    height: 250px;
+  }
+  
+  .info {
+    padding: 0.8rem;
+  }
+  
+  .info p {
+    font-size: 0.85rem;
   }
 }
