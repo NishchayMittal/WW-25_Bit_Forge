@@ -6,6 +6,7 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
+    "start:standalone": "node .next/standalone/server.js",
     "lint": "next lint",
     "analyze-media": "node scripts/optimize-media.js",
     "optimize-images": "node scripts/optimize-images.js",
@@ -17,7 +18,8 @@
     "docker:compose:logs": "docker compose logs -f",
     "type-check": "tsc --noEmit",
     "deploy:vercel": "vercel --prod",
-    "health-check": "curl -f http://localhost:3000/api/health || exit 1"
+    "health-check": "curl -f http://localhost:3000/api/health || exit 1",
+    "prestart": "npm run build"
   },
   "dependencies": {
     "@clerk/nextjs": "^6.27.1",

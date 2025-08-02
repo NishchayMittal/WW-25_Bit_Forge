@@ -1,7 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: 'standalone',
+  // Use standalone output only for Docker/self-hosted deployments
+  // Vercel and Netlify handle this automatically
+  output: process.env.DOCKER_BUILD === 'true' ? 'standalone' : undefined,
   images: {
     domains: [
       'localhost', 
