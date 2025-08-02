@@ -4,11 +4,6 @@
   "installCommand": "npm install",
   "outputDirectory": ".next",
   "devCommand": "npm run dev",
-  "env": {
-    "NEXT_PUBLIC_YOUTUBE_API_KEY": "@youtube_api_key",
-    "NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY": "@clerk_publishable_key",
-    "CLERK_SECRET_KEY": "@clerk_secret_key"
-  },
   "headers": [
     {
       "source": "/(.*)",
