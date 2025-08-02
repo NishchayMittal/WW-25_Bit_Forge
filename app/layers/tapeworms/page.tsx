@@ -10,7 +10,7 @@ const Tapeworms = () => {
       <div className="page-container">
         <video
           className="background-video"
-          src="/videos/tapeworms.mp4"
+          src="https://res.cloudinary.com/dgocm6tyt/video/upload/v1754175640/tapeworms_urimkf.mp4"
           loop
           autoPlay
           muted

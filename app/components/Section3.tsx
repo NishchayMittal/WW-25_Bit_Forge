@@ -54,7 +54,7 @@ const Section3: React.FC = () => {
           muted
           playsInline
           className="hero-bg"
-          src="/videos/Layer3.mp4"
+          src="https://res.cloudinary.com/dgocm6tyt/video/upload/v1754175314/Layer3_suwgaz.mp4"
         />
       ) : (
         <div className="hero-bg placeholder" />

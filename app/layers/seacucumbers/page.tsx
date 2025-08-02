@@ -10,7 +10,7 @@ const seacucumbers = () => {
       <div className="page-container">
         <video
           className="background-video"
-          src="/videos/seacucumber_alt.mp4"
+          src="https://res.cloudinary.com/dgocm6tyt/video/upload/v1754175658/seacucumber_alt_pdcrad.mp4"
           loop
           autoPlay
           muted

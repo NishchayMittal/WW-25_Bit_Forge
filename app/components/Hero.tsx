@@ -60,7 +60,8 @@ const Hero = () => {
           preload="none"
           poster="/images/hero-poster.jpg"
           className="hero-bg"
-          src="/videos/hero.mp4"
+          src="https://res.cloudinary.com/dgocm6tyt/video/upload/v1754175026/hero_zvessn.mp4"
+        
         />
       ) : (
         <img
