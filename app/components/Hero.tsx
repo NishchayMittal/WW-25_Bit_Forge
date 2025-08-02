@@ -15,15 +15,21 @@ import Navbar from "./Navbar";
 import Script from "next/script";
 import Bot from "../components/bot";
 import Link from "next/link";
+
 const caveat1 = Cinzel({ subsets: ["latin"], weight: ["400"] });
+
 const Hero = () => {
   const heroRef = useRef<HTMLDivElement>(null);
   const [beamStyle, setBeamStyle] = useState({ width: 0, angle: 0 });
   const [mounted, setMounted] = useState(false);
+  const [showVideo, setShowVideo] = useState(false); // <-- Added
+
   const beamOrigin = { x: 390, y: 10 };
 
   useEffect(() => {
     setMounted(true);
+    const timer = setTimeout(() => setShowVideo(true), 500); // Delay video display
+    return () => clearTimeout(timer);
   }, []);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
@@ -45,14 +51,24 @@ const Hero = () => {
 
   return (
     <div className="hero" onMouseMove={handleMouseMove} ref={heroRef}>
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="hero-bg"
-        src="/videos/hero.mp4"
-      />
+      {showVideo ? (
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="none"
+          poster="/images/hero-poster.jpg"
+          className="hero-bg"
+          src="/videos/hero.mp4"
+        />
+      ) : (
+        <img
+          src="/images/hero-poster.jpg"
+          alt="Ocean background"
+          className="hero-bg"
+        />
+      )}
 
       <div
         className="beam"
@@ -90,7 +106,6 @@ const Hero = () => {
           An experience through layers of ocean
         </motion.p>
 
-        {/* Scripts for Botpress */}
         <Script
           src="https://cdn.botpress.cloud/webchat/v3.1/inject.js"
           strategy="afterInteractive"
@@ -99,8 +114,8 @@ const Hero = () => {
           src="https://files.bpcontent.cloud/2025/07/10/16/20250710161048-3WXS4PPU.js"
           strategy="afterInteractive"
         />
+
         <ClerkProvider>
-          {/* Auth-based buttons */}
           <SignedIn>
             <Link href="/layers/marine-shorts">
               <motion.button

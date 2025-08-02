@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import {
   UserButton,
   useUser,
@@ -18,12 +17,11 @@ import {
   GiPirateHat,
 } from "react-icons/gi";
 import { FaWpforms } from "react-icons/fa";
-
 import "./Navbar.css";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const { user } = useUser();
+  const { user, isLoaded } = useUser();
 
   const navButtonStyle: React.CSSProperties = {
     background: "none",
@@ -37,9 +35,16 @@ const Navbar = () => {
     padding: 0,
   };
 
+  const protectedNavigate = (path: string) => {
+    if (!user) {
+      alert("Please log in to access this page.");
+      return;
+    }
+    window.location.href = path;
+  };
+
   return (
     <nav className="hero-navbar">
-      {/* Logo Section */}
       <div className="flex items-center space-x-2">
         <Image
           src="/logo.png"
@@ -48,10 +53,14 @@ const Navbar = () => {
           height={50}
           className="object-contain"
         />
-        <span className="text-white text-2xl font-bold">Oceanic</span>
+        <button
+          onClick={() => (window.location.href = "/")}
+          style={navButtonStyle}
+        >
+          <span className="text-white text-2xl font-bold">Oceanic</span>
+        </button>
       </div>
 
-      {/* Menu Section */}
       <div className="right-menu">
         <div className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>
           ☰
@@ -69,7 +78,7 @@ const Navbar = () => {
           </li>
           <li>
             <button
-              onClick={() => (window.location.href = "/layers/species")}
+              onClick={() => protectedNavigate("/layers/species")}
               style={navButtonStyle}
             >
               <GiSeaTurtle />
@@ -78,7 +87,7 @@ const Navbar = () => {
           </li>
           <li>
             <button
-              onClick={() => (window.location.href = "/game")}
+              onClick={() => protectedNavigate("/game")}
               style={navButtonStyle}
             >
               <GiTreasureMap />
@@ -87,7 +96,7 @@ const Navbar = () => {
           </li>
           <li>
             <button
-              onClick={() => (window.location.href = "/aboutus")}
+              onClick={() => protectedNavigate("/aboutus")}
               style={navButtonStyle}
             >
               <GiDolphin />
@@ -96,17 +105,16 @@ const Navbar = () => {
           </li>
           <li>
             <button
-              onClick={() => (window.location.href = "/timeline")}
+              onClick={() => protectedNavigate("/timeline")}
               style={navButtonStyle}
             >
               <GiAnchor />
               Timeline
             </button>
           </li>
-
           <li>
             <button
-              onClick={() => (window.location.href = "/forms")}
+              onClick={() => protectedNavigate("/forms")}
               style={navButtonStyle}
             >
               <FaWpforms />

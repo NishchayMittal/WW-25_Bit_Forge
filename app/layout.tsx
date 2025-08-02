@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
+import { dark } from "@clerk/themes";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -25,12 +26,68 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes"
+        />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ClerkProvider>{children}</ClerkProvider>
+        <ClerkProvider
+          appearance={{
+            baseTheme: dark,
+            variables: {
+              colorPrimary: "#00A8E8",
+              colorText: "#ffffff",
+              colorBackground: "#000B1A",
+              colorInputBackground: "#001428",
+              borderRadius: "12px",
+            },
+            elements: {
+              card: {
+                background: "#001428",
+                borderRadius: "16px",
+                boxShadow: "0 0 20px rgba(0, 168, 232, 0.2)",
+              },
+              formButtonPrimary: {
+                background: "linear-gradient(90deg, #00A8E8 0%, #006494 100%)",
+                color: "#ffffff",
+                fontWeight: "bold",
+                borderRadius: "10px",
+              },
+              socialButtonsBlockButton: {
+                background: "linear-gradient(90deg, #3B82F6 0%, #06B6D4 100%)",
+                color: "#ffffff",
+                fontWeight: "600",
+                borderRadius: "10px",
+                marginBottom: "8px",
+              },
+              input: {
+                backgroundColor: "#001d3d",
+                color: "#ffffff",
+                borderRadius: "8px",
+                border: "1px solid #00A8E8",
+              },
+              headerTitle: {
+                fontSize: "20px",
+                fontWeight: "bold",
+              },
+              headerSubtitle: {
+                color: "#cccccc",
+              },
+              footerActionText: {
+                color: "#aaaaaa",
+              },
+              footerActionLink: {
+                color: "#00A8E8",
+                fontWeight: "bold",
+              },
+            },
+          }}
+        >
+          {children}
+        </ClerkProvider>
       </body>
     </html>
   );
