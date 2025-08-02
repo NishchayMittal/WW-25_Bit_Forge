@@ -94,15 +94,7 @@ const Navbar = () => {
               Games
             </button>
           </li>
-          <li>
-            <button
-              onClick={() => protectedNavigate("/aboutus")}
-              style={navButtonStyle}
-            >
-              <GiDolphin />
-              About Us
-            </button>
-          </li>
+          
           <li>
             <button
               onClick={() => protectedNavigate("/timeline")}
@@ -119,6 +111,16 @@ const Navbar = () => {
             >
               <FaWpforms />
               Forms
+            </button>
+          </li>
+
+          <li>
+            <button
+              onClick={() => protectedNavigate("/aboutus")}
+              style={navButtonStyle}
+            >
+              <GiDolphin />
+              About Us
             </button>
           </li>
 
