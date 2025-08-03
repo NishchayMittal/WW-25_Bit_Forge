@@ -1,57 +1,50 @@
-## 🌊 DeepBlue Discovery
-Explore the Ocean, Layer by Layer
+# 🌊 Oceanic Project
 
-Dive into the mysterious depths of the ocean with our immersive, interactive web experience.
-From the vibrant coral reefs of the Sunlight Zone to the eerie stillness of the Hadal Trenches, our site unveils the secrets of marine biodiversity across every ocean layer.
+Welcome to **Oceanic**, an immersive and interactive web experience dedicated to exploring the wonders of the ocean. From marine species exploration to games and educational shorts, Oceanic offers a variety of features designed to educate, engage, and inspire!
 
-🌐 Built with modern web technologies and stunning visuals, DeepBlue Discovery is more than just a website — it's an underwater journey that educates, inspires, and amazes.
+---
 
-🐠 Features:
-🎥 Full-screen background videos for each ocean layer
+## 🚀 Features
 
-📚 Educational content on marine life and ocean zones
+### 🎮 Interactive Ocean Game
+Dive into an engaging game that lets you experience the challenges and beauty of life beneath the waves.
 
-🤔 Mini ocean quiz to test your knowledge
+### 🎥 Shorts Viewer
+Watch bite-sized, informative oceanic videos curated to educate and entertain.
 
-🌍 Real-time marine species data (live APIs)
+### 🗺️ Species Page with Map Integration
+Explore various marine species on a world map with detailed descriptions, images, and facts.
 
-🎮 Enjoy the personally developed games
+### 🧭 Timeline Page
+Follow the historical and ecological timeline of oceanic events, discoveries, and conservation efforts.
 
-Created with passion for marine exploration — by a team of 4 aspiring developers 🌟
+### 📝 Feedback Form
+Have thoughts, suggestions, or just want to say hi? Drop your feedback through our interactive form.
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+### 👥 About Us Page
+Meet the passionate team behind the Oceanic project and learn about our mission.
 
-## Getting Started
+### 🔐 Login & Authentication
+A secure and smooth login experience to personalize user journeys and save progress.
 
-First, run the development server:
+---
+
+## 🌐 Tech Stack
+
+- **Frontend**: Next.js + CSS and TAILWIND CSS
+- **Backend**: Node.js / API-based
+- **Auth**: Clerk Authentication
+- **Map**: Mapbox / Leaflet.js
+- **Game**: Phaser.js (Web-based game engine)
+
+---
+
+
+
+## 🛠️ Installation
 
 ```bash
+git clone https://github.com/your-username/WW-25_Bit_Forge.git
+cd WW-25_Bit_Forge
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
