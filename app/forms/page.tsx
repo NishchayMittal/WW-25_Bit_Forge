@@ -99,7 +99,7 @@ export default function Form() {
             <input
               type="hidden"
               name="_next"
-              value="http://localhost:3000/forms/thankyou"
+              value="https://oceanic-project.vercel.app/forms/thankyou"
             />
 
             {/* Submit */}
