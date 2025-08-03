@@ -10,7 +10,7 @@ const carnivoroussponges = () => {
       <div className="page-container">
         <video
           className="background-video"
-          src="/videos/carnivoroussponges.mp4"
+          src="https://res.cloudinary.com/dgocm6tyt/video/upload/v1754175659/carnivoroussponges_zq2csf.mp4"
           loop
           autoPlay
           muted

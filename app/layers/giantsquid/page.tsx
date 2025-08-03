@@ -10,7 +10,7 @@ const giantsquid = () => {
       <div className="page-container">
         <video
           className="background-video"
-          src="/videos/giantsquid.mp4"
+          src="https://res.cloudinary.com/dgocm6tyt/video/upload/v1754175638/giantsquid_hgqli6.mp4"
           loop
           autoPlay
           muted

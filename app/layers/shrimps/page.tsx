@@ -10,7 +10,7 @@ const jellyfishes = () => {
       <div className="page-container">
         <video
           className="background-video"
-          src="/videos/shrimps.mp4"
+          src="https://res.cloudinary.com/dgocm6tyt/video/upload/v1754175644/shrimps_apc7lw.mp4"
           loop
           autoPlay
           muted

@@ -10,7 +10,7 @@ const hadalsnailfish = () => {
       <div className="page-container">
         <video
           className="background-video"
-          src="/videos/hadalsnailfish.mp4"
+          src="https://res.cloudinary.com/dgocm6tyt/video/upload/v1754175632/hadalsnailfish_zslfxj.mp4"
           loop
           autoPlay
           muted

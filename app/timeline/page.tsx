@@ -379,7 +379,7 @@ const timelineData: TimelineEvent[] = [
       "Opens up new avenues for understanding Earth's largest habitat.",
     ],
     fullDescription:
-      "Looking ahead to 2025, the deep-sea exploration community anticipates major milestones driven by rapidly evolving technology. Advanced Autonomous Underwater Vehicles (AUVs) with enhanced mapping and sampling capabilities, alongside next-generation manned submersibles, are set to accelerate the mapping of the vast, unexplored seabed. This progress is critical for initiatives like Seabed 2030, aiming for complete ocean mapping, and is expected to uncover countless new species, geological formations, and fundamental insights into Earth's largest and least understood habitat.",
+      "Looking to 2025, the deep-sea exploration community anticipates major milestones driven by rapidly evolving technology. Advanced Autonomous Underwater Vehicles (AUVs) with enhanced mapping and sampling capabilities, alongside next-generation manned submersibles, are set to accelerate the mapping of the vast, unexplored seabed. This progress is critical for initiatives like Seabed 2030, aiming for complete ocean mapping, and is expected to uncover countless new species, geological formations, and fundamental insights into Earth's largest and least understood habitat.",
   },
 ];
 

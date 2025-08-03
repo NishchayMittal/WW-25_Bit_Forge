@@ -17,7 +17,7 @@ const Layer1 = () => {
         <div className="video-section">
           <Navbar />
           <video
-            src="/videos/layer.mp4"
+            src="https://res.cloudinary.com/dgocm6tyt/video/upload/v1754175665/layer_ps4vdr.mp4"
             loop
             autoPlay
             muted

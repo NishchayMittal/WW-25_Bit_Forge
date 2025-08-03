@@ -10,7 +10,7 @@ const amphipods = () => {
       <div className="page-container">
         <video
           className="background-video"
-          src="/videos/amphipods.mp4"
+          src="https://res.cloudinary.com/dgocm6tyt/video/upload/v1754175658/amphipods_bdc9jn.mp4"
           loop
           autoPlay
           muted

@@ -26,7 +26,7 @@ export default function AboutUsPage() {
         role: "Frontend Developer",
         bio: "I build smooth, interactive ocean vibes with code. From waves to wildlife, I love turning ideas into fun, scroll-friendly experiences.",
         image:
-          "https://media.licdn.com/dms/image/v2/D5603AQHXZnTQSC0Xmg/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1729319926405?e=1756944000&v=beta&t=ZUjjt0WuQ913d7s9cZtDeVHiUUK4KL_Gx3PJhyfL5z8",
+          "/Nishchay.jpg",
         linkedin: "https://www.linkedin.com/in/nishchay-mittal",
         instagram: "https://www.instagram.com/_ndm.1501_/",
       },

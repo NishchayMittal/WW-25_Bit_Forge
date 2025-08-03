@@ -10,7 +10,7 @@ const anglerfish = () => {
       <div className="page-container">
         <video
           className="background-video"
-          src="/videos/anglerfish.mp4"
+          src="https://res.cloudinary.com/dgocm6tyt/video/upload/v1754176242/Anglerfish_ypmwfm.mp4"
           loop
           autoPlay
           muted

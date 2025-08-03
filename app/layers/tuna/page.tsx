@@ -10,7 +10,7 @@ const Tuna = () => {
       <div className="page-container">
         <video
           className="background-video"
-          src="/videos/tuna.mp4"
+          src="https://res.cloudinary.com/dgocm6tyt/video/upload/v1754175649/tuna_oyxleo.mp4"
           loop
           autoPlay
           muted

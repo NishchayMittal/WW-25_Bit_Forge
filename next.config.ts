@@ -1,6 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // Use standalone output only for Docker/self-hosted deployments
+  // Vercel and Netlify handle this automatically
+  output: process.env.DOCKER_BUILD === 'true' ? 'standalone' : undefined,
   images: {
     domains: [
       'localhost', 
@@ -13,7 +16,7 @@ const nextConfig: NextConfig = {
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
   },
   experimental: {
-    optimizeCss: true,
+    // optimizeCss: true, // Disabled for now due to critters dependency issues
   },
   turbopack: {
     rules: {
