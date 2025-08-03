@@ -23,7 +23,7 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const { user, isLoaded } = useUser();
 
-  const navButtonStyle: React.CSSProperties = {
+  const navButtonStyle = {
     background: "none",
     border: "none",
     color: "inherit",
@@ -35,7 +35,11 @@ const Navbar = () => {
     padding: 0,
   };
 
-  const protectedNavigate = (path: string) => {
+  interface ProtectedNavigate {
+    (path: string): void;
+  }
+
+  const protectedNavigate: ProtectedNavigate = (path) => {
     if (!user) {
       alert("Please log in to access this page.");
       return;
@@ -94,7 +98,7 @@ const Navbar = () => {
               Games
             </button>
           </li>
-          
+
           <li>
             <button
               onClick={() => protectedNavigate("/timeline")}
@@ -139,7 +143,7 @@ const Navbar = () => {
             <li className="user-info">
               <button style={navButtonStyle}>
                 <GiPirateHat />
-                Neel
+                {isLoaded && user?.username ? user.username : "Loading..."}
               </button>
               <UserButton afterSignOutUrl="/" />
             </li>

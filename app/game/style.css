@@ -43,8 +43,26 @@ html, body {
   display: block;
   z-index: 1;
   background: transparent;
-  background: linear-gradient(to bottom,lightblue,darkblue,black);
+  background: linear-gradient(to bottom, lightblue, darkblue, black);
   cursor: crosshair;
+}
+
+/* Game Over Text */
+.game-over {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Center both horizontally and vertically */
+  font-size: 3rem;
+  font-family: Arial, sans-serif;
+  color: white;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Improve readability against background */
+  z-index: 2; /* Above canvas */
+  padding: 1rem 2rem;
+  background: rgba(0, 0, 0, 0.6); /* Semi-transparent background for contrast */
+  border-radius: 10px;
+  white-space: nowrap; /* Prevent text wrapping */
 }
 
 /* Mobile-specific optimizations */
@@ -71,6 +89,11 @@ html, body {
     height: 100vh;
     height: -webkit-fill-available;
   }
+  
+  .game-over {
+    font-size: 2rem; /* Slightly smaller for mobile */
+    padding: 0.8rem 1.5rem;
+  }
 }
 
 /* Small mobile devices */
@@ -81,6 +104,11 @@ html, body {
     image-rendering: -webkit-optimize-contrast;
     image-rendering: -o-crisp-edges;
     image-rendering: pixelated;
+  }
+  
+  .game-over {
+    font-size: 1.5rem; /* Even smaller for small screens */
+    padding: 0.6rem 1rem;
   }
 }
 
@@ -97,12 +125,21 @@ html, body {
     top: 0;
     left: 0;
   }
+  
+  .game-over {
+    font-size: 1.8rem; /* Adjusted for landscape */
+    padding: 0.7rem 1.2rem;
+  }
 }
 
 /* High DPI displays */
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
   #canvas1 {
     image-rendering: -webkit-optimize-contrast;
+  }
+  
+  .game-over {
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8); /* Enhanced shadow for high DPI */
   }
 }
 
