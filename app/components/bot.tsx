@@ -4,21 +4,38 @@ import { useEffect } from "react";
 
 export default function Bot() {
   useEffect(() => {
-    const script1 = document.createElement("script");
-    script1.src = "https://cdn.botpress.cloud/webchat/v3.2/inject.js";
-    script1.defer = true;
+    // Avoid reinjecting if already present
+    if (document.getElementById("botpress-webchat-script")) return;
 
-    const script2 = document.createElement("script");
-    script2.src =
+    const injectScript = document.createElement("script");
+    injectScript.src = "https://cdn.botpress.cloud/webchat/v3.2/inject.js";
+    injectScript.id = "botpress-webchat-script";
+    injectScript.defer = true;
+
+    const configScript = document.createElement("script");
+    configScript.src =
       "https://files.bpcontent.cloud/2025/07/31/14/20250731145421-4E07K7SA.js";
-    script2.defer = true;
+    configScript.id = "botpress-config-script";
+    configScript.defer = true;
 
-    document.body.appendChild(script1);
-    document.body.appendChild(script2);
+    // Append injectScript first, then configScript
+    injectScript.onload = () => {
+      document.body.appendChild(configScript);
+    };
 
+    document.body.appendChild(injectScript);
+
+    // Cleanup
     return () => {
-      document.body.removeChild(script1);
-      document.body.removeChild(script2);
+      const injected = document.getElementById("botpress-webchat-script");
+      const config = document.getElementById("botpress-config-script");
+
+      if (injected) document.body.removeChild(injected);
+      if (config) document.body.removeChild(config);
+
+      // Remove chat container if needed
+      const bpContainer = document.querySelector("#bp-web-widget-container");
+      if (bpContainer) bpContainer.remove();
     };
   }, []);
 

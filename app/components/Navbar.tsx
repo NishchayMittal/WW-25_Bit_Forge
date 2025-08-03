@@ -134,13 +134,11 @@ const Navbar = () => {
           </SignedOut>
 
           <SignedIn>
-            <li>
-              <p className="user-button" style={navButtonStyle}>
+            <li className="user-info">
+              <button style={navButtonStyle}>
                 <GiPirateHat />
-                {user?.firstName || "User"}
-              </p>
-            </li>
-            <li>
+                Neel
+              </button>
               <UserButton afterSignOutUrl="/" />
             </li>
           </SignedIn>

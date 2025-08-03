@@ -1,4 +1,3 @@
-/* styles.css */
 :root {
   --deep-blue: #003366;
   --ocean-teal: #008080;
@@ -16,14 +15,18 @@
   background-color: var(--dark-abyss);
   color: var(--light-foam);
   min-height: 100vh;
-  padding: 2rem 1rem; /* Reduce horizontal padding */
-  padding-top: 120px; /* Add space for navbar */
+  padding: 0; /* Removed all padding to avoid any offset */
+  padding-top: 120px; /* Space for navbar */
   background-image: 
     radial-gradient(circle at 10% 20%, rgba(0, 168, 232, 0.15) 0%, transparent 20%),
     radial-gradient(circle at 90% 80%, rgba(255, 127, 80, 0.1) 0%, transparent 20%);
   position: relative;
   overflow-x: hidden;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center all content horizontally */
+  width: 100%; /* Ensure full viewport width */
 }
 
 .page::before {
@@ -43,7 +46,9 @@
 /* Header and Title Styles */
 .header {
   text-align: center;
-  margin-bottom: 2rem;
+  margin: 2rem 0; /* Centered margin */
+  width: 100%;
+  max-width: 1200px; /* Limit header width for balance */
 }
 
 h1 {
@@ -71,11 +76,19 @@ h5 {
 }
 
 /* Search Section */
-.search {
-  max-width: 600px;
-  width: 100%;
-  margin: 2rem auto 3rem;
+.search-container {
   display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically within container */
+  margin: 0 auto 2rem; /* Centered margin, bottom spacing */
+  width: 90%; /* Responsive width */
+  max-width: 600px; /* Limit maximum width */
+  padding: 0; /* Remove any internal padding */
+}
+
+.search {
+  display: flex;
+  width: 100%; /* Full width of container */
   gap: 1rem;
   align-items: center;
   padding: 0;
@@ -85,18 +98,21 @@ h5 {
 .search input {
   flex: 1;
   width: 100%;
-  min-width: 0; /* Allow shrinking */
+  min-width: 0;
   padding: 1rem 1.5rem;
   border-radius: 50px;
   border: 2px solid rgba(0, 168, 232, 0.3);
   background: rgba(10, 26, 42, 0.8);
   backdrop-filter: blur(8px);
-  color: white;
+  color: var(--light-foam);
   font-size: 1rem;
   outline: none;
   transition: all 0.3s ease;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  box-sizing: border-box;
+}
+
+.search input::placeholder {
+  color: rgba(224, 247, 250, 0.7);
 }
 
 .search input:focus {
@@ -112,7 +128,7 @@ h5 {
   border: none;
   background: linear-gradient(135deg, var(--deep-blue), var(--ocean-teal), var(--vibrant-blue));
   background-size: 200% 200%;
-  color: white;
+  color: var(--light-foam);
   font-weight: 600;
   cursor: pointer;
   transition: all 0.4s ease;
@@ -158,15 +174,9 @@ h5 {
 }
 
 @keyframes ocean-gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 /* Map Controls and Filter Dropdown Styling */
@@ -442,269 +452,7 @@ video {
   animation: pulse 2s infinite;
 }
 
-/* Responsive styles */
-@media (max-width: 768px) {
-  .page {
-    padding: 0.5rem;
-    padding-top: 100px; /* Adjust for mobile navbar height */
-  }
-
-  h1 {
-    font-size: 2.5rem;
-  }
-  
-  h2 {
-    font-size: 1.8rem;
-  }
-  
-  h5 {
-    font-size: 1.1rem;
-    margin-bottom: 1.5rem;
-  }
-  
-  /* Mobile Search Section */
-  .search {
-    flex-direction: column;
-    gap: 1rem;
-    margin: 1rem auto 2rem;
-    padding: 0;
-    max-width: 100%;
-  }
-  
-  .search input {
-    padding: 0.8rem 1.2rem;
-    font-size: 0.9rem;
-    border-radius: 25px;
-    width: 100%;
-  }
-  
-  .search-button-ocean {
-    width: 100%;
-    padding: 0.8rem 2rem;
-    font-size: 0.9rem;
-    border-radius: 25px;
-  }
-  
-  /* Mobile Map Controls */
-  .map-controls {
-    margin-bottom: 1rem;
-    padding: 0 0.5rem;
-  }
-  
-  .map-dropdown {
-    width: 100%;
-    min-width: unset;
-    padding: 0.8rem 1.2rem;
-    font-size: 0.9rem;
-    border-radius: 25px;
-  }
-  
-  /* Mobile Filter Dropdown Styling */
-  .leaflet-control-container select,
-  .map-wrapper select,
-  select[class*="filter"],
-  select[class*="region"] {
-    padding: 0.6rem 1rem !important;
-    font-size: 0.85rem !important;
-    border-radius: 20px !important;
-    min-width: 150px !important;
-    max-width: 200px !important;
-  }
-  
-  /* Mobile Info Section */
-  .info {
-    margin: 1.5rem auto;
-    padding: 1.5rem;
-    border-radius: 15px;
-  }
-  
-  .info p {
-    font-size: 1rem;
-    margin-bottom: 1rem;
-  }
-  
-  /* Mobile Map */
-  .map-wrapper {
-    height: 350px;
-    border-radius: 15px;
-    margin-top: 1rem;
-  }
-  
-  .map-legend {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1rem;
-    padding: 1rem;
-    border-radius: 10px;
-  }
-  
-  .legend-item {
-    width: 100%;
-    justify-content: flex-start;
-    padding: 0.5rem 0.8rem;
-    border-radius: 20px;
-  }
-  
-  /* Mobile Custom Map Icons */
-  .custom-icon {
-    width: 35px;
-    height: 35px;
-    font-size: 18px;
-  }
-  
-  /* Mobile Video Container */
-  .video-container {
-    margin: 2rem auto;
-    border-radius: 15px;
-  }
-  
-  /* Mobile Animations - Reduce for performance */
-  .search-button-ocean {
-    animation: none;
-  }
-  
-  .search-button-ocean:hover .ocean-waves {
-    left: 50%;
-    transition: left 0.3s ease;
-  }
-}
-
-@media (max-width: 480px) {
-  .page {
-    padding: 0.25rem;
-    padding-top: 90px; /* Adjust for smaller mobile navbar */
-  }
-
-  h1 {
-    font-size: 2rem;
-  }
-  
-  h2 {
-    font-size: 1.5rem;
-  }
-  
-  h5 {
-    font-size: 1rem;
-  }
-  
-  /* Extra small mobile adjustments */
-  .search {
-    margin: 1rem auto 1.5rem;
-    padding: 0;
-    max-width: 100%;
-  }
-  
-  .search input {
-    padding: 0.7rem 1rem;
-    font-size: 0.85rem;
-    width: 100%;
-  }
-  
-  .search-button-ocean {
-    padding: 0.7rem 1.5rem;
-    font-size: 0.85rem;
-  }
-  
-  .map-dropdown {
-    padding: 0.7rem 1rem;
-    font-size: 0.85rem;
-  }
-  
-  .leaflet-control-container select,
-  .map-wrapper select,
-  select[class*="filter"],
-  select[class*="region"] {
-    padding: 0.5rem 0.8rem !important;
-    font-size: 0.8rem !important;
-    min-width: 130px !important;
-    max-width: 180px !important;
-  }
-  
-  .info {
-    padding: 1rem;
-    margin: 1rem auto;
-  }
-  
-  .info p {
-    font-size: 0.9rem;
-  }
-  
-  .map-wrapper {
-    height: 300px;
-  }
-  
-  .legend-item {
-    padding: 0.4rem 0.6rem;
-    font-size: 0.9rem;
-  }
-  
-  .legend-color {
-    width: 18px;
-    height: 18px;
-  }
-  
-  .custom-icon {
-    width: 30px;
-    height: 30px;
-    font-size: 16px;
-  }
-}
-
-@media (max-width: 320px) {
-  /* Ultra small screens */
-  .page {
-    padding: 0.1rem;
-    padding-top: 85px;
-  }
-  
-  h1 {
-    font-size: 1.8rem;
-  }
-  
-  .search {
-    padding: 0;
-    margin: 0.5rem auto 1rem;
-    max-width: 100%;
-  }
-  
-  .search input {
-    padding: 0.6rem 0.8rem;
-    font-size: 0.8rem;
-    width: 100%;
-  }
-  
-  .search-button-ocean {
-    padding: 0.6rem 1.2rem;
-    font-size: 0.8rem;
-  }
-  
-  .map-dropdown {
-    padding: 0.6rem 0.8rem;
-    font-size: 0.8rem;
-  }
-  
-  .leaflet-control-container select,
-  .map-wrapper select,
-  select[class*="filter"],
-  select[class*="region"] {
-    padding: 0.4rem 0.6rem !important;
-    font-size: 0.75rem !important;
-    min-width: 120px !important;
-    max-width: 160px !important;
-  }
-  
-  .map-wrapper {
-    height: 250px;
-  }
-  
-  .info {
-    padding: 0.8rem;
-  }
-  
-  .info p {
-    font-size: 0.85rem;
-  }
-}
+/* Custom Fonts */
 @font-face {
   font-family: 'Frunchy Sage';
   src: url('/fonts/FrunchySage.ttf') format('truetype');
@@ -712,15 +460,109 @@ video {
 
 .my-text {
   font-family: 'Frunchy Sage';
-      font-size: 2rem !important;
-  font-weight: 900;     
+  font-size: 2rem;
+  font-weight: 900;
   opacity: 0.8;
-  letter-spacing: 1px;  
-  line-height: 1.1;       
+  letter-spacing: 1px;
+  line-height: 1.1;
 }
+
 .barlow-text {
   font-family: 'Barlow', sans-serif;
   font-weight: 400;
   font-size: 2rem;
   color: white;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .page {
+    padding-top: 100px;
+  }
+
+  .search-container {
+    margin: 0.5rem auto 1.5rem;
+    width: 95%;
+  }
+
+  .search {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .search input {
+    padding: 0.8rem 1.2rem;
+    font-size: 0.9rem;
+    border-radius: 25px;
+  }
+
+  .search-button-ocean {
+    width: 100%;
+    padding: 0.8rem 2rem;
+    font-size: 0.9rem;
+    border-radius: 25px;
+  }
+
+  h1 { font-size: 2.5rem; }
+  h2 { font-size: 1.8rem; margin: 1rem 0; }
+  h5 { font-size: 1.1rem; margin-bottom: 1.5rem; }
+  .map-wrapper { height: 350px; border-radius: 15px; }
+  .my-text { font-size: 1.5rem; }
+  .barlow-text { font-size: 1.5rem; }
+}
+
+@media (max-width: 480px) {
+  .page {
+    padding-top: 90px;
+  }
+
+  .search-container {
+    margin: 0.5rem auto 1rem;
+    width: 95%;
+  }
+
+  .search input {
+    padding: 0.7rem 1rem;
+    font-size: 0.85rem;
+  }
+
+  .search-button-ocean {
+    padding: 0.7rem 1.5rem;
+    font-size: 0.85rem;
+  }
+
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.5rem; margin: 0.8rem 0; }
+  h5 { font-size: 1rem; margin-bottom: 1rem; }
+  .map-wrapper { height: 300px; }
+  .my-text { font-size: 1.2rem; }
+  .barlow-text { font-size: 1.2rem; }
+}
+
+@media (max-width: 320px) {
+  .page {
+    padding-top: 85px;
+  }
+
+  .search-container {
+    margin: 0.3rem auto 0.8rem;
+    width: 95%;
+  }
+
+  .search input {
+    padding: 0.6rem 0.8rem;
+    font-size: 0.8rem;
+  }
+
+  .search-button-ocean {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.8rem;
+  }
+
+  h1 { font-size: 1.8rem; }
+  h2 { font-size: 1.3rem; margin: 0.6rem 0; }
+  h5 { font-size: 0.9rem; margin-bottom: 0.8rem; }
+  .map-wrapper { height: 250px; }
+  .my-text { font-size: 1rem; }
+  .barlow-text { font-size: 1rem; }
 }

@@ -109,6 +109,20 @@ a {
   transform: scaleX(1);
 }
 
+/* USER INFO STYLING */
+.nav-items li.user-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.nav-items li.user-info .cl-userButtonPopoverTrigger {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
 /* HAMBURGER FOR MOBILE */
 .hamburger {
   display: none;
@@ -116,25 +130,33 @@ a {
   cursor: pointer;
   margin-left: 1rem;
   z-index: 3;
+  background: none;
+  border: none;
+  color: white;
+  padding: 0.5rem;
 }
 
 /* RESPONSIVE - MOBILE & TABLET */
 @media (max-width: 768px) {
   .nav-items {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
+    position: fixed;
+    top: 60px;
+    left: -100%;
+    width: 100%;
+    height: calc(100vh - 60px);
     background-color: rgba(0, 48, 73, 0.98);
     backdrop-filter: blur(15px);
     flex-direction: column;
     align-items: center;
-    gap: 0;
+    gap: 1rem;
     padding: 1rem 0;
-    width: 100%;
-    display: none;
+    transition: left 0.3s ease-in-out;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  .nav-items.open {
+    left: 0;
   }
 
   .nav-items li {
@@ -152,17 +174,21 @@ a {
     width: 100%;
     justify-content: center;
     padding: 1rem;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
+  }
+
+  .nav-items li.user-info {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .nav-items li.user-info .cl-userButtonPopoverTrigger {
+    margin: 0 auto;
   }
 
   .nav-items li a::after,
   .nav-items li button::after {
     display: none;
-  }
-
-  .nav-items.open {
-    display: flex;
-    animation: slideDown 0.3s ease-out;
   }
 
   .hamburger {
@@ -178,6 +204,10 @@ a {
 
   .hamburger:hover {
     background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .hero-navbar {
+    padding: 0.75rem 1rem;
   }
 }
 
